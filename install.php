@@ -18,13 +18,14 @@ try {
     CREATE TABLE TblStaff(StaffID INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     FirstName VARCHAR(20) NOT NULL,
     Surname VARCHAR(20) NOT NULL,
-    Role VARCHAR(20) Enum('Driver','Manager','Staff') NOT NULL,
+    Role  Enum('Driver','Manager','Staff') NOT NULL DEFAULT 'Staff',
     Password VARCHAR(255) NOT NULL,
     Email VARCHAR(255) NOT NULL,
     Phone VARCHAR(20) NOT NULL,
     Initials VARCHAR(5) NOT NULL,
-    Licencetodrive Enum('Coach','17 minubus','9 seater','Car','None') NOT NULL DEFAULT 'None'
-     )"
+    Licencetodrive  Enum('Coach','17 minubus','9 seater','Car','None') NOT NULL DEFAULT 'None'
+    )"
+    );
     $stmt1->execute();
     $stmt1->closeCursor();
     
@@ -37,6 +38,7 @@ try {
     ");
     $stmt5->execute();
     $stmt5->closeCursor();
+    #not working bwelwo here
     $stmt1 = $conn->prepare("DROP TABLE IF EXISTS TblVehicles;
     CREATE TABLE TblVehicles(VehicleID INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     Make VARCHAR(20) NOT NULL,
@@ -45,6 +47,7 @@ try {
     Capacity INT(2) NOT NULL,
     Status VARCHAR(20) NOT NULL DEFAULT 'Available'
      )"
+    );
     $stmt1->execute();
     $stmt1->closeCursor();
     $stmt5 = $conn->prepare("INSERT INTO TblVehicles(Make,Model,Registration,Capacity,Status)VALUES 
@@ -92,26 +95,7 @@ try {
     $stmt1->execute();
     $stmt1->closeCursor();
     
-} 
-    catch(PDOException $e)
 
-    {
-        echo $sql . "<br>" . $e->getMessage();
-    }
-    Status VARCHAR(20) NOT NULL DEFAULT 'Available'
-     )"
-    $stmt1->execute();
-    $stmt1->closeCursor();
-} 
-    catch(PDOException $e)
-
-    {
-        echo $sql . "<br>" . $e->getMessage();
-    }
-    Status VARCHAR(20) NOT NULL DEFAULT 'Available'
-     )"
-    $stmt1->execute();
-    $stmt1->closeCursor();
 } 
     catch(PDOException $e)
 
