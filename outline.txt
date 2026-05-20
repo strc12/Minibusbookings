@@ -1,0 +1,16 @@
+Project outline
+booking and managing bookings of minibuses is a nightmare
+system requirements
+1. Teachers have to be able to book a minibus/car - with or without a driver (depending on if they can drive or not)
+2. vehicles need to be allocated to bookings and minibuses must not be double booked - so need to check if minibus is already allocated
+3. Drivers must be able to see any new bookings and "sign up" to drive - again need to check if there are clashes
+4. Admin - Drivers total hours per month need calculating to work out pay
+   extra minibuses need booking via a third party and adding to system - temporarily?
+   Vehicles need taking off road for servicing
+   departments need to be billed according to mileage (e.g. 5 p per mile then minimum wage per hour) for each trip, 
+   summary generated per month
+5. Requesters need to be able to see who is driving, which vehicle and where keys will be if relevant
+6. Requesters need to be able to contact drivers to update them accordingly
+7. Requesters and Admin need to be able to edit/cancel bookings - drivers need to be let know if things change
+8. If booking has chenged, driver needs to reconfirm they can still do it!
+
