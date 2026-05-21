@@ -1,4 +1,4 @@
-Project outline
+Project outline for L6 Enrichment days 2026
 booking and managing bookings of minibuses is a nightmare
 system requirements
 1. Teachers have to be able to book a minibus/car - with or without a driver (depending on if they can drive or not)

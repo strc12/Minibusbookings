@@ -10,6 +10,8 @@ Page for Drivers to see their upcoming jobs and past jobs.
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-
+    <?php
+    include_once('nav.php');
+    ?>
 </body>
 </html>

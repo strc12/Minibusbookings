@@ -10,6 +10,8 @@ landing page for the minibus booking system. This will have links to the login p
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-
+    <?php
+    include_once('nav.php');
+    ?>
 </body>
 </html>
