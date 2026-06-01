@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Generic Page Design</title>
 
     <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-          rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link href="css/site.css" rel="stylesheet">
 </head>
@@ -24,7 +23,7 @@
         <h1>Generic page design</h1>
         <p class="lead">
             Use this template as a starting point for creating new pages. It includes a header, summary cards, data entry form, and a table to display existing records. Customize the content and layout as needed for your specific use case.
-            
+
         </p>
 
         <button class="btn btn-success me-2">
@@ -340,7 +339,7 @@
 <footer class="footer-custom text-center">
     <div class="container">
         <small>
-            © 2026 Company Name. All rights reserved.
+            © 2026 Oundle School L6 Enrichement project.
         </small>
     </div>
 </footer>
@@ -349,4 +348,4 @@
 
 </body>
 </html>
-```
+
