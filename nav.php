@@ -1,2 +1,0 @@
-Navbar with links to the different pages. This will be included on all pages of the system. The links will be different for each user role. For example, the manager will have links to all pages, while staff and drivers will only have links to the pages they have access to.
-some will be limited by role

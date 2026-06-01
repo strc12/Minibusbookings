@@ -1,0 +1,30 @@
+:root {
+    --primary-navy: #002855;
+    --white: #ffffff;
+}
+
+.navbar-custom {
+    background-color: var(--primary-navy);
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+    color: var(--white);
+}
+
+.navbar-custom .nav-link:hover,
+.navbar-custom .nav-link.active {
+    color: #d9e8ff;
+}
+
+.navbar-custom .navbar-brand {
+    font-weight: 600;
+}
+body {
+    background-color: #f8f9fa;
+    padding-top: 70px; /* adjust depending on navbar height */
+}
+.navbar-logo {
+    height: 48px;   /* increase or decrease here */
+    width: auto;
+}
