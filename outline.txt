@@ -12,5 +12,5 @@ system requirements
 5. Requesters need to be able to see who is driving, which vehicle and where keys will be if relevant
 6. Requesters need to be able to contact drivers to update them accordingly
 7. Requesters and Admin need to be able to edit/cancel bookings - drivers need to be let know if things change
-8. If booking has chenged, driver needs to reconfirm they can still do it!
+8. If booking has changed, driver needs to reconfirm they can still do it!
 
