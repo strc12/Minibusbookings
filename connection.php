@@ -3,6 +3,7 @@
     $servername="localhost";
     $username="root";
     $password="root";
+    $password="FellowWithout42*";
     $dbname = "minibus";
     try{
         $conn=new PDO("mysql:host=$servername;dbname=$dbname",$username,$password);
@@ -14,3 +15,4 @@
         echo("connection failed" .$e->getMessage()."<br>");
     }
 ?>
+

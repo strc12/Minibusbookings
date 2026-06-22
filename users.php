@@ -17,15 +17,15 @@
         First Name: <input type="text" name="FirstName"><br>
         Surname: <input type="text" name="Surname"><br>
         Role:<br>
-        Staff: <input type="radio" name="Role" value="Manager"><br>
-        Driver: <input type="radio" name="Role" value="Staff" default><br>
-        Manager: <input type="radio" name="Role" value="Driver"><br>
-        Password: <input type="text" name="Password"><br>
+        Staff: <input type="radio" name="Role" value="0"><br>
+        Driver: <input type="radio" name="Role" value="1"><br>
+        Manager: <input type="radio" name="Role" value="2"><br>
+        Password: <input type="password" name="Password"><br>
         Email: <input type="text" name="Email"><br>
         Phone: <input type="text" name="Phone"><br>
         Initials: <input type="text" name="Initials"><br>
         Licence to drive: <input type="text" name="Licencetodrive"><br>
-        <input type="submit" value="Add User"><br><br>
+       <input type="submit" value="Add User"><br><br>
 
     </form>
 </body>
