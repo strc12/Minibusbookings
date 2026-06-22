@@ -44,7 +44,7 @@
     <button type="submit" formaction="edituser.php">Edit</button>
 
     <div class="container">
-            <button type="button" href="adduser.php">Add User</button>
+            <button type="button" onclick="location.href='adduser.php'">Add User</button>
     </div>
 
 
