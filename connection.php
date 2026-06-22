@@ -2,6 +2,7 @@
     // This page connects the user to the database.
     $servername="localhost";
     $username="root";
+    $password="root";
     $password="FellowWithout42*";
     $dbname = "minibus";
     try{

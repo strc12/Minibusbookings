@@ -28,3 +28,15 @@ body {
     height: 48px;   /* increase or decrease here */
     width: auto;
 }
+
+.card-header-custom {
+    background-color: #002855;
+    color: white;
+    font-weight: 600;
+}
+
+.vehicle-card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+}
