@@ -1,0 +1,17 @@
+#central user page - admin access only
+<DOCTYPE html>
+<html>
+<head>
+    <title>Add user/title>
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <?php
+    include_once('nav.php');
+    ?>
+</body>
+</html>
