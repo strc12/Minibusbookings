@@ -23,7 +23,7 @@ try {
     Email VARCHAR(255) NOT NULL,
     Phone VARCHAR(20) NOT NULL,
     Initials VARCHAR(5) NOT NULL,
-    Licencetodrive  Enum('Coach','17 minubus','9 seater','Car','None') NOT NULL DEFAULT 'None'
+    Licencetodrive  Enum('Coach','17 minibus','9 seater','Car','None') NOT NULL DEFAULT 'None'
     )"
     );
     $stmt1->execute();
