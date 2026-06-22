@@ -1,16 +1,16 @@
 <?php
-    header("Location: users.php");
+    #header("Location: users.php");
     print_r($_POST);
     include_once("connection.php");
-    $Username=$_POST["Surname"].".".$_POST["FirstName"][0];
+    
     //$username="bob";
-    if($_POST["role"]=="Staff"){
+    /* if($_POST["Role"]=="Staff"){
         $role=0;
-    }elseif($_POST["role"]=="Driver"){
+    }elseif($_POST["Role"]=="Driver"){
         $role=1;
-    }elseif($_POST["role"]=="Manager"){
+    }elseif($_POST["Role"]=="Manager"){
         $role=2;
-    }
+    } */
    
 /*     if($_POST["Licencetodrive"]=="Coach"){
         $Licencetodrive=0;
@@ -27,6 +27,7 @@
     $stmt1= $conn->prepare("INSERT INTO tblusers
     (StaffID, FirstName, Surname, Role, Password, Email, Phone, Initials, Licencetodrive)
     VALUES
+    (NULL,:FirstName, :Surname, :Role, :Password, :Email, :Phone, :Initials, :Licencetodrive)
     (NULL,:FirstName, :Surname, :Role, :Password, :Email, :Phone, :Initials, :Licencetodrive)
     ");
     $stmt1->bindParam(":FirstName",$_POST["FirstName"]);

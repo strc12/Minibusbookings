@@ -1,27 +1,16 @@
 <?php
-    header("Location: users.php");
-    print_r($_POST);
-    $username=$_POST["surname"].".".$_POST["forename"][0];
-    //$username="bob";
-    if($_POST["role"]=="pupil"){
-        $role=0;
-    }else{
-        $role=1;
-    }
+    //print_r($_POST);
+    $tempuser='john.doe@example.com';
+    include_once("connection.php");
    
-     while ($row = $stmt1->fetch(PDO::FETCH_ASSOC)) {
-        echo "<tblstaff>"
-            echo "Firstname";
-            echo "Surname";
-            echo "Role";
-            echo "Email";
-            echo "Password";
-            echo "Phone";
-            echo "Initials";
-            echo "Licencetodrive"
-        }
-        echo "</tblstaff>";
-     else {
-        echo "No users found.";
+    $stmt1= $conn->prepare("SELECT * from tblstaff where email=:email");
+
+    
+    $stmt1->bindParam(":email",$tempuser);
+    $stmt1->execute();
+     while($row=$stmt1->fetch(PDO::FETCH_ASSOC)){
+        print_r($row);
+        #make a pretty form to show date
+        
     }
 ?>
