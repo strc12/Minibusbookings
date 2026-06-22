@@ -10,7 +10,6 @@
 
     <!-- Site CSS -->
     <link href="css/site.css" rel="stylesheet">
-
     <style>
         body {
             min-height: 100vh;
