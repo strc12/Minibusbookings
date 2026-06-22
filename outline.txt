@@ -14,3 +14,35 @@ system requirements
 7. Requesters and Admin need to be able to edit/cancel bookings - drivers need to be let know if things change
 8. If booking has changed, driver needs to reconfirm they can still do it!
 
+INITIAL TASKS
+Add User
+View User
+Edit User
+delete user
+Login/out - set session varialbles of name and userid and role
+Add vehicle
+View Vehicles
+Edit vehicles - primarily mark as available/unavailable
+Add costcode
+
+Add booking - done in steps? - 
+   add trip details
+   Select/request driver - check if driver already allocated at times selected
+   Select suitable vehicle - include option to leave blank
+
+Admin - Kristian
+- see bookings by date
+- see bookings by driver not allocated
+- generate report by cost code organised bu month to pass to Finance
+
+Admin - Drivers
+- see booking that need a driver
+- see bookings that you are driving
+
+Admin - Teachers
+- see your bookings
+- Cancel bookings
+
+Behind the scenes
+- notify when Login if any thing has changed relevant to you
+
