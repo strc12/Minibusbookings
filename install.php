@@ -2,11 +2,7 @@
     // note this does not use connection.php as connection made at the time of creation
    $servername = 'localhost';
    $username = 'root';
-<<<<<<< HEAD
-   $password= 'FellowWithout42*';
-=======
    $password= 'root';
->>>>>>> 6fb4335cf7dd8ae38410ca37cbc75809ae0257f0
 //note no Database mentioned here!!
 
 try {
@@ -82,8 +78,6 @@ try {
     $stmt5->execute();
     $stmt5->closeCursor();
     
-    $stmt5->execute();
-    $stmt5->closeCursor();
     $stmt1 = $conn->prepare("DROP TABLE IF EXISTS TblBookings;
     CREATE TABLE TblBookings(BookingID INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     StaffID INT(4) NOT NULL,
