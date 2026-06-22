@@ -17,7 +17,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "root";
+$password = "password";
 $dbname = "Minibus";
 
 try {
