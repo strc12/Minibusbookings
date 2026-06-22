@@ -17,16 +17,21 @@
         First Name: <input type="text" name="FirstName"><br>
         Surname: <input type="text" name="Surname"><br>
         Role:<br>
-        Staff: <input type="radio" name="Role" value="Manager"><br>
-        Driver: <input type="radio" name="Role" value="Staff" default><br>
-        Manager: <input type="radio" name="Role" value="Driver"><br>
-        Password: <input type="text" name="Password"><br>
-        Email: <input type="text" name="Email"><br>
-        Phone: <input type="text" name="Phone"><br>
+            Staff <input type="radio" name="Role" value="Staff" checked><br>
+            Driver <input type="radio" name="Role" value="Driver"><br>
+            Manager <input type="radio" name="Role" value="Manager"><br>
+        Password: <input type="password" name="Password"><br>
+        Email: <input type="email" name="Email"><br>
+        Phone: <input type="tel" name="Phone"><br>
         Initials: <input type="text" name="Initials"><br>
-        Licence to drive: <input type="text" name="Licencetodrive"><br>
-        <input type="submit" value="Add User"><br><br>
-
+        Licence to drive: <select name="Licencetodrive"><br>
+            <option>Coach</option>
+            <option>17 minibus</option>
+            <option>9 seater</option>
+            <option>Car</option>
+            <option selected>None</option>
+        </select> <br>
+        <input type="submit" value="Add User"><br>
     </form>
 </body>
 </html>

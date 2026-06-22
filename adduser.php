@@ -1,6 +1,6 @@
 <?php
-    #header("Location: users.php");
-    print_r($_POST);
+    header("Location: useradmin.php");
+    //print_r($_POST);
     include_once("connection.php");
     
     //$username="bob";
