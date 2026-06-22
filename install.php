@@ -23,7 +23,7 @@ try {
     Email VARCHAR(255) NOT NULL,
     Phone VARCHAR(20) NOT NULL,
     Initials VARCHAR(5) NOT NULL,
-    Licencetodrive  Enum('Coach','17 minubus','9 seater','Car','None') NOT NULL DEFAULT 'None'
+    Licencetodrive  Enum('Coach','17 minibus','9 seater','Car','None') NOT NULL DEFAULT 'None'
     )"
     );
     $stmt1->execute();
@@ -34,7 +34,7 @@ try {
     ('Kristian','Fewster','Manager','password','jane.smith@example.com','0987654321','JS','9 seater'),
     ('Emily','Johnson','Staff','password','emily.johnson@example.com','5555555555','EJ','Car'),
     ('David','Williams','Driver','password','david.williams@example.com','1111111111','DW','Coach'),
-    ('Rob','Cunniffe','Staff','password','ric@oundleschool.org.uk','1111111111','MB','17 minubus')
+    ('Rob','Cunniffe','Staff','password','ric@oundleschool.org.uk','1111111111','MB','17 minibus')
     ");
     $stmt5->execute();
     $stmt5->closeCursor();

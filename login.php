@@ -1,17 +1,91 @@
-login and store session data for users - role, licencetodrive, forename, userID
-<DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <!-- Latest compiled and minified CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Latest compiled JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Site CSS -->
+    <link href="css/site.css" rel="stylesheet">
+    <style>
+        body {
+            min-height: 100vh;
+        }
+    </style>
 </head>
 <body>
-    <?php
-    include_once('nav.php');
-    ?>
+
+<?php
+    $currentPage = 'login';
+    include 'includes/navbar.php';
+?>
+
+<!-- Centering wrapper -->
+<div class="d-flex align-items-center justify-content-center" style="min-height: calc(100vh - 56px);">
+
+    <div class="col-md-5 col-lg-4">
+
+        <div class="card shadow-sm">
+
+            <div class="card-header card-header-custom text-center">
+                Login
+            </div>
+
+            <div class="card-body">
+
+                <form method="post" action="processlogin.php">
+
+                    <!-- Email -->
+                    <div class="mb-3">
+                        <label for="email" class="form-label">
+                            Email
+                        </label>
+                        <input type="text"
+                               class="form-control"
+                               id="email"
+                               name="email"
+                               required>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="mb-3">
+                        <label for="password" class="form-label">
+                            Password
+                        </label>
+                        <input type="password"
+                               class="form-control"
+                               id="password"
+                               name="password"
+                               required>
+                    </div>
+
+                    <!-- Submit -->
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-success">
+                            Login
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+
+            <div class="card-footer text-center">
+                <small class="text-muted">
+                    Vehicle Booking System Access
+                </small>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

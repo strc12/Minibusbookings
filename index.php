@@ -1,5 +1,11 @@
-landing page for the minibus booking system. This will have links to the login page and a description of the system.
-<DOCTYPE html>
+<?php
+session_start();
+        echo($_SESSION["Role"]);
+        echo($_SESSION["Licensetodrive"]);  
+?>
+<!-- landing page for the minibus booking system. This will have links to the login page and a description of the system. -->
+<br>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Vehicle booking system/title>
@@ -11,7 +17,8 @@ landing page for the minibus booking system. This will have links to the login p
 </head>
 <body>
     <?php
-    include_once('nav.php');
+        
+        include_once('nav.php');
     ?>
 </body>
 </html>
