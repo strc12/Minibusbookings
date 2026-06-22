@@ -15,13 +15,13 @@ system requirements
 8. If booking has changed, driver needs to reconfirm they can still do it!
 
 INITIAL TASKS
-Add User
-View User
-Edit User
-delete user
-Login/out - set session varialbles of name and userid and role
-Add vehicle
-View Vehicles
+Add User - Liam
+View User -Evan
+Edit User - lila
+delete user - Isaac
+Login/out - set session varialbles of name and userid and role - Alex
+Add vehicle  - Gabi
+View Vehicles - Jonny
 Edit vehicles - primarily mark as available/unavailable
 Add costcode
 
@@ -37,7 +37,8 @@ Admin - Kristian
 
 Admin - Drivers
 - see booking that need a driver
-- see bookings that you are driving
+- see bookings that you are 
+-input mileage
 
 Admin - Teachers
 - see your bookings
