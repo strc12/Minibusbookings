@@ -34,7 +34,7 @@ try {
     ('Kristian','Fewster','Manager','password','jane.smith@example.com','0987654321','JS','9 seater'),
     ('Emily','Johnson','Staff','password','emily.johnson@example.com','5555555555','EJ','Car'),
     ('David','Williams','Driver','password','david.williams@example.com','1111111111','DW','Coach'),
-    ('Rob','Cunniffe','Staff','password','ric@oundleschool.org.uk','1111111111','MB','17 minubus')
+    ('Rob','Cunniffe','Staff','password','ric@oundleschool.org.uk','1111111111','MB','17 minibus')
     ");
     $stmt5->execute();
     $stmt5->closeCursor();
