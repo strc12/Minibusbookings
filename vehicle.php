@@ -61,7 +61,9 @@ foreach ($vehicles as $vehicle) {
             View the school minibus fleet, including registrations, capacity, availability and ownership status.
         </p>
 
-        <button class="btn btn-success me-2">Add Vehicle</button>
+        <a href="addvehicle.php" class="btn btn-success me-2">
+            Add Vehicle
+        </a>
         <button class="btn btn-danger">Cancel</button>
     </div>
 </section>
