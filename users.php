@@ -11,7 +11,7 @@
 
 <body>
     <?php
-    #include_once('/includes/navbar.php');
+    include_once('/includes/navbar.php');
     ?>
     <form action="adduser.php" method="post">
         First Name: <input type="text" name="FirstName"><br>
