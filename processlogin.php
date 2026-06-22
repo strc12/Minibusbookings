@@ -1,5 +1,6 @@
 <?php
     session_start();
+    //Might need to do password hashing later.
     //array_map ("htmlspecialchars",$_POST);
     include_once("connection.php");
     $stmt1= $conn->prepare("SELECT * FROM TblStaff WHERE Email=:Email" );
