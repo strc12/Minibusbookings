@@ -1,4 +1,5 @@
 <?php
+#might need to add booked option for status as it is different to unavailable 
 require_once 'connection.php';
 
 $currentPage = 'vehicles';
@@ -6,6 +7,16 @@ $currentPage = 'vehicles';
 $stmt = $conn->prepare("SELECT * FROM TblVehicles");
 $stmt->execute();
 $vehicles = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$schoolOwnedVehicles = [];
+$hiredVehicles = [];
+
+foreach ($vehicles as $vehicle) {
+    if ($vehicle['HireOrOwned'] == 'School owned') {
+        $schoolOwnedVehicles[] = $vehicle;
+    } else {
+        $hiredVehicles[] = $vehicle;
+    }
+}
 
 $totalVehicles = count($vehicles);
 $availableVehicles = 0;
@@ -88,58 +99,128 @@ foreach ($vehicles as $vehicle) {
     </div>
 
     <section>
-        <h2 class="section-title mb-4">Vehicles</h2>
+        <section class="mb-5">
 
-        <div class="row">
+    <h2 class="section-title mb-4">School Owned Vehicles</h2>
 
-            <?php foreach ($vehicles as $vehicle): ?>
+    <div class="row">
 
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card vehicle-card shadow-sm h-100">
+        <?php foreach ($schoolOwnedVehicles as $vehicle): ?>
 
-                        <div class="card-header card-header-custom">
-                            <?php echo htmlspecialchars($vehicle['Make']); ?>
-                            <?php echo htmlspecialchars($vehicle['Model']); ?>
-                        </div>
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card vehicle-card shadow-sm h-100">
 
-                        <div class="card-body">
+                    <div class="card-header card-header-custom">
+                        <?php echo htmlspecialchars($vehicle['Make']); ?>
+                        <?php echo htmlspecialchars($vehicle['Model']); ?>
+                    </div>
 
-                            <p>
-                                <strong>Registration:</strong>
-                                <?php echo htmlspecialchars($vehicle['Registration']); ?>
-                            </p>
+                    <div class="card-body">
 
-                            <p>
-                                <strong>Capacity:</strong>
-                                <?php echo htmlspecialchars($vehicle['Capacity']); ?>
-                                seats
-                            </p>
+                        <p>
+                            <strong>Registration:</strong>
+                            <?php echo htmlspecialchars($vehicle['Registration']); ?>
+                        </p>
 
-                            <p>
-                                <strong>Status:</strong>
-                                <span class="badge bg-success">
-                                    <?php echo htmlspecialchars($vehicle['Status']); ?>
-                                </span>
-                            </p>
+                        <p>
+                            <strong>Capacity:</strong>
+                            <?php echo htmlspecialchars($vehicle['Capacity']); ?> seats
+                        </p>
 
-                            <p>
-                                <strong>Hire / Owned:</strong>
-                                <?php echo htmlspecialchars($vehicle['HireOrOwned']); ?>
-                            </p>
-
-                        </div>
-
-                        <div class="card-footer text-end">
-                            <button class="btn btn-sm btn-success">Edit</button>
-                            <button class="btn btn-sm btn-danger">Delete</button>
-                        </div>
+                        <p>
+                            <strong>Status:</strong>
+                            <span class="badge <?php echo ($vehicle['Status'] == 'Available') ? 'bg-success' : 'bg-danger'; ?>">
+                                <?php echo htmlspecialchars($vehicle['Status']); ?>
+                            </span>
+                        </p>
 
                     </div>
+
+                    <div class="card-footer text-end">
+
+                        <a href="toggleVehicleStatus.php?id=<?php echo $vehicle['VehicleID']; ?>"
+                        class="btn btn-sm btn-success">
+                            Toggle Availability
+                        </a>
+
+                        <a href="deletevehicle.php?id=<?php echo $vehicle['VehicleID']; ?>"
+                            class="btn btn-sm btn-danger"
+                            onclick="return confirm('Are you sure you want to delete this vehicle?');">
+                                Delete
+                        </a>
+
+                    </div>
+
                 </div>
+            </div>
 
-            <?php endforeach; ?>
+        <?php endforeach; ?>
 
-        </div>
+    </div>
+
+</section>
+
+
+<section class="mb-5">
+
+    <h2 class="section-title mb-4">Hired Vehicles</h2>
+
+    <div class="row">
+
+        <?php foreach ($hiredVehicles as $vehicle): ?>
+
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card vehicle-card shadow-sm h-100">
+
+                    <div class="card-header card-header-custom">
+                        <?php echo htmlspecialchars($vehicle['Make']); ?>
+                        <?php echo htmlspecialchars($vehicle['Model']); ?>
+                    </div>
+
+                    <div class="card-body">
+
+                        <p>
+                            <strong>Registration:</strong>
+                            <?php echo htmlspecialchars($vehicle['Registration']); ?>
+                        </p>
+
+                        <p>
+                            <strong>Capacity:</strong>
+                            <?php echo htmlspecialchars($vehicle['Capacity']); ?> seats
+                        </p>
+
+                        <p>
+                            <strong>Status:</strong>
+                            <span class="badge <?php echo ($vehicle['Status'] == 'Available') ? 'bg-success' : 'bg-danger'; ?>">
+                                <?php echo htmlspecialchars($vehicle['Status']); ?>
+                            </span>
+                        </p>
+
+                    </div>
+
+                   <div class="card-footer text-end">
+
+                        <a href="toggleVehicleStatus.php?id=<?php echo $vehicle['VehicleID']; ?>"
+                        class="btn btn-sm btn-success">
+                            Toggle Availability
+                        </a>
+
+                        <a href="deletevehicle.php?id=<?php echo $vehicle['VehicleID']; ?>"
+                            class="btn btn-sm btn-danger"
+                            onclick="return confirm('Are you sure you want to delete this vehicle?');">
+                                Delete
+                        </a>
+
+                    </div>
+
+                </div>
+            </div>
+
+        <?php endforeach; ?>
+
+    </div>
+
+</section>
     </section>
 
 </main>
