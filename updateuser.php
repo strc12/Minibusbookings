@@ -3,28 +3,8 @@
     print_r($_POST);
     include_once("connection.php");
     
-    //$username="bob";
-    /* if($_POST["Role"]=="Staff"){
-        $role=0;
-    }elseif($_POST["Role"]=="Driver"){
-        $role=1;
-    }elseif($_POST["Role"]=="Manager"){
-        $role=2;
-    } */
-   
-/*     if($_POST["Licencetodrive"]=="Coach"){
-        $Licencetodrive=0;
-    }elseif($_POST["Licencetodrive"]=="17 minibus"){
-        $Licencetodrive=1;
-    }elseif($_POST["Licencetodrive"]=="9 seater"){
-        $Licencetodrive=2;
-    }elseif($_POST["Licencetodrive"]=="Car"){
-        $Licencetodrive=3;
-    }else{
-        $Licensetodrive=4;
-    } */
 
-    $stmt1= $conn->prepare("INSERT INTO TblStaff
+     $stmt1= $conn->prepare("UPDATE TblStaff, SET *, WHERE StaffID = SESSION_StaffID")
     (StaffID, FirstName, Surname, Role, Password, Email, Phone, Initials, Licencetodrive)
     VALUES
     (NULL,:FirstName, :Surname, :Role, :Password, :Email, :Phone, :Initials, :Licencetodrive)
@@ -37,5 +17,5 @@
     $stmt1->bindParam(":Phone",$_POST["Phone"]);
     $stmt1->bindParam(":Initials",$_POST["Initials"]);
     $stmt1->bindParam(":Licencetodrive",$_POST["Licencetodrive"]);
-    $stmt1->execute();
+    $stmt1->execute(); 
 ?>

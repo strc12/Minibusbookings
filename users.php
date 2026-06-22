@@ -25,7 +25,7 @@
         Phone: <input type="text" name="Phone"><br>
         Initials: <input type="text" name="Initials"><br>
         Licence to drive: <input type="text" name="Licencetodrive"><br>
-        <input type="submit" value="Add User"><br><br>
+       <input type="submit" value="Add User"><br><br>
 
     </form>
 </body>
