@@ -12,10 +12,22 @@
         $role=2;
     }
    
+/*     if($_POST["Licencetodrive"]=="Coach"){
+        $Licencetodrive=0;
+    }elseif($_POST["Licencetodrive"]=="17 minibus"){
+        $Licencetodrive=1;
+    }elseif($_POST["Licencetodrive"]=="9 seater"){
+        $Licencetodrive=2;
+    }elseif($_POST["Licencetodrive"]=="Car"){
+        $Licencetodrive=3;
+    }else{
+        $Licensetodrive=4;
+    } */
+
     $stmt1= $conn->prepare("INSERT INTO tblusers
-    (StaffID,FirstName, Surname, Role, Password, Email, Phone, Licencetodrive)
+    (StaffID, FirstName, Surname, Role, Password, Email, Phone, Initials, Licencetodrive)
     VALUES
-    (NULL,:Forename, :Surname, :Role, :Password, :Email, :Initials, :Licencetodrive)
+    (NULL,:FirstName, :Surname, :Role, :Password, :Email, :Phone, :Initials, :Licencetodrive)
     ");
     $stmt1->bindParam(":FirstName",$_POST["FirstName"]);
     $stmt1->bindParam(":Surname",$_POST["Surname"]);

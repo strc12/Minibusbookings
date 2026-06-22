@@ -15,7 +15,7 @@
         Staff: <input type="radio" name="Role" value="0"><br>
         Driver: <input type="radio" name="Role" value="1"><br>
         Manager: <input type="radio" name="Role" value="2"><br>
-        Password: <input type="text" name="Password"><br>
+        Password: <input type="password" name="Password"><br>
         Email: <input type="text" name="Email"><br>
         Phone: <input type="text" name="Phone"><br>
         Initials: <input type="text" name="Initials"><br>
