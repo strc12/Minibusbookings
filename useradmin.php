@@ -30,9 +30,7 @@
 <section class="hero-section text-center">
     <div class="container">
         <h1>Generic page design</h1>
- 
- 
-        <form method="POST" action="deleteuser.php">
+        <form method="POST">
     <label for="users">Choose a user:</label>
     <select name="StaffID" id="StaffID" required>
         <?php foreach ($rows as $row): ?>
@@ -41,8 +39,9 @@
         </option>
         <?php endforeach; ?>
     </select>
-    <button type="submit">Delete</button>
-
+    <button type="submit" formaction="deleteuser.php">Delete</button>
+    <button type="submit" formaction="viewuser.php">View</button>
+    <button type="submit" formaction="edituser.php">Edit</button>
 
 
 </form>
