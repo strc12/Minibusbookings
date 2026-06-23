@@ -42,7 +42,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
                 <div class="card-body">
 
-                    <form action="insertvehicle.php" method="POST">
+                    <form action="updateuser.php" method="POST">
                         <input type="hidden"
                         name="StaffID"
                         value="<?php echo $user['StaffID']; ?>">
@@ -59,11 +59,34 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                             <input type="text" name="Surname" value="<?php echo $user['Surname']; ?>" class="form-control" required>
                         </div>
 
-                        <div class="mb-3">
+                        <!-- <div class="mb-3">
                             <label class="form-label">Password</label>
                             <input type="password" name="Password" value="<?php echo $user['Password']; ?>" class="form-control" required>
                             <i class="bi bi-eye-slash" id="togglePassword"></i>
-                        </div>
+                        </div> -->
+                        <div class="mb-4">
+                                <label for="Password" class="form-label">
+                                    Password
+                                </label>
+
+                                <div class="password-wrapper">
+
+                                    <input
+                                    type="password"
+                                    class="form-control pe-5"
+                                    id="Password"
+                                    name = "Password"
+                                    value="<?php echo $user['Password']; ?>"
+                                    placeholder="Enter password"
+                                    >
+
+                                    <i
+                                    class="bi bi-eye password-toggle"
+                                    id="togglePassword"
+                                    ></i>
+
+                                </div>
+                                </div>
 
                         <div class="mb-3">
                             <label class="form-label">Email</label>
@@ -93,7 +116,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                             </select>                        </div>
 
                         <div class="text-end">
-                            <a href="users.php" class="btn btn-secondary">
+                            <a href="useradmin.php" class="btn btn-secondary">
                                 Cancel
                             </a>
 
