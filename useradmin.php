@@ -35,7 +35,7 @@
 
     <section class="hero-section text-center">
         <div class="container">
-            <h1>User Administration</h1>
+            <h1>User Management</h1>
 
             <p class="lead">
                 Manage system users. Select a user below to view, edit, or remove their account, or create a new user.

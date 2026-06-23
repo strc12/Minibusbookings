@@ -103,10 +103,14 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             Accept Job
                         </a>
 
-                        <a href="allocatevehicle.php?id=<?php echo $booking['BookingID']; ?>"
-                        class="btn btn-sm btn-primary">
-                            Allocate Vehicle
-                        </a>
+                        <?php if ($_SESSION["Role"] == "Manager") { ?>
+
+                            <a href="allocatevehicle.php?id=<?php echo $booking['BookingID']; ?>"
+                            class="btn btn-sm btn-primary">
+                                Allocate Vehicle
+                            </a>
+
+                        <?php } ?>
 
                     </div>
 
