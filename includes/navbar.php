@@ -3,17 +3,12 @@
 
         <!-- Logo -->
         <a class="navbar-brand d-flex align-items-center" href="dashboard.php">
-            <img src="images/logo.png"
-            alt="Logo"
-            class="navbar-logo me-2">
+            <img src="images/logo.png" alt="Logo" class="navbar-logo me-2">
             Oundle Minibus Bookings
         </a>
 
         <!-- Mobile Toggle -->
-        <button class="navbar-toggler bg-light"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNav">
+        <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -68,7 +63,7 @@
 
                     <li class="nav-item">
                         <a class="nav-link" href="useradmin.php">
-                            Admin
+                            User Management
                         </a>
                     </li>
 
@@ -87,12 +82,10 @@
 
                 } else {
 
-                ?>
+                    ?>
                     <div class="dropdown">
-                        <a class="btn btn-outline-light btn-sm dropdown-toggle"
-                        href="#"
-                        role="button"
-                        data-bs-toggle="dropdown">
+                        <a class="btn btn-outline-light btn-sm dropdown-toggle" href="#" role="button"
+                            data-bs-toggle="dropdown">
 
                             <?php echo htmlspecialchars($_SESSION["firstname"]); ?>
 
@@ -103,11 +96,11 @@
                             <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                         </ul>
                     </div>
-                <?php
+                    <?php
                 }
 
                 ?>
-                
+
 
             </div>
 
