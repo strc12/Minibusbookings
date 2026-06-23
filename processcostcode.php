@@ -10,12 +10,14 @@
             $_SESSION["error"] = "Costcode already exists.";
             header('location: add_or_find_costcode.php');
         }
-        else{
-            $stmt2 = $conn->prepare("UPDATE TblCostcodes SET Costcode=:Costcode, Description=:Description WHERE Costcode=:Costcode");
-            $stmt2->bindParam(":Description",$_POST["description"]);
-            $stmt2->execute();
-            $_SESSION["message"] = "Costcode updated successfully";
-            header('location: add_or_find_costcode.php');
-        }
     }
+    $stmt3 = $conn->prepare("INSERT INTO TblCostcodes
+    (CostcodeID,Costcode, Description)
+    VALUES 
+    (NULL,:Costcode, :Description)");
+    $stmt3->bindParam(":Costcode",$_POST["costcode"]);
+    $stmt3->bindParam(":Description",$_POST["description"]);
+    $stmt3->execute();
+    $_SESSION["message"] = "Costcode added successfully";
+    header('location: add_or_find_costcode.php');
 ?>
