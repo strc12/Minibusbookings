@@ -1,4 +1,5 @@
 <?php 
+header("Location: useradmin.php");
 include_once('connection.php');
 print_r($_POST);
 try {

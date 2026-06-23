@@ -40,3 +40,23 @@ body {
     border-radius: 10px;
     overflow: hidden;
 }
+
+.booking-card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.job-card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.section-title {
+    color: #0b1f3a;
+    font-weight: 700;
+    border-left: 5px solid #0b1f3a;
+    padding-left: 12px;
+}
+
