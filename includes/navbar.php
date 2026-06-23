@@ -23,25 +23,56 @@
             <ul class="navbar-nav ms-auto me-3">
 
                 <li class="nav-item">
-                    <a class="nav-link <?= ($currentPage == 'dashboard') ? 'active' : ''; ?>"
-                       href="dashboard.php">
-                        Dashboard
-                    </a>
+                    <a class="nav-link" href="index.php">Home</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link <?= ($currentPage == 'reports') ? 'active' : ''; ?>"
-                       href="reports.php">
-                        Reports
-                    </a>
-                </li>
+                <?php if ($_SESSION["Role"] == "Staff") { ?>
 
-                <li class="nav-item">
-                    <a class="nav-link <?= ($currentPage == 'users') ? 'active' : ''; ?>"
-                       href="useradmin.php">
-                        Users
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bookingrequest.php">
+                            Booking Request
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="mybookings.php">
+                            My Bookings
+                        </a>
+                    </li>
+
+                <?php } ?>
+
+                <?php if ($_SESSION["Role"] == "Driver") { ?>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="jobs.php">
+                            Jobs
+                        </a>
+                    </li>
+
+                <?php } ?>
+
+                <?php if ($_SESSION["Role"] == "Manager") { ?>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="vehicle.php">
+                            Vehicles
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="jobs.php">
+                            Jobs
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="useradmin.php">
+                            Admin
+                        </a>
+                    </li>
+
+                <?php } ?>
 
             </ul>
 

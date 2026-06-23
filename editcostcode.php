@@ -13,16 +13,19 @@
 </head>
 <body>
     <form action="processeditcostcode.php" method="POST">
-        costcode: <input type="text" name="costcode"><br>
+        Costcode: <input type="text" name="costcode"><br>
         <?php
         if (isset($_SESSION["error"])){
             echo "<p style='color:red'>" . $_SESSION["error"] . "</p>";
             unset($_SESSION["error"]);
         }
         ?>
-        description: <input type="text" name="description"><br>
-        submit: <input type="submit" value="Submit"><br>
+        Description: <input type="text" name="description"><br>
+        <input type="submit" value="Submit"><br>
     </form>
+    <p>
+        <a href="add_or_find_costcode.php">Add Costcodes</a>
+    </p>
 
 </body>
 </html>

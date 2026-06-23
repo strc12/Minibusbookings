@@ -6,19 +6,24 @@
     $stmt1->execute();
     while ($row = $stmt1->fetch(PDO::FETCH_ASSOC))
     {
-        if ($_POST["costcode"] == $row["Costcode"]){
-            $row["Description"] = $_POST["description"];
-            $stmt3 = $conn->prepare("UPDATE TblCostcodes SET Description=:Description WHERE Costcode=:Costcode");
-            $stmt3->bindParam(":Description",$_POST["description"]);
+        if ($row) {
+
+            $stmt3 = $conn->prepare("
+                UPDATE TblCostcodes
+                SET Description=:Description
+                WHERE Costcode=:Costcode
+            ");
+
+            $stmt3->bindParam(":Description", $_POST["description"]);
+            $stmt3->bindParam(":Costcode", $_POST["costcode"]);
             $stmt3->execute();
+
             $_SESSION["message"] = "Costcode updated successfully";
-            header("location: add_or_find_costcode.php");
-         }
-        else{
-            $_SESSION["error"] = "Costcode does not exist.";
             header("location: editcostcode.php");
-        }
-        }
+            exit();
 
-
+        } 
+    }
+    $_SESSION["error"] = "Costcode does not exist.";
+    header("location: editcostcode.php");
 ?>
