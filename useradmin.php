@@ -1,17 +1,64 @@
-#central user page - admin access only
-<DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Add user/title>
-    <!-- Latest compiled and minified CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generic Page Design</title>
 
-    <!-- Latest compiled JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/site.css" rel="stylesheet">
 </head>
 <body>
-    <?php
-    include_once('nav.php');
-    ?>
+
+<?php
+    $currentPage = 'users';
+    include 'includes/navbar.php';
+    include_once("connection.php");
+    try {
+    $stmt = $conn->prepare("SELECT * FROM tblstaff");
+    $stmt->execute();
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+} catch(PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
+?>
+
+<!-- Hero Section -->
+<section class="hero-section text-center">
+    <div class="container">
+        <h1>User Admin</h1>
+        <form method="POST">
+    <label for="users">Choose a user:</label>
+    <select name="StaffID" id="StaffID" required>
+        <?php foreach ($rows as $row): ?>
+            <option value="<?php echo $row["StaffID"]; ?>">
+                <?php echo $row["FirstName"]." ".$row["Surname"]; ?>
+        </option>
+        <?php endforeach; ?>
+    </select>
+    <button type="submit" formaction="deleteuser.php">Delete</button>
+    <button type="submit" formaction="viewuser.php">View</button>
+    <button type="submit" formaction="edituser.php">Edit</button>
+
+    <div class="container">
+            <button type="button" onclick="location.href='adduser.php'">Add User</button>
+    </div>
+
+
+</form>
+
+</select> 
+</select>
+
+</script>
+
+    </div>
+</section>
+
+
 </body>
 </html>
+

@@ -1,6 +1,6 @@
 <?php
-    #header("Location: users.php");
-    print_r($_POST);
+    header("Location: useradmin.php");
+    //print_r($_POST);
     include_once("connection.php");
     
     //$username="bob";
@@ -12,8 +12,20 @@
         $role=2;
     } */
    
+/*     if($_POST["Licencetodrive"]=="Coach"){
+        $Licencetodrive=0;
+    }elseif($_POST["Licencetodrive"]=="17 minibus"){
+        $Licencetodrive=1;
+    }elseif($_POST["Licencetodrive"]=="9 seater"){
+        $Licencetodrive=2;
+    }elseif($_POST["Licencetodrive"]=="Car"){
+        $Licencetodrive=3;
+    }else{
+        $Licensetodrive=4;
+    } */
+
     $stmt1= $conn->prepare("INSERT INTO TblStaff
-    (StaffID,FirstName, Surname, Role, Password, Email, Phone, Initials, Licencetodrive)
+    (StaffID, FirstName, Surname, Role, Password, Email, Phone, Initials, Licencetodrive)
     VALUES
     (NULL,:FirstName, :Surname, :Role, :Password, :Email, :Phone, :Initials, :Licencetodrive)
     ");

@@ -1,7 +1,6 @@
 <?php
 session_start();
-        echo($_SESSION["Role"]);
-        echo($_SESSION["Licensetodrive"]);  
+        print_r($_SESSION);
 ?>
 <!-- landing page for the minibus booking system. This will have links to the login page and a description of the system. -->
 <br>
@@ -18,7 +17,9 @@ session_start();
 <body>
     <?php
         
-        include_once('nav.php');
+        include_once('/includes/navbar.php');
+
+        print_r($_SESSION);
     ?>
 </body>
 </html>
