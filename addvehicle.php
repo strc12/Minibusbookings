@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+    session_start();
+    if($_SESSION["role"] != "Manager"){
+        header("Location: index.php");
+    }
+?>
+
 <head>
     <title>Add Vehicle</title>
 
