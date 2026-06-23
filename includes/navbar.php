@@ -48,30 +48,34 @@
             <!-- Login / User Area -->
             <div class="d-flex align-items-center">
 
-                <!-- Logged OUT state -->
                 <?php
-                    if (!$_SESSION["loggedin"]) {
-                        echo '<a href="login.php" class="btn btn-success btn-sm">Login</a>';
-                    }
+
+                if (empty($_SESSION["loggedin"])) {
+
+                    echo '<a href="login.php" class="btn btn-success btn-sm">Login</a>';
+
+                } else {
+
                 ?>
-                
+                    <div class="dropdown">
+                        <a class="btn btn-outline-light btn-sm dropdown-toggle"
+                        href="#"
+                        role="button"
+                        data-bs-toggle="dropdown">
 
+                            <?php echo htmlspecialchars($_SESSION["firstname"]); ?>
 
-                <!-- Logged IN state (example - replace with session logic) -->
-                
-                <div class="dropdown">
-                    <a class="btn btn-outline-light btn-sm dropdown-toggle"
-                       href="#"
-                       role="button"
-                       data-bs-toggle="dropdown">
-                        <?php print_r($SESSION_["firstname"]) ?>
-                    </a>
+                        </a>
 
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="profile.php">Profile</a></li>
-                        <li><a class="dropdown-item" href="logout.php">Logout</a></li>
-                    </ul>
-                </div>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="profile.php">Profile</a></li>
+                            <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                        </ul>
+                    </div>
+                <?php
+                }
+
+                ?>
                 
 
             </div>
