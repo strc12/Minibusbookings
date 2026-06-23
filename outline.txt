@@ -15,7 +15,7 @@ system requirements
 8. If booking has changed, driver needs to reconfirm they can still do it!
 
 INITIAL TASKS
-Add User - Liam
+Add User - Liam - Complete
 View User -Evan
 Edit User - lila
 delete user - Isaac - Complete

@@ -38,7 +38,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link <?= ($currentPage == 'users') ? 'active' : ''; ?>"
-                       href="users.php">
+                       href="useradmin.php">
                         Users
                     </a>
                 </li>
