@@ -31,7 +31,7 @@
     ?>
 
     <!-- Hero Section -->
-    ```html
+
     <section class="hero-section text-center">
         <div class="container">
             <h1>User Administration</h1>
