@@ -17,7 +17,7 @@ system requirements:
 INITIAL TASKS
 Add User - Liam - Completed
 View User - Evan - Completed
-Edit User - lila - Completed
+Edit User - Lila - Completed
 delete user - Isaac - Completed
 Login/out - set session varialbles of name and userid and role - Alex
 Add vehicle  - Gabi
@@ -25,6 +25,7 @@ View Vehicles - Jonny
 Edit vehicles - primarily mark as available/unavailable - Jonny
 Add costcode - Alex
 Index Page - Liam
+Profile Page - 
 
 Add booking - done in steps? - 
    add trip details

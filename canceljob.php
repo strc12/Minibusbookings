@@ -10,18 +10,19 @@ if (isset($_GET['id']) && isset($_SESSION["StaffID"])) {
 
     $stmt = $conn->prepare("
         UPDATE TblBookings
-        SET DriverID = :DriverID,
-            Status = 'Accepted'
+        SET DriverID = NULL,
+            Status = 'Pending'
         WHERE BookingID = :BookingID
+        AND DriverID = :DriverID
     ");
 
-    $stmt->bindParam(":DriverID", $driverID);
     $stmt->bindParam(":BookingID", $bookingID);
+    $stmt->bindParam(":DriverID", $driverID);
 
     $stmt->execute();
 }
 
-header("Location: drivers.php");
+header("Location: myjobs.php");
 exit();
 
 ?>
