@@ -106,7 +106,7 @@ include 'includes/navbar.php';
                 <?php else: ?>
 
                     <div class="alert alert-warning mb-0">
-                        No staff member found.
+                        No user found
                     </div>
 
                 <?php endif; ?>
