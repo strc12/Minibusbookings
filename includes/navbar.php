@@ -49,19 +49,22 @@
             <div class="d-flex align-items-center">
 
                 <!-- Logged OUT state -->
-                <a href="login.php"
-                   class="btn btn-success btn-sm">
-                    Login
-                </a>
+                <?php
+                    if (!$_SESSION["loggedin"]) {
+                        echo '<a href="login.php" class="btn btn-success btn-sm">Login</a>';
+                    }
+                ?>
+                
+
 
                 <!-- Logged IN state (example - replace with session logic) -->
-                <!--
+                
                 <div class="dropdown">
                     <a class="btn btn-outline-light btn-sm dropdown-toggle"
                        href="#"
                        role="button"
                        data-bs-toggle="dropdown">
-                        John Doe
+                        <?php print_r($SESSION_["firstname"]) ?>
                     </a>
 
                     <ul class="dropdown-menu dropdown-menu-end">
@@ -69,7 +72,7 @@
                         <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                     </ul>
                 </div>
-                -->
+                
 
             </div>
 
