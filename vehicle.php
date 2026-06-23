@@ -1,7 +1,7 @@
 <?php
 #might need to add booked option for status as it is different to unavailable 
 require_once 'connection.php';
-
+session_start();
 $currentPage = 'vehicles';
 
 $stmt = $conn->prepare("SELECT * FROM TblVehicles");

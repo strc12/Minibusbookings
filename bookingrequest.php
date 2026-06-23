@@ -1,19 +1,91 @@
-request a booking, can select a type of vehicle but not the actual vehicle. This will be for staff and manager roles. 
-Once a booking is made, it will be pending until a driver accepts the job and a manager allocates a vehicle to the booking.
-only accessible to staff and manager roles. Automatically add staff logged in ID to the booking so we know who made the booking.
-<DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <title>Booking Request</title>
-    <!-- Latest compiled and minified CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Latest compiled JavaScript -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="css/site.css" rel="stylesheet">
+    
 </head>
+
 <body>
-    <?php
-    include_once('nav.php');
-    ?>
+
+<?php
+session_start();
+include_once("includes/navbar.php");
+include_once("connection.php");
+?>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-7">
+
+            <div class="card booking-card shadow-sm">
+
+                <div class="card-header card-header-custom">
+                    New Booking Request
+                </div>
+
+                <div class="card-body">
+
+                    <form action="insertbooking.php" method="POST">
+
+                        <div class="mb-3">
+                            <label class="form-label">Booking Start Date</label>
+                            <input type="date" name="bookingstartdate" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Booking End Date</label>
+                            <input type="date" name="bookingenddate" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Start Time</label>
+                            <input type="time" name="starttime" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">End Time</label>
+                            <input type="time" name="endtime" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Capacity Required</label>
+                            <input type="number" name="capacityrequired" class="form-control" min="1" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Destination</label>
+                            <input type="text" name="destination" class="form-control" required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Cost Code ID</label>
+                            <input type="text" name="costcodeid" class="form-control" maxlength="10" required>
+                        </div>
+
+                        <div class="text-end">
+                            <a href="vehicle.php" class="btn btn-secondary">
+                                Cancel
+                            </a>
+
+                            <button type="submit" class="btn btn-success">
+                                Submit Booking Request
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
