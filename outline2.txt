@@ -1,6 +1,6 @@
 front page skinning/design
-make bookings not be able to end before they start
-Cost Code ID dropdown
+make bookings not be able to end before they start -> Complete
+Cost Code ID dropdown -> Complete
 Remove option to not drive self if over staff's possible capacity
 Mileage on completion of a job
 Management should have access to past jobs
