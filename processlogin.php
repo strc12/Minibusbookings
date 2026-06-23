@@ -16,23 +16,17 @@
                 $_SESSION["Licensetodrive"]=$row["Licencetodrive"];
                 $_SESSION["firstname"]=$row["FirstName"];
                 $_SESSION["StaffID"]=$row["StaffID"];
-                
-                //echo $_SESSION["password"];
-                //echo ("\n");
-                //echo $_SESSION["Licensetodrive"];
-                //echo("\n");
-                //echo $_SESSION["firstname"];
-                //echo("\n");
-                //echo $_SESISON["StaffID"];
-                //redirect to the index page, might change later.
+                $_SESSION["loggedin"] = True;
                 header('location: index.php');
             }
             else{
-                echo("Invalid password");
+                $_SESSION["error"] = "Invalid password";
+                header('location: login.php');
             }
         }
          else{
-             echo("Invalid email");
+             $_SESSION["error"] = "Invalid email";
+             header('location: login.php');
          }
     }
 ?>
