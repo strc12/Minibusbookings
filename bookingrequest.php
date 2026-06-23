@@ -10,6 +10,30 @@
     
 </head>
 
+<script>
+    const startDate = document.querySelector('input[name="bookingstartdate"]');
+    const endDate = document.querySelector('input[name="bookingenddate"]');
+    const startTime = document.querySelector('input[name="starttime"]');
+    const endTime = document.querySelector('input[name="endtime"]');
+    const form = document.querySelector('form');
+
+    function updateEndDateMinimum() {
+        endDate.min = startDate.value;
+    }
+
+    startDate.addEventListener('change', updateEndDateMinimum);
+
+    form.addEventListener('submit', function(event) {
+        const start = new Date(startDate.value + 'T' + startTime.value);
+        const end = new Date(endDate.value + 'T' + endTime.value);
+
+        if (end <= start) {
+            event.preventDefault();
+            alert('The booking end date/time must be after the start date/time.');
+        }
+    });
+</script>
+
 <body>
 
 <?php
