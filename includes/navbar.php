@@ -48,28 +48,35 @@
             <!-- Login / User Area -->
             <div class="d-flex align-items-center">
 
-                <!-- Logged OUT state -->
-                <a href="login.php"
-                   class="btn btn-success btn-sm">
-                    Login
-                </a>
+                <?php
 
-                <!-- Logged IN state (example - replace with session logic) -->
-                <!--
-                <div class="dropdown">
-                    <a class="btn btn-outline-light btn-sm dropdown-toggle"
-                       href="#"
-                       role="button"
-                       data-bs-toggle="dropdown">
-                        John Doe
-                    </a>
+                if (empty($_SESSION["loggedin"])) {
 
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="profile.php">Profile</a></li>
-                        <li><a class="dropdown-item" href="logout.php">Logout</a></li>
-                    </ul>
-                </div>
-                -->
+                    echo '<a href="login.php" class="btn btn-success btn-sm">Login</a>';
+
+                } else {
+
+                ?>
+                    <div class="dropdown">
+                        <a class="btn btn-outline-light btn-sm dropdown-toggle"
+                        href="#"
+                        role="button"
+                        data-bs-toggle="dropdown">
+
+                            <?php echo htmlspecialchars($_SESSION["firstname"]); ?>
+
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="profile.php">Profile</a></li>
+                            <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                        </ul>
+                    </div>
+                <?php
+                }
+
+                ?>
+                
 
             </div>
 
