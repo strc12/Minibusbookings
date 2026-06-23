@@ -72,6 +72,7 @@ body {
             class="form-control"
             id="email"
             placeholder="Enter email"
+            value="fds"
           >
         </div>
 
@@ -88,6 +89,7 @@ body {
               class="form-control pe-5"
               id="password"
               placeholder="Enter password"
+              value="fdsdf"
             >
 
             <i
@@ -114,17 +116,23 @@ body {
 </div>
 
 <script>
-const password = document.getElementById("password");
-const toggle = document.getElementById("togglePassword");
+const password =
+document.getElementById("password");
 
-toggle.addEventListener("click", function () {
+const toggle =
+document.getElementById("togglePassword");
 
-  const hidden = password.type === "password";
+toggle.addEventListener("click", () => {
 
-  password.type = hidden ? "text" : "password";
+if (password.type === "password") {
+    password.type = "text";
+} else {
+    password.type = "password";
+}
 
-  this.classList.toggle("bi-eye");
-  this.classList.toggle("bi-eye-slash");
+toggle.classList.toggle("bi-eye");
+
+toggle.classList.toggle("bi-eye-slash");
 
 });
 </script>
