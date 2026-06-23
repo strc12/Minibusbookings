@@ -16,6 +16,7 @@
 
     <?php
     $currentPage = 'users';
+    session_start();
     include 'includes/navbar.php';
     include_once("connection.php");
     try {
