@@ -5,12 +5,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Cost Codes</title>
+    <title>Add Cost Codes</title>
 
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Your site CSS -->
+    <!-- Your site styles (optional but recommended for consistency) -->
     <link href="css/site.css" rel="stylesheet">
 </head>
 
@@ -30,16 +30,16 @@
             <div class="card shadow-sm">
 
                 <div class="card-header card-header-custom text-center">
-                    Edit Cost Code
+                    Add Cost Code
                 </div>
 
                 <div class="card-body">
 
-                    <form action="processeditcostcode.php" method="POST">
+                    <form action="processcostcode.php" method="POST">
 
                         <!-- Cost Code -->
                         <div class="mb-3">
-                            <label for="costcode" class="form-label">
+                            <label class="form-label" for="costcode">
                                 Cost Code
                             </label>
 
@@ -53,8 +53,8 @@
                         <!-- Error message -->
                         <?php
                             if (isset($_SESSION["error"])) {
-                                echo "<div class='alert alert-danger'>"
-                                     . $_SESSION["error"] .
+                                echo "<div class='alert alert-danger'>" 
+                                     . $_SESSION["error"] . 
                                      "</div>";
                                 unset($_SESSION["error"]);
                             }
@@ -62,7 +62,7 @@
 
                         <!-- Description -->
                         <div class="mb-3">
-                            <label for="description" class="form-label">
+                            <label class="form-label" for="description">
                                 Description
                             </label>
 
@@ -73,15 +73,15 @@
                                    required>
                         </div>
 
-                        <!-- Buttons -->
+                        <!-- Submit -->
                         <div class="d-grid gap-2">
 
                             <button type="submit" class="btn btn-success">
-                                Update Cost Code
+                                Add Cost Code
                             </button>
 
-                            <a href="add_or_find_costcode.php" class="btn btn-outline-primary">
-                                Back to Add Cost Codes
+                            <a href="editcostcode.php" class="btn btn-outline-primary">
+                                Edit Cost Codes
                             </a>
 
                         </div>
