@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link href="css/site.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
 <?php
@@ -65,7 +66,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                             <i class="bi bi-eye-slash" id="togglePassword"></i>
                         </div> -->
                         <div class="mb-4">
-                                <label for="Password" class="form-label">
+                                <label for="password" class="form-label">
                                     Password
                                 </label>
 
@@ -147,19 +148,29 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 <script>
-const password = document.getElementById('password');
+const password = document.getElementById('Password');
 const toggle = document.getElementById('togglePassword');
-const icon = toggle.querySelector('i');
+//const icon = toggle.querySelector('i');
 
 toggle.addEventListener('click', () => {
-const isPassword = password.type === 'password';
+if (password.type === "password"){
+    password.type = "text";
+}else{
+    password.type = "password";
+}
+toggle.classList.toggle("bi-eye-slash");
 
-password.type = isPassword ? 'text' : 'password';
+toggle.classList.toggle("bi-eye");
+//const isPassword = password.type === 'password';
 
-icon.classList.toggle('bi-eye');
-icon.classList.toggle('bi-eye-slash');
+//password.type = isPassword ? 'text' : 'password';
+
+//icon.classList.toggle('bi-eye');
+//icon.classList.toggle('bi-eye-slash');
 });
 </script>
+
+
 
 
 
