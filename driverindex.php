@@ -1,5 +1,9 @@
 <?php
-session_start();
+    session_start();
+    if(!isset($_SESSION["role"])){
+        header("Location: login.php");
+    }
+
 ?>
 <!-- landing page for the minibus booking system. This will have links to the login page and a description of the system. -->
 

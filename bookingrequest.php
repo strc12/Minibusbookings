@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+    session_start();
+    if($_SESSION["role"] != "Manager" or $_SESSION["role"] != "Staff"){
+        header("Location: index.php");
+    }
+?>
+
 <head>
 
     <title>Booking Request</title>
