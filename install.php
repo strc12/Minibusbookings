@@ -1,10 +1,9 @@
 <?php
-    // note this does not use connection.php as connection made at the time of creation
-   $servername = 'localhost';
-   $username = 'root';
-   $password= 'root';
+// note this does not use connection.php as connection made at the time of creation
+$servername = 'localhost';
+$username = 'root';
+$password = 'root';
 //note no Database mentioned here!!
-#test
 
 try {
     $conn = new PDO("mysql:host=$servername", $username, $password);
@@ -28,17 +27,15 @@ try {
     )"
     );
     $stmt1->execute();
-    $hashedpassword = password_hash("Password",PASSWORD_DEFAULT);
     $stmt1->closeCursor();
-   
-    $stmt5 = $conn->prepare("INSERT INTO TblStaff(FirstName,Surname,Role,Password,Email,Phone,Initials,Licencetodrive)VALUES
-    ('John','Doe','Driver',:Password,'john.doe@example.com','1234567890','JD','Coach'),
-    ('Kristian','Fewster','Manager',:Password,'jane.smith@example.com','0987654321','JS','9 seater'),
-    ('Emily','Johnson','Staff',:Password,'emily.johnson@example.com','5555555555','EJ','Car'),
-    ('David','Williams','Driver',:Password,'david.williams@example.com','1111111111','DW','Coach'),
-    ('Rob','Cunniffe','Staff',:Password,'ric@oundleschool.org.uk','1111111111','MB','17 minibus')
+
+    $stmt5 = $conn->prepare("INSERT INTO TblStaff(FirstName,Surname,Role,Password,Email,Phone,Initials,Licencetodrive)VALUES 
+    ('John','Doe','Driver','password','john.doe@example.com','1234567890','JD','Coach'),
+    ('Kristian','Fewster','Manager','password','jane.smith@example.com','0987654321','JS','9 seater'),
+    ('Emily','Johnson','Staff','password','emily.johnson@example.com','5555555555','EJ','Car'),
+    ('David','Williams','Driver','password','david.williams@example.com','1111111111','DW','Coach'),
+    ('Rob','Cunniffe','Staff','password','ric@oundleschool.org.uk','1111111111','MB','17 minibus')
     ");
-    $stmt5->bindParam(":Password",$hashedpassword);
     $stmt5->execute();
     $stmt5->closeCursor();
     #not working bwelwo here
@@ -54,7 +51,7 @@ try {
     );
     $stmt1->execute();
     $stmt1->closeCursor();
-    $stmt5 = $conn->prepare("INSERT INTO TblVehicles(VehicleID,Make,Model,Registration,Capacity,Status,HireOrOwned)VALUES
+    $stmt5 = $conn->prepare("INSERT INTO TblVehicles(VehicleID,Make,Model,Registration,Capacity,Status,HireOrOwned)VALUES 
     (NULL,'Toyota','Prius','ABC123',9,'Available','School owned'),
     (NULL,'Honda','Civic','DEF456',5,'Available','School owned'),
     (NULL,'Ford','Transit','GHI789',17,'Available','School owned'),
@@ -67,11 +64,11 @@ try {
     CREATE TABLE TblCostcodes(CostcodeID INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     Costcode VARCHAR(10) NOT NULL,
     Description VARCHAR(255) NOT NULL)"
-     );
+    );
     //need to make sure costcode is unique as it is used in bookings table as foreign key
     $stmt1->execute();
     $stmt1->closeCursor();
-    $stmt5 = $conn->prepare("INSERT INTO TblCostcodes(CostcodeID,Costcode,Description)VALUES
+    $stmt5 = $conn->prepare("INSERT INTO TblCostcodes(CostcodeID,Costcode,Description)VALUES 
     (NULL,'S001','Admin'),
     (NULL,'S002','Badminton'),
     (NULL,'S003','DofE'),
@@ -80,9 +77,7 @@ try {
     ");
     $stmt5->execute();
     $stmt5->closeCursor();
-   
-    $stmt5->execute();
-    $stmt5->closeCursor();
+
     $stmt1 = $conn->prepare("DROP TABLE IF EXISTS TblBookings;
     CREATE TABLE TblBookings(BookingID INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     StaffID INT(4) NOT NULL,
@@ -99,7 +94,7 @@ try {
     );
     $stmt1->execute();
     $stmt1->closeCursor();
-    $stmt5 = $conn->prepare("INSERT INTO TblBookings(BookingID,StaffID,VehicleID,Bookingstartdate,Bookingenddate,StartTime,EndTime,DriverID,Capacityrequired,Status,Destination,CostcodeID)VALUES
+    $stmt5 = $conn->prepare("INSERT INTO TblBookings(BookingID,StaffID,VehicleID,Bookingstartdate,Bookingenddate,StartTime,EndTime,DriverID,Capacityrequired,Status,Destination,CostcodeID)VALUES 
     (NULL,3,NULL,'2024-10-01','2024-10-01','09:00:00','17:00:00',NULL,5,'Pending','Local sports event','S002'),
     (NULL,3,NULL,'2024-10-15','2024-10-15','08:00:00','18:00:00',NULL,17,'Pending','DofE expedition','S003'),
     (NULL,3,NULL,'2024-11-01','2024-11-01','10:00:00','16:00:00',NULL,9,'Pending','Rugby match','S004'),
@@ -112,13 +107,8 @@ try {
     $stmt5->execute();
     $stmt5->closeCursor();
 
+} catch (PDOException $e) {
+    echo $sql . "<br>" . $e->getMessage();
 }
-    catch(PDOException $e)
-
-    {
-        echo $sql . "<br>" . $e->getMessage();
-    }
-    $conn=Null;
+$conn = Null;
 ?>
-
-

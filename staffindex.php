@@ -23,8 +23,7 @@ session_start();
         session_start();
         //print_r($_SESSION);
     ?>
-    <a href="login.php" class="btn btn-primary">Login</a>
-    <a href="vehicle.php" class="btn btn-primary">Vehicle system</a>
+
     <a href="bookingrequest.php" class="btn btn-primary">Booking system</a>
     
 </body>

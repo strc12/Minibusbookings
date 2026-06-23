@@ -1,9 +1,9 @@
 <?php
-session_start();
-print_r($_SESSION);
-
+    session_start();
+    if ($_SESSION["role"] != "Manager"){
+        header("Location: index.php");
+    }
 ?>
-
 
 <!DOCTYPE html>
 <html>
