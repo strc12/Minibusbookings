@@ -1,6 +1,6 @@
 Project outline for L6 Enrichment days 2026
 booking and managing bookings of minibuses is a nightmare
-system requirements
+system requirements:
 1. Teachers have to be able to book a minibus/car - with or without a driver (depending on if they can drive or not)
 2. vehicles need to be allocated to bookings and minibuses must not be double booked - so need to check if minibus is already allocated
 3. Drivers must be able to see any new bookings and "sign up" to drive - again need to check if there are clashes
