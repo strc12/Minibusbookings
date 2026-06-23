@@ -48,6 +48,12 @@
                                id="email"
                                name="email"
                                required>
+                        <?php
+                        if ($_SESSION["error"] == "Invalid email"){
+                            echo "<p style='color:red'>" . $_SESSION["error"] . "</p>";
+                            unset($_SESSION["error"]);
+                        }
+                        ?>
                     </div>
 
                     <!-- Password -->
@@ -60,6 +66,12 @@
                                id="password"
                                name="password"
                                required>
+                        <?php
+                        if ($_SESSION["error"] == "Invalid password"){
+                            echo "<p style='color:red'>" . $_SESSION["error"] . "</p>";
+                            unset($_SESSION["error"]);
+                        }
+                        ?>
                     </div>
 
                     <!-- Submit -->

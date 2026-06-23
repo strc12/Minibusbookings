@@ -23,53 +23,91 @@
             <ul class="navbar-nav ms-auto me-3">
 
                 <li class="nav-item">
-                    <a class="nav-link <?= ($currentPage == 'dashboard') ? 'active' : ''; ?>"
-                       href="dashboard.php">
-                        Dashboard
-                    </a>
+                    <a class="nav-link" href="index.php">Home</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link <?= ($currentPage == 'reports') ? 'active' : ''; ?>"
-                       href="reports.php">
-                        Reports
-                    </a>
-                </li>
+                <?php if ($_SESSION["Role"] == "Staff") { ?>
 
-                <li class="nav-item">
-                    <a class="nav-link <?= ($currentPage == 'users') ? 'active' : ''; ?>"
-                       href="users.php">
-                        Users
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bookingrequest.php">
+                            Booking Request
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="mybookings.php">
+                            My Bookings
+                        </a>
+                    </li>
+
+                <?php } ?>
+
+                <?php if ($_SESSION["Role"] == "Driver") { ?>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="jobs.php">
+                            Jobs
+                        </a>
+                    </li>
+
+                <?php } ?>
+
+                <?php if ($_SESSION["Role"] == "Manager") { ?>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="vehicle.php">
+                            Vehicles
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="jobs.php">
+                            Jobs
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="useradmin.php">
+                            Admin
+                        </a>
+                    </li>
+
+                <?php } ?>
 
             </ul>
 
             <!-- Login / User Area -->
             <div class="d-flex align-items-center">
 
-                <!-- Logged OUT state -->
-                <a href="login.php"
-                   class="btn btn-success btn-sm">
-                    Login
-                </a>
+                <?php
 
-                <!-- Logged IN state (example - replace with session logic) -->
-                <!--
-                <div class="dropdown">
-                    <a class="btn btn-outline-light btn-sm dropdown-toggle"
-                       href="#"
-                       role="button"
-                       data-bs-toggle="dropdown">
-                        John Doe
-                    </a>
+                if (empty($_SESSION["loggedin"])) {
 
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="profile.php">Profile</a></li>
-                        <li><a class="dropdown-item" href="logout.php">Logout</a></li>
-                    </ul>
-                </div>
-                -->
+                    echo '<a href="login.php" class="btn btn-success btn-sm">Login</a>';
+
+                } else {
+
+                ?>
+                    <div class="dropdown">
+                        <a class="btn btn-outline-light btn-sm dropdown-toggle"
+                        href="#"
+                        role="button"
+                        data-bs-toggle="dropdown">
+
+                            <?php echo htmlspecialchars($_SESSION["firstname"]); ?>
+
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="profile.php">Profile</a></li>
+                            <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                        </ul>
+                    </div>
+                <?php
+                }
+
+                ?>
+                
 
             </div>
 
