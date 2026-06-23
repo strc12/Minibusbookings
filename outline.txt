@@ -18,7 +18,7 @@ INITIAL TASKS
 Add User - Liam
 View User -Evan
 Edit User - lila
-delete user - Isaac
+delete user - Isaac - Complete
 Login/out - set session varialbles of name and userid and role - Alex
 Add vehicle  - Gabi
 View Vehicles - Jonny
