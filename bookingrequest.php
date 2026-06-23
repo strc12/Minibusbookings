@@ -109,20 +109,20 @@
 
 
 
-    echo "<pre>";
+    // echo "<pre>";
+    
+    //  echo "Cleaned licence:\n";
+    
+    //  var_dump($licence);
+    
 
-    echo "Cleaned licence:\n";
+    //  echo "\nMax capacity:\n";
+    
+    // var_dump($maxcapacity);
+    
 
-    var_dump($licence);
-
-
-    echo "\nMax capacity:\n";
-
-    var_dump($maxcapacity);
-
-
-    echo "</pre>";
-
+    // echo "</pre>";
+    
 
 
     ?>
