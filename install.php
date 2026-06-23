@@ -2,7 +2,7 @@
     // note this does not use connection.php as connection made at the time of creation
    $servername = 'localhost';
    $username = 'root';
-   $password= 'root';
+   $password= 'FellowWithout42';
 //note no Database mentioned here!!
 
 try {
