@@ -17,10 +17,12 @@ include_once("includes/navbar.php");
 include_once("connection.php");
 
 $stmt = $conn->prepare("
-    SELECT *
-    FROM TblBookings
-    WHERE Status = 'Pending'
-    ORDER BY Bookingstartdate, StartTime
+    SELECT b.*, v.Make, v.Model
+    FROM TblBookings b
+    LEFT JOIN TblVehicles v
+    ON b.VehicleID = v.VehicleID
+    WHERE b.Status = 'Pending'
+    ORDER BY b.Bookingstartdate, b.StartTime
 ");
 
 $stmt->execute();
@@ -65,6 +67,18 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <p>
                             <strong>Capacity Required:</strong>
                             <?php echo htmlspecialchars($booking['Capacityrequired']); ?>
+                        </p>
+
+                        <p>
+                            <strong>Current Vehicle Allocated:</strong>
+
+                            <?php
+                            if ($booking['VehicleID'] == NULL) {
+                                echo "None";
+                            } else {
+                                echo htmlspecialchars($booking['Make'] . " " . $booking['Model']);
+                            }
+                            ?>
                         </p>
 
                         <p>
