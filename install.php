@@ -78,8 +78,6 @@ try {
     $stmt5->execute();
     $stmt5->closeCursor();
     
-    $stmt5->execute();
-    $stmt5->closeCursor();
     $stmt1 = $conn->prepare("DROP TABLE IF EXISTS TblBookings;
     CREATE TABLE TblBookings(BookingID INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     StaffID INT(4) NOT NULL,

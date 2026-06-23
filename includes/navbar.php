@@ -49,10 +49,13 @@
             <div class="d-flex align-items-center">
 
                 <!-- Logged OUT state -->
-                <a href="login.php"
-                   class="btn btn-success btn-sm">
-                    Login
-                </a>
+                <?php
+                    if (!$_SESSION["loggedin"]) {
+                        echo '<a href="login.php" class="btn btn-success btn-sm">Login</a>';
+                    }
+                ?>
+                
+
 
                 <!-- Logged IN state (example - replace with session logic) -->
                 <!--
