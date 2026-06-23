@@ -16,6 +16,7 @@
 
     <?php
     $currentPage = 'users';
+    session_start();
     include 'includes/navbar.php';
     include_once("connection.php");
     try {
@@ -103,7 +104,8 @@
                                 Edit
                             </button>
 
-                            <button type="submit" formaction="deleteuser.php" class="btn btn-danger">
+                            <button type="submit" formaction="deleteuser.php" class="btn btn-danger"
+                            onclick="return confirm('Are you sure you want to delete this vehicle?');">
                                 Delete
                             </button>
 
