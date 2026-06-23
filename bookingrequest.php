@@ -68,7 +68,7 @@ include_once("connection.php");
                         </div>
 
                         <div class="text-end">
-                            <a href="vehicle.php" class="btn btn-secondary">
+                            <a href="index.php" class="btn btn-secondary">
                                 Cancel
                             </a>
 

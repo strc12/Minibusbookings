@@ -21,7 +21,7 @@ session_start();
         
         include_once('/includes/navbar.php');
         session_start();
-        print_r($_SESSION);
+        //print_r($_SESSION);
     ?>
     <a href="login.php" class="btn btn-primary">Login</a>
     <a href="vehicle.php" class="btn btn-primary">Vehicle system</a>
