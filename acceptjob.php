@@ -21,7 +21,7 @@ if (isset($_GET['id']) && isset($_SESSION["StaffID"])) {
     $stmt->execute();
 }
 
-header("Location: drivers.php");
+header("Location: myjobs.php");
 exit();
 
 ?>
