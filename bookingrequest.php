@@ -10,35 +10,12 @@
 
 </head>
 
-<script>
-    const startDate = document.querySelector('input[name="bookingstartdate"]');
-    const endDate = document.querySelector('input[name="bookingenddate"]');
-    const startTime = document.querySelector('input[name="starttime"]');
-    const endTime = document.querySelector('input[name="endtime"]');
-    const form = document.querySelector('form');
 
-    function updateEndDateMinimum() {
-        endDate.min = startDate.value;
-    }
-
-    startDate.addEventListener('change', updateEndDateMinimum);
-
-    form.addEventListener('submit', function(event) {
-        const start = new Date(startDate.value + 'T' + startTime.value);
-        const end = new Date(endDate.value + 'T' + endTime.value);
-
-        if (end <= start) {
-            event.preventDefault();
-            alert('The booking end date/time must be after the start date/time.');
-        }
-    });
-</script>
 
 <body>
 
     <?php
     session_start();
-    #fdg
     include_once("includes/navbar.php");
     include_once("connection.php");
     try {
@@ -137,6 +114,25 @@
             </div>
         </div>
     </div>
+
+<script>
+document.querySelector("form").addEventListener("submit", function(event) {
+
+    let startDate = document.querySelector("[name='bookingstartdate']").value;
+    let endDate = document.querySelector("[name='bookingenddate']").value;
+    let startTime = document.querySelector("[name='starttime']").value;
+    let endTime = document.querySelector("[name='endtime']").value;
+
+    let start = startDate + " " + startTime;
+    let end = endDate + " " + endTime;
+
+    if (end <= start) {
+        event.preventDefault();
+        alert("End date and time must be after start date and time.");
+    }
+
+});
+</script>
 
 </body>
 
