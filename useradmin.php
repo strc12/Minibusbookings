@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generic Page Design</title>
+    <title>User Management</title>
 
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -16,6 +16,7 @@
 
     <?php
     $currentPage = 'users';
+    session_start();
     include 'includes/navbar.php';
     include_once("connection.php");
     try {
@@ -103,7 +104,8 @@
                                 Edit
                             </button>
 
-                            <button type="submit" formaction="deleteuser.php" class="btn btn-danger">
+                            <button type="submit" formaction="deleteuser.php" class="btn btn-danger"
+                            onclick="return confirm('Are you sure you want to delete this vehicle?');">
                                 Delete
                             </button>
 
@@ -117,4 +119,3 @@
         </section>
 
     </main>
-    ```

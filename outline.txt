@@ -24,6 +24,8 @@ Add vehicle  - Complete
 View Vehicles - Complete
 Edit vehicles - primarily mark as available/unavailable - Complete
 Add costcode - Alex
+Index Page - Liam
+Profile Page - 
 
 Add booking - done in steps? - 
    add trip details
