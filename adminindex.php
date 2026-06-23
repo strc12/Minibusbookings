@@ -1,17 +1,25 @@
-Page for Drivers to see their upcoming jobs and past jobs.
-<DOCTYPE html>
+<?php
+session_start();
+?>
+
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Drivers</title>
+    <title>Vehicle booking system</title>
     <!-- Latest compiled and minified CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <link href="css/site.css" rel="stylesheet">
 </head>
 <body>
     <?php
-    include_once('nav.php');
+        include_once('includes/navbar.php');
+        
+        include_once('/includes/navbar.php');
+        session_start();
     ?>
 </body>
 </html>

@@ -6,22 +6,21 @@ include_once("connection.php");
 if (isset($_GET['id']) && isset($_SESSION["StaffID"])) {
 
     $bookingID = $_GET['id'];
-    $driverID = $_SESSION["StaffID"];
+    $staffID = $_SESSION["StaffID"];
 
     $stmt = $conn->prepare("
-        UPDATE TblBookings
-        SET DriverID = :DriverID,
-            Status = 'Accepted'
+        DELETE FROM TblBookings
         WHERE BookingID = :BookingID
+        AND StaffID = :StaffID
     ");
 
-    $stmt->bindParam(":DriverID", $driverID);
     $stmt->bindParam(":BookingID", $bookingID);
+    $stmt->bindParam(":StaffID", $staffID);
 
     $stmt->execute();
 }
 
-header("Location: drivers.php");
+header("Location: mybookings.php");
 exit();
 
 ?>
