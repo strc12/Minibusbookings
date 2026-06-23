@@ -50,6 +50,12 @@
                         </a>
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link" href="myjobs.php">
+                            My Jobs
+                        </a>
+                    </li>
+
                 <?php } ?>
 
                 <?php if ($_SESSION["Role"] == "Manager") { ?>
@@ -63,6 +69,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="jobs.php">
                             Jobs
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="myjobs.php">
+                            My Jobs
                         </a>
                     </li>
 

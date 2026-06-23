@@ -67,6 +67,16 @@ include_once("connection.php");
                             <input type="text" name="costcodeid" class="form-control" maxlength="10" required>
                         </div>
 
+                        <div class="mb-4">
+                            <label class="form-label">Driver Required?</label>
+
+                            <select name="driverrequired" class="form-select" required>
+                                <option value="">-- Select Option --</option>
+                                <option value="Yes">Yes - Driver Required</option>
+                                <option value="No">No - I will drive myself</option>
+                            </select>
+                        </div>
+
                         <div class="text-end">
                             <a href="vehicle.php" class="btn btn-secondary">
                                 Cancel

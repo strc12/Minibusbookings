@@ -1,9 +1,14 @@
 <?php
 
+session_start();
 include_once("connection.php");
 
-// Temporary staff ID until login system is fully connected
-$staffID = 1;
+if (!isset($_SESSION["StaffID"])) {
+    header("Location: login.php");
+    exit();
+}
+
+$staffID = $_SESSION["StaffID"];
 
 $stmt = $conn->prepare("
     SELECT b.*, v.Make, v.Model, v.Registration
@@ -77,6 +82,14 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             ?>
                         </p>
 
+                    </div>
+
+                    <div class="card-footer text-end">
+                        <a href="cancelbooking.php?id=<?php echo $booking['BookingID']; ?>"
+                        class="btn btn-sm btn-danger"
+                        onclick="return confirm('Are you sure you want to cancel this booking?');">
+                            Cancel Booking
+                        </a>
                     </div>
 
                 </div>
