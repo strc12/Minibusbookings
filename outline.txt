@@ -15,10 +15,10 @@ system requirements:
 8. If booking has changed, driver needs to reconfirm they can still do it!
 
 INITIAL TASKS
-Add User - Liam
-View User -Evan
-Edit User - lila
-delete user - Isaac - Complete
+Add User - Liam - Completed
+View User - Evan - Completed
+Edit User - lila - Completed
+delete user - Isaac - Completed
 Login/out - set session varialbles of name and userid and role - Alex
 Add vehicle  - Gabi
 View Vehicles - Jonny
