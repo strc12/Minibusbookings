@@ -16,7 +16,7 @@ system requirements:
 
 INITIAL TASKS
 Add User - Liam - Completed
-View User -Evan
+View User - Evan - Completed
 Edit User - lila - Completed
 delete user - Isaac - Completed
 Login/out - set session varialbles of name and userid and role - Alex
