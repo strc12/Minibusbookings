@@ -78,28 +78,39 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </p>
 
                         <p>
+                            <strong>Miles Travelled:</strong>
+
+                            <?php
+                            echo ($job["MilesTravelled"] == NULL)
+                                ? "Not entered"
+                                : htmlspecialchars($job["MilesTravelled"]);
+                            ?>
+                        </p>      
+
+                        <p>
                             <strong>Status:</strong>
                             <span class="badge bg-success">
                                 <?php echo htmlspecialchars($job["Status"]); ?>
                             </span>
                         </p>
 
-                        <p><strong>:</strong> <?php echo htmlspecialchars($job["Capacityrequired"]); ?></p>
+                        
 
                     </div>
 
                     <div class="card-footer text-end">
-                        <a href="entermiles.php"
+
+                        <a href="mileage.php?id=<?php echo $job['BookingID']; ?>"
                         class="btn btn-sm btn-success">
-                            Enter miles
+                            Enter Mileage
                         </a>
+
                         <a href="canceljob.php?id=<?php echo $job['BookingID']; ?>"
                         class="btn btn-sm btn-danger"
                         onclick="return confirm('Are you sure you want to cancel this job?');">
                             Cancel Job
                         </a>
-                        
-                    
+
                     </div>
 
                 </div>
