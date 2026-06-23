@@ -8,9 +8,11 @@
     $stmt1->execute();
     while ($row = $stmt1->fetch(PDO::FETCH_ASSOC))
     {
+        $hashed = $row["Password"];
+        $attempt = $_POST["password"];
         if ($_POST["email"] == $row["Email"]){
              echo("valid email");
-            if ($_POST["password"] == $row["Password"]){
+            if (password_verify($attempt, $hashed)) {
                 echo("valid password");
                 $_SESSION["Role"]=$row["Role"];
                 $_SESSION["Licensetodrive"]=$row["Licencetodrive"];

@@ -4,7 +4,7 @@ require_once 'connection.php';
 session_start();
 $currentPage = 'vehicles';
 
-$stmt = $conn->prepare("SELECT * FROM TblVehicles");
+$stmt = $conn->prepare("SELECT * FROM TblVehicles order by Capacity asc");
 $stmt->execute();
 $vehicles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $schoolOwnedVehicles = [];
@@ -64,7 +64,7 @@ foreach ($vehicles as $vehicle) {
         <a href="addvehicle.php" class="btn btn-success me-2">
             Add Vehicle
         </a>
-        <button class="btn btn-danger">Cancel</button>
+        <button type=button onclick="location.href='index.php'" class="btn btn-danger">Cancel</button>
     </div>
 </section>
 

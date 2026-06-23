@@ -1,7 +1,6 @@
 <?php
 session_start();
 ?>
-<!-- landing page for the minibus booking system. This will have links to the login page and a description of the system. -->
 
 <!DOCTYPE html>
 <html>
@@ -21,11 +20,6 @@ session_start();
         
         include_once('/includes/navbar.php');
         session_start();
-        //print_r($_SESSION);
     ?>
-    <a href="login.php" class="btn btn-primary">Login</a>
-    <a href="vehicle.php" class="btn btn-primary">Vehicle system</a>
-    <a href="bookingrequest.php" class="btn btn-primary">Booking system</a>
-    
 </body>
 </html>
