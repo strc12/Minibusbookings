@@ -2,7 +2,7 @@
     // This page connects the user to the database.
     $servername="localhost";
     $username="root";
-    $password="password";
+    $password="root";
     $dbname = "minibus";
     try{
         $conn=new PDO("mysql:host=$servername;dbname=$dbname",$username,$password);
