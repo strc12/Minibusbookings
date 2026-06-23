@@ -11,14 +11,13 @@
 
 </head>
 
-
 <body>
 
 
     <?php
 
     session_start();
-
+    #fdg
     include_once("includes/navbar.php");
     include_once("connection.php");
 
@@ -404,89 +403,6 @@
 
 
     </div>
-
-
-
-
-
-
-
-    <script>
-
-
-        const maxCapacity = <?php echo $maxcapacity; ?>;
-
-
-        const capacityInput = document.getElementById("capacityrequired");
-
-
-        const driverNo = document.getElementById("driverNo");
-
-
-        const driverNoLabel = document.getElementById("driverNoLabel");
-
-
-        const driveMessage = document.getElementById("driveMessage");
-
-
-
-
-
-        capacityInput.addEventListener("input", function () {
-
-
-
-            let requiredCapacity = Number(this.value);
-
-
-
-
-            if (requiredCapacity > maxCapacity) {
-
-
-
-                driverNo.checked = false;
-
-
-                driverNo.disabled = true;
-
-
-                driverNoLabel.style.display = "none";
-
-
-
-                driveMessage.innerHTML =
-                    "Self drive unavailable. Driver capacity: " + maxCapacity;
-
-
-
-            } else {
-
-
-
-                driverNo.disabled = false;
-
-
-                driverNoLabel.style.display = "block";
-
-
-                driveMessage.innerHTML = "";
-
-
-
-            }
-
-
-
-        });
-
-
-
-    </script>
-
-
-
-
 
 </body>
 

@@ -1,8 +1,8 @@
-<?php 
-    // note this does not use connection.php as connection made at the time of creation
-   $servername = 'localhost';
-   $username = 'root';
-   $password= 'root';
+<?php
+// note this does not use connection.php as connection made at the time of creation
+$servername = 'localhost';
+$username = 'root';
+$password = 'root';
 //note no Database mentioned here!!
 
 try {
@@ -28,7 +28,7 @@ try {
     );
     $stmt1->execute();
     $stmt1->closeCursor();
-    
+
     $stmt5 = $conn->prepare("INSERT INTO TblStaff(FirstName,Surname,Role,Password,Email,Phone,Initials,Licencetodrive)VALUES 
     ('John','Doe','Driver','password','john.doe@example.com','1234567890','JD','Coach'),
     ('Kristian','Fewster','Manager','password','jane.smith@example.com','0987654321','JS','9 seater'),
@@ -64,7 +64,7 @@ try {
     CREATE TABLE TblCostcodes(CostcodeID INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     Costcode VARCHAR(10) NOT NULL,
     Description VARCHAR(255) NOT NULL)"
-     );
+    );
     //need to make sure costcode is unique as it is used in bookings table as foreign key
     $stmt1->execute();
     $stmt1->closeCursor();
@@ -77,7 +77,7 @@ try {
     ");
     $stmt5->execute();
     $stmt5->closeCursor();
-    
+
     $stmt1 = $conn->prepare("DROP TABLE IF EXISTS TblBookings;
     CREATE TABLE TblBookings(BookingID INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     StaffID INT(4) NOT NULL,
@@ -107,11 +107,8 @@ try {
     $stmt5->execute();
     $stmt5->closeCursor();
 
-} 
-    catch(PDOException $e)
-
-    {
-        echo $sql . "<br>" . $e->getMessage();
-    }
-    $conn=Null;
+} catch (PDOException $e) {
+    echo $sql . "<br>" . $e->getMessage();
+}
+$conn = Null;
 ?>

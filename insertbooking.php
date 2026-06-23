@@ -34,7 +34,7 @@ try {
 
     $stmt->execute();
 
-    header("Location: myjobs.php");
+    header("Location: mybookings.php");
     exit();
 }
 catch(PDOException $e) {

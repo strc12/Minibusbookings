@@ -84,14 +84,22 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             </span>
                         </p>
 
+                        <p><strong>:</strong> <?php echo htmlspecialchars($job["Capacityrequired"]); ?></p>
+
                     </div>
 
                     <div class="card-footer text-end">
+                        <a href="entermiles.php"
+                        class="btn btn-sm btn-success">
+                            Enter miles
+                        </a>
                         <a href="canceljob.php?id=<?php echo $job['BookingID']; ?>"
                         class="btn btn-sm btn-danger"
                         onclick="return confirm('Are you sure you want to cancel this job?');">
                             Cancel Job
                         </a>
+                        
+                    
                     </div>
 
                 </div>
