@@ -14,6 +14,7 @@
 
 <?php
 session_start();
+#fdg
 include_once("includes/navbar.php");
 include_once("connection.php");
 ?>
