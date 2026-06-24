@@ -1,7 +1,19 @@
 <?php
 session_start();
-if($_SESSSION["Role"] !== "Staff" or $_SESSION["Role"] == "Manager") {
+
+if (!isset($_SESSION["Role"])) {
     header("Location: login.php");
+    exit();
+}
+
+if ($_SESSION["Role"] == "Driver") {
+    header("Location: index.php");
+    exit();
+}
+
+if ($_SESSION["Role"] != "Staff" && $_SESSION["Role"] != "Manager") {
+    header("Location: login.php");
+    exit();
 }
 
 include_once("connection.php");
