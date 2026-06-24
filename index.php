@@ -1,17 +1,9 @@
-<?php
-    session_start();
-    if(!isset($_SESSION["Role"])){
-        header("Location: loggedoutindex.php");
-    }
-?>
-<!-- landing page for the minibus booking system. This will have links to the login page and a description of the system. -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main page</title>
+    <title>Generic Page Design</title>
 
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -21,224 +13,321 @@
 <body>
 
 <?php
-    $currentPage = 'home';
+    $currentPage = 'dashboard';
     include 'includes/navbar.php';
 ?>
 
 <!-- Hero Section -->
 <section class="hero-section text-center">
     <div class="container">
-
-        <h1>Oundle School minibus</h1>
-
+        <h1>Generic page design</h1>
         <p class="lead">
-            Placeholder
+            Use this template as a starting point for creating new pages. It includes a header, summary cards, data entry form, and a table to display existing records. Customize the content and layout as needed for your specific use case.
+
         </p>
 
+        <button class="btn btn-success me-2">
+            New Record
+        </button>
+
+        <button class="btn btn-danger">
+            Cancel
+        </button>
     </div>
 </section>
 
 <main class="container my-5">
 
-<!-- Images -->
-<section class="text-center mb-5">
+    <!-- Summary Cards -->
+    <div class="row mb-5">
 
-
-    <div id="minibusCarousel"
-        class="carousel slide carousel-fade"
-        data-bs-ride="carousel"
-        data-bs-interval="10000">
-
-
-        <!-- Indicators -->
-        <div class="carousel-indicators">
-            <button type="button"
-                    data-bs-target="#minibusCarousel"
-                    data-bs-slide-to="0"
-                    class="active"></button>
-
-            <button type="button"
-                    data-bs-target="#minibusCarousel"
-                    data-bs-slide-to="1"></button>
-        </div>
-
-        <div class="carousel-inner rounded-4 shadow-lg overflow-hidden">
-
-            <div class="carousel-item active">
-                <img src="images/AIMinibus.png"
-                     class="d-block w-100"
-                     alt="AI Minibus"
-                     style="max-height: 550px; object-fit: cover;">
-
-                <div class="carousel-caption d-none d-md-block">
-                    <div class="bg-dark bg-opacity-50 rounded p-2">
-                        <p>Placeholder</p>
-                    </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-header card-header-custom">
+                    Total Records
+                </div>
+                <div class="card-body">
+                    <h2>125</h2>
+                    <p class="mb-0">Records currently stored.</p>
                 </div>
             </div>
-
-            <div class="carousel-item">
-                <img src="images/AIMinibus2.png"
-                     class="d-block w-100"
-                     alt="AI Minibus 2"
-                     style="max-height: 550px; object-fit: cover;">
-
-                <div class="carousel-caption d-none d-md-block">
-                    <div class="bg-dark bg-opacity-50 rounded p-2">
-                        <p>Placeholder</p>
-                    </div>
-                </div>
-            </div>
-
-
         </div>
 
-        <button class="carousel-control-prev"
-                type="button"
-                data-bs-target="#minibusCarousel"
-                data-bs-slide="prev">
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-header card-header-custom">
+                    Active Records
+                </div>
+                <div class="card-body">
+                    <h2>102</h2>
+                    <p class="mb-0">Records marked as active.</p>
+                </div>
+            </div>
+        </div>
 
-            <span class="carousel-control-prev-icon"></span>
-
-        </button>
-
-        <button class="carousel-control-next"
-                type="button"
-                data-bs-target="#minibusCarousel"
-                data-bs-slide="next">
-
-            <span class="carousel-control-next-icon"></span>
-
-        </button>
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-header card-header-custom">
+                    Pending Review
+                </div>
+                <div class="card-body">
+                    <h2>23</h2>
+                    <p class="mb-0">Records awaiting approval.</p>
+                </div>
+            </div>
+        </div>
 
     </div>
 
-</section>
-
-
-    <!-- Project Description -->
+    <!-- Data Entry Section -->
     <section class="mb-5">
 
-        <div class="card shadow-sm">
-            <div class="card-header card-header-custom">
-                About this website
-            </div>
+        <h2 class="section-title">
+            Data Entry Form
+        </h2>
 
+        <div class="card shadow-sm">
             <div class="card-body">
-                <p class="mb-0">
-                    Placeholder
-                </p>
+
+                <form method="post" action="save-record.php">
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+                            <label for="recordName"
+                                   class="form-label">
+                                Record Name
+                            </label>
+
+                            <input type="text"
+                                   class="form-control"
+                                   id="recordName"
+                                   name="recordName"
+                                   required>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="category"
+                                   class="form-label">
+                                Category
+                            </label>
+
+                            <select class="form-select"
+                                    id="category"
+                                    name="category">
+                                <option>Select Category</option>
+                                <option>Category A</option>
+                                <option>Category B</option>
+                                <option>Category C</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+                            <label for="status"
+                                   class="form-label">
+                                Status
+                            </label>
+
+                            <select class="form-select"
+                                    id="status"
+                                    name="status">
+                                <option>Active</option>
+                                <option>Inactive</option>
+                                <option>Pending</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="date"
+                                   class="form-label">
+                                Effective Date
+                            </label>
+
+                            <input type="date"
+                                   class="form-control"
+                                   id="date"
+                                   name="date">
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description"
+                               class="form-label">
+                            Description
+                        </label>
+
+                        <textarea class="form-control"
+                                  id="description"
+                                  name="description"
+                                  rows="4"></textarea>
+                    </div>
+
+                    <div class="text-end">
+
+                        <button type="reset"
+                                class="btn btn-danger me-2">
+                            Clear Form
+                        </button>
+
+                        <button type="submit"
+                                class="btn btn-success">
+                            Save Record
+                        </button>
+
+                    </div>
+
+                </form>
+
             </div>
         </div>
 
     </section>
 
-    <!-- Contributors -->
+    <!-- Display Data Section -->
     <section>
 
-        <h2 class="section-title mb-4">
-            Website Contributors
-        </h2>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="section-title mb-0">
+                Existing Records
+            </h2>
 
-        <div class="row g-4">
+            <input type="text"
+                   class="form-control w-auto"
+                   placeholder="Search...">
+        </div>
 
-            <div class="col-md-4">
-                <div class="card shadow-sm h-100 text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">Name</h5>
-                        <p class="text-muted mb-0">
-                            Role
-                        </p>
-                    </div>
+        <div class="card shadow-sm">
+
+            <div class="card-body">
+
+                <div class="table-responsive">
+
+                    <table class="table table-striped table-hover align-middle">
+
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th class="text-end">Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>001</td>
+                                <td>Example Record 1</td>
+                                <td>Category A</td>
+                                <td>
+                                    <span class="badge bg-success">
+                                        Active
+                                    </span>
+                                </td>
+                                <td>01/07/2026</td>
+                                <td class="text-end">
+
+                                    <button class="btn btn-sm btn-success">
+                                        Edit
+                                    </button>
+
+                                    <button class="btn btn-sm btn-danger">
+                                        Delete
+                                    </button>
+
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>002</td>
+                                <td>Example Record 2</td>
+                                <td>Category B</td>
+                                <td>
+                                    <span class="badge bg-warning text-dark">
+                                        Pending
+                                    </span>
+                                </td>
+                                <td>03/07/2026</td>
+                                <td class="text-end">
+
+                                    <button class="btn btn-sm btn-success">
+                                        Edit
+                                    </button>
+
+                                    <button class="btn btn-sm btn-danger">
+                                        Delete
+                                    </button>
+
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>003</td>
+                                <td>Example Record 3</td>
+                                <td>Category C</td>
+                                <td>
+                                    <span class="badge bg-secondary">
+                                        Inactive
+                                    </span>
+                                </td>
+                                <td>05/07/2026</td>
+                                <td class="text-end">
+
+                                    <button class="btn btn-sm btn-success">
+                                        Edit
+                                    </button>
+
+                                    <button class="btn btn-sm btn-danger">
+                                        Delete
+                                    </button>
+
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
                 </div>
-            </div>
 
-            <div class="col-md-4">
-                <div class="card shadow-sm h-100 text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">Name</h5>
-                        <p class="text-muted mb-0">
-                            Role
-                        </p>
-                    </div>
-                </div>
-            </div>
+                <!-- Pagination -->
+                <nav class="mt-3">
+                    <ul class="pagination justify-content-end">
 
-            <div class="col-md-4">
-                <div class="card shadow-sm h-100 text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">Name</h5>
-                        <p class="text-muted mb-0">
-                            Role
-                        </p>
-                    </div>
-                </div>
-            </div>
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">
+                                Previous
+                            </a>
+                        </li>
 
-            <div class="col-md-4">
-                <div class="card shadow-sm h-100 text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">Name</h5>
-                        <p class="text-muted mb-0">
-                            Role
-                        </p>
-                    </div>
-                </div>
-            </div>
+                        <li class="page-item active">
+                            <a class="page-link" href="#">
+                                1
+                            </a>
+                        </li>
 
-            <div class="col-md-4">
-                <div class="card shadow-sm h-100 text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">Name</h5>
-                        <p class="text-muted mb-0">
-                            Role
-                        </p>
-                    </div>
-                </div>
-            </div>
+                        <li class="page-item">
+                            <a class="page-link" href="#">
+                                2
+                            </a>
+                        </li>
 
-            <div class="col-md-4">
-                <div class="card shadow-sm h-100 text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">Name</h5>
-                        <p class="text-muted mb-0">
-                            Role
-                        </p>
-                    </div>
-                </div>
-            </div>
+                        <li class="page-item">
+                            <a class="page-link" href="#">
+                                Next
+                            </a>
+                        </li>
 
-            <div class="col-md-4">
-                <div class="card shadow-sm h-100 text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">Name</h5>
-                        <p class="text-muted mb-0">
-                            Role
-                        </p>
-                    </div>
-                </div>
-            </div>
+                    </ul>
+                </nav>
 
-            <div class="col-md-4">
-                <div class="card shadow-sm h-100 text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">Name</h5>
-                        <p class="text-muted mb-0">
-                            Role
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card shadow-sm h-100 text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">Name</h5>
-                        <p class="text-muted mb-0">
-                            Role
-                        </p>
-                    </div>
-                </div>
             </div>
 
         </div>
@@ -250,20 +339,13 @@
 <footer class="footer-custom text-center">
     <div class="container">
         <small>
-            © 2026 Oundle School L6 Enrichment Project.
+            © 2026 Oundle School L6 Enrichement project.
         </small>
     </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <?php
-        include_once('includes/navbar.php');
-        
-        include_once('/includes/navbar.php');
-        session_start();
-        //print_r($_SESSION);
-    ?>
-
 </body>
 </html>
+
