@@ -19,6 +19,7 @@
 <body>
 
 <?php
+    session_start();
     $currentPage = 'login';
     include 'includes/navbar.php';
 ?>
