@@ -39,6 +39,8 @@
                         </ul>
                     </li>
 
+                    
+
                 <?php } ?>
 
                 <?php if ($_SESSION["Role"] == "Driver") { ?>
@@ -91,6 +93,16 @@
                         </ul>
                     </li>
 
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Reports
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="driverreport.php">Driver Report</a></li>
+                        </ul>
+                    </li>
+
                 <?php } ?>
 
             </ul>
@@ -118,7 +130,21 @@
                         </a>
 
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+
+                            <li>
+                                <a class="dropdown-item" href="useradmin.php">
+                                    Edit Profile
+                                </a>
+                            </li>
+
+                            <li><hr class="dropdown-divider"></li>
+
+                            <li>
+                                <a class="dropdown-item text-danger" href="logout.php">
+                                    Logout
+                                </a>
+                            </li>
+
                         </ul>
                     </div>
                 <?php
