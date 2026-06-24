@@ -6,15 +6,20 @@
     <title>Generic Page Design</title>
 
     <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/site.css" rel="stylesheet">
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 
 <?php
+    session_start();
     $currentPage = 'dashboard';
     include 'includes/navbar.php';
+    include_once("connection.php");
+
 ?>
 
 <!-- Hero Section -->
@@ -189,150 +194,128 @@
     </section>
 
     <!-- Display Data Section -->
-    <section>
+            <?php
+        $stmt = $conn->prepare("
+            SELECT b.*, 
+                s.Firstname AS DriverFirstname,
+                s.Surname AS DriverSurname,
+                v.Make,
+                v.Model,
+                v.Registration
+            FROM TblBookings b
+            LEFT JOIN TblStaff s
+                ON b.DriverID = s.StaffID
+            LEFT JOIN TblVehicles v
+                ON b.VehicleID = v.VehicleID
+            WHERE b.Bookingstartdate = CURDATE()
+            AND b.Status IN ('Accepted', 'Pending')
+            ORDER BY b.StartTime
+        ");
 
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <h2 class="section-title mb-0">
-                Existing Records
-            </h2>
+        $stmt->execute();
+        $todaysJobs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        ?>
 
-            <input type="text"
-                   class="form-control w-auto"
-                   placeholder="Search...">
-        </div>
+        <section>
 
-        <div class="card shadow-sm">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="section-title mb-0">
+                    Jobs Happening Today
+                </h2>
+            </div>
 
-            <div class="card-body">
+            <div class="card shadow-sm">
 
-                <div class="table-responsive">
+                <div class="card-body">
 
-                    <table class="table table-striped table-hover align-middle">
+                    <div class="table-responsive">
 
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Category</th>
-                                <th>Status</th>
-                                <th>Date</th>
-                                <th class="text-end">Actions</th>
-                            </tr>
-                        </thead>
+                        <table class="table table-striped table-hover align-middle">
 
-                        <tbody>
+                            <thead>
+                                <tr>
+                                    <th>Booking ID</th>
+                                    <th>Destination</th>
+                                    <th>Time</th>
+                                    <th>Driver</th>
+                                    <th>Vehicle</th>
+                                    <th>Capacity</th>
+                                    <th>Status</th>
+                                    <th>Cost Code</th>
+                                </tr>
+                            </thead>
 
-                            <tr>
-                                <td>001</td>
-                                <td>Example Record 1</td>
-                                <td>Category A</td>
-                                <td>
-                                    <span class="badge bg-success">
-                                        Active
-                                    </span>
-                                </td>
-                                <td>01/07/2026</td>
-                                <td class="text-end">
+                            <tbody>
 
-                                    <button class="btn btn-sm btn-success">
-                                        Edit
-                                    </button>
+                                <?php foreach ($todaysJobs as $job): ?>
 
-                                    <button class="btn btn-sm btn-danger">
-                                        Delete
-                                    </button>
+                                    <tr>
+                                        <td><?php echo htmlspecialchars($job["BookingID"]); ?></td>
 
-                                </td>
-                            </tr>
+                                        <td><?php echo htmlspecialchars($job["Destination"]); ?></td>
 
-                            <tr>
-                                <td>002</td>
-                                <td>Example Record 2</td>
-                                <td>Category B</td>
-                                <td>
-                                    <span class="badge bg-warning text-dark">
-                                        Pending
-                                    </span>
-                                </td>
-                                <td>03/07/2026</td>
-                                <td class="text-end">
+                                        <td>
+                                            <?php echo htmlspecialchars($job["StartTime"]); ?>
+                                            -
+                                            <?php echo htmlspecialchars($job["EndTime"]); ?>
+                                        </td>
 
-                                    <button class="btn btn-sm btn-success">
-                                        Edit
-                                    </button>
+                                        <td>
+                                            <?php
+                                            if ($job["DriverID"] == NULL) {
+                                                echo "No driver allocated";
+                                            } else {
+                                                echo htmlspecialchars($job["DriverFirstname"] . " " . $job["DriverSurname"]);
+                                            }
+                                            ?>
+                                        </td>
 
-                                    <button class="btn btn-sm btn-danger">
-                                        Delete
-                                    </button>
+                                        <td>
+                                            <?php
+                                            if ($job["VehicleID"] == NULL) {
+                                                echo "No vehicle allocated";
+                                            } else {
+                                                echo htmlspecialchars($job["Make"] . " " . $job["Model"] . " - " . $job["Registration"]);
+                                            }
+                                            ?>
+                                        </td>
 
-                                </td>
-                            </tr>
+                                        <td><?php echo htmlspecialchars($job["Capacityrequired"]); ?></td>
 
-                            <tr>
-                                <td>003</td>
-                                <td>Example Record 3</td>
-                                <td>Category C</td>
-                                <td>
-                                    <span class="badge bg-secondary">
-                                        Inactive
-                                    </span>
-                                </td>
-                                <td>05/07/2026</td>
-                                <td class="text-end">
+                                        <td>
+                                            <?php if ($job["Status"] == "Accepted"): ?>
+                                                <span class="badge bg-success">Accepted</span>
+                                            <?php else: ?>
+                                                <span class="badge bg-warning text-dark">Pending</span>
+                                            <?php endif; ?>
+                                        </td>
 
-                                    <button class="btn btn-sm btn-success">
-                                        Edit
-                                    </button>
+                                        <td><?php echo htmlspecialchars($job["CostcodeID"]); ?></td>
+                                    </tr>
 
-                                    <button class="btn btn-sm btn-danger">
-                                        Delete
-                                    </button>
+                                <?php endforeach; ?>
 
-                                </td>
-                            </tr>
+                                <?php if (count($todaysJobs) == 0): ?>
 
-                        </tbody>
+                                    <tr>
+                                        <td colspan="8" class="text-center">
+                                            No jobs are happening today.
+                                        </td>
+                                    </tr>
 
-                    </table>
+                                <?php endif; ?>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
 
                 </div>
 
-                <!-- Pagination -->
-                <nav class="mt-3">
-                    <ul class="pagination justify-content-end">
-
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#">
-                                Previous
-                            </a>
-                        </li>
-
-                        <li class="page-item active">
-                            <a class="page-link" href="#">
-                                1
-                            </a>
-                        </li>
-
-                        <li class="page-item">
-                            <a class="page-link" href="#">
-                                2
-                            </a>
-                        </li>
-
-                        <li class="page-item">
-                            <a class="page-link" href="#">
-                                Next
-                            </a>
-                        </li>
-
-                    </ul>
-                </nav>
-
             </div>
 
-        </div>
-
-    </section>
+        </section>
 
 </main>
 
