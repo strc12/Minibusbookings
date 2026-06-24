@@ -10,6 +10,7 @@ $stmt = $conn->prepare("
     LEFT JOIN TblVehicles v
     ON b.VehicleID = v.VehicleID
     WHERE b.DriverID = :DriverID
+    AND b.Status = 'Accepted'
     ORDER BY b.Bookingstartdate, b.StartTime
 ");
 

@@ -83,7 +83,7 @@
                                 Update Cost Code
                             </button>
 
-                            <a href="add_or_find_costcode.php" class="btn btn-outline-primary">
+                            <a href="addcostcode.php" class="btn btn-outline-primary">
                                 Back to Add Cost Codes
                             </a>
 
