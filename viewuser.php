@@ -1,4 +1,8 @@
 <?php
+session_start();
+if($_SESSION["Role"] !== "Manager"){
+    header("Location: index.php");
+}
 include_once('connection.php');
 
 $staff = null;

@@ -1,7 +1,10 @@
 <?php
+session_start();
+if($_SESSION["Role"] !== "Manager"){
+    header("Location: index.php");
+}
 #might need to add booked option for status as it is different to unavailable 
 require_once 'connection.php';
-session_start();
 $currentPage = 'vehicles';
 
 $stmt = $conn->prepare("SELECT * FROM TblVehicles order by Capacity asc");
