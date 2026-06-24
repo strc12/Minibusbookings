@@ -1,10 +1,6 @@
 <?php
-    session_start();
-    if(!isset($_SESSION["Role"])){
-        header("Location: loggedoutindex.php");
-    }
+session_start();
 ?>
-<!-- landing page for the minibus booking system. This will have links to the login page and a description of the system. -->
 
 <!DOCTYPE html>
 <html lang="en">
