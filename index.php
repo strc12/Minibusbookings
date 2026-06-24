@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 <?php
     session_start();
     if(!isset($_SESSION["Role"])){
@@ -21,7 +19,6 @@
     <link href="css/site.css" rel="stylesheet">
 </head>
 <body>
-<<<<<<< HEAD
 
 <?php
     $currentPage = 'home';
@@ -260,7 +257,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-=======
     <?php
         include_once('includes/navbar.php');
         
