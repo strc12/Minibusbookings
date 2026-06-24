@@ -98,6 +98,17 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             }
                             ?>
                         </p>
+                        
+                        <p>
+                            <strong>Driver:</strong>
+                            <?php 
+                            $stmt = $conn->prepare("SELECT * FROM tblstaff WHERE StaffID = :StaffID");
+                            $stmt->bindParam(":StaffID", $booking['StaffID']);
+                            $stmt->execute();
+                            $FirstName = $stmt->fetch(PDO::FETCH_ASSOC);
+                            echo htmlspecialchars($FirstName['FirstName'] . " " . $FirstName['Surname']);
+                            ?>
+                        </p>
 
                     </div>
 
