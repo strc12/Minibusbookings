@@ -23,7 +23,7 @@ if($_SESSION["Role"] !== "Manager"){
     <?php
     $currentPage = 'users';
     session_start();
-    print_r($_SESSION);
+    //print_r($_SESSION);
     include 'includes/navbar.php';
     include_once("connection.php");
     try {
