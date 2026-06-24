@@ -10,10 +10,11 @@ if($_SESSION["Role"] !== "Manager"){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Management</title>
+    <title>User Admin</title>
 
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
     <link href="css/site.css" rel="stylesheet">
 </head>
@@ -23,7 +24,7 @@ if($_SESSION["Role"] !== "Manager"){
     <?php
     $currentPage = 'users';
     session_start();
-    //print_r($_SESSION);
+    
     include 'includes/navbar.php';
     include_once("connection.php");
     try {
@@ -70,7 +71,7 @@ if($_SESSION["Role"] !== "Manager"){
         <!-- Optional Summary Cards -->
         <div class="row mb-5">
 
-            <div class="col-md-4">
+            <div class="col-md-12">
                 <div class="card shadow-sm h-100">
                     <div class="card-header card-header-custom">
                         Total Users
@@ -315,3 +316,6 @@ toggle.classList.toggle("bi-eye"); */
 
 
 </form>
+
+</body>
+</html>
