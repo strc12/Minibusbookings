@@ -1,9 +1,166 @@
 <?php
+
 session_start();
-if (!isset($_SESSION["Role"])) {
-    header("Location: login.php");
+
+include_once("connection.php");
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Load pending jobs
+|--------------------------------------------------------------------------
+*/
+
+
+if ($_SESSION["Role"] == "Driver") {
+
+
+    $driverID = $_SESSION["StaffID"];
+
+
+
+    $stmt = $conn->prepare("
+
+        SELECT b.*, v.Make, v.Model
+
+        FROM TblBookings b
+
+
+        LEFT JOIN TblVehicles v
+
+        ON b.VehicleID = v.VehicleID
+
+
+
+        WHERE b.Status = 'Pending'
+
+
+
+        AND NOT EXISTS (
+
+
+            SELECT 1
+
+            FROM TblBookings accepted
+
+
+
+            WHERE accepted.DriverID = :DriverID
+
+
+            AND accepted.Status = 'Accepted'
+
+
+
+            AND CONCAT(
+
+                accepted.Bookingstartdate,
+
+                ' ',
+
+                SUBTIME(accepted.StartTime,'02:00:00')
+
+            )
+
+            <
+
+            CONCAT(
+
+                b.Bookingenddate,
+
+                ' ',
+
+                ADDTIME(b.EndTime,'02:00:00')
+
+            )
+
+
+
+            AND CONCAT(
+
+                accepted.Bookingenddate,
+
+                ' ',
+
+                ADDTIME(accepted.EndTime,'02:00:00')
+
+            )
+
+            >
+
+            CONCAT(
+
+                b.Bookingstartdate,
+
+                ' ',
+
+                SUBTIME(b.StartTime,'02:00:00')
+
+            )
+
+        )
+
+
+
+        ORDER BY b.Bookingstartdate, b.StartTime
+
+    ");
+
+
+
+    $stmt->execute([
+
+        ":DriverID" => $driverID
+
+    ]);
+
+
+
+} else {
+
+
+    // Managers see everything
+
+
+    $stmt = $conn->prepare("
+
+        SELECT b.*, v.Make, v.Model
+
+        FROM TblBookings b
+
+
+        LEFT JOIN TblVehicles v
+
+        ON b.VehicleID = v.VehicleID
+
+
+
+        WHERE b.Status = 'Pending'
+
+
+
+        ORDER BY b.Bookingstartdate, b.StartTime
+
+    ");
+
+
+
+    $stmt->execute();
+
+
 }
+
+
+
+$bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+
 ?>
+
+
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -32,7 +189,7 @@ if (!isset($_SESSION["Role"])) {
 
 
 
-    <?php include_once("includes/navbar.php"); ?>
+        <?php include_once("includes/navbar.php"); ?>
 
 
 
@@ -55,7 +212,7 @@ if (!isset($_SESSION["Role"])) {
 
 
 
-            <?php foreach ($bookings as $booking): ?>
+                <?php foreach ($bookings as $booking): ?>
 
 
 
@@ -70,7 +227,7 @@ if (!isset($_SESSION["Role"])) {
                         <div class="card-header card-header-custom">
 
 
-                            <?php echo htmlspecialchars($booking['Destination']); ?>
+                                <?php echo htmlspecialchars($booking['Destination']); ?>
 
 
                         </div>
@@ -87,7 +244,7 @@ if (!isset($_SESSION["Role"])) {
 
                                 <strong>Start Date:</strong>
 
-                                <?php echo htmlspecialchars($booking['Bookingstartdate']); ?>
+                                    <?php echo htmlspecialchars($booking['Bookingstartdate']); ?>
 
 
                             </p>
@@ -99,7 +256,7 @@ if (!isset($_SESSION["Role"])) {
 
                                 <strong>End Date:</strong>
 
-                                <?php echo htmlspecialchars($booking['Bookingenddate']); ?>
+                                    <?php echo htmlspecialchars($booking['Bookingenddate']); ?>
 
 
                             </p>
@@ -111,11 +268,11 @@ if (!isset($_SESSION["Role"])) {
 
                                 <strong>Time:</strong>
 
-                                <?php echo htmlspecialchars($booking['StartTime']); ?>
+                                    <?php echo htmlspecialchars($booking['StartTime']); ?>
 
                                 -
 
-                                <?php echo htmlspecialchars($booking['EndTime']); ?>
+                                    <?php echo htmlspecialchars($booking['EndTime']); ?>
 
 
                             </p>
@@ -127,7 +284,7 @@ if (!isset($_SESSION["Role"])) {
 
                                 <strong>Capacity Required:</strong>
 
-                                <?php echo htmlspecialchars($booking['Capacityrequired']); ?>
+                                    <?php echo htmlspecialchars($booking['Capacityrequired']); ?>
 
 
                             </p>
@@ -140,71 +297,65 @@ if (!isset($_SESSION["Role"])) {
                                 <strong>Vehicle:</strong>
 
 
-                                <?php
+                                    <?php
 
 
-                                if ($booking['VehicleID'] == NULL) {
+                                    if ($booking['VehicleID'] == NULL) {
 
 
-                                    echo "Not allocated";
+                                        echo "Not allocated";
 
 
-                                } else {
+                                    } else {
 
 
-                                    echo htmlspecialchars(
+                                        echo htmlspecialchars(
 
-                                        $booking['Make'] . " " . $booking['Model']
+                                            $booking['Make'] . " " . $booking['Model']
 
-                                    );
-
-
-                                }
+                                        );
 
 
-                                ?>
+                                    }
 
 
-                            </p>
+                                    ?>
 
-
-
-
-                            <p>
-
-                                <strong>Status:</strong>
-
-
-                                <span class="badge bg-warning text-dark">
-
-                                    <?php echo htmlspecialchars($booking['Status']); ?>
-
-                                </span>
-
-
-                            </p>
+                                </p>
 
 
 
-                        </div>
+
+                                <p>
+                                    <strong>Status:</strong>
+
+
+                                    <span class="badge bg-warning text-dark">
+
+                                        <?php echo htmlspecialchars($booking['Status']); ?>
+
+                                    </span>
+
+                         </p>
+
+
+                            </div>
 
 
 
 
 
-
-
-                        <div class="card-footer text-end">
+                            <div class="card-footer text-end">
 
 
 
 
 
-                            <?php if ($_SESSION["Role"] == "Manager") { ?>
+                                <?php if ($_SESSION["Role"] == "Manager") { ?>
 
 
 
-                                <a href="allocatevehicle.php?id=<?php echo $booking['BookingID']; ?>"
+                                        <a href="allocatevehicle.php?id=<?php echo $booking['BookingID']; ?>"
                                     class="btn btn-primary btn-sm">
 
 
@@ -215,45 +366,44 @@ if (!isset($_SESSION["Role"])) {
 
 
 
-                            <?php } ?>
+                                <?php } ?>
 
 
 
 
 
 
-
-                            <?php if ($booking['VehicleID'] != NULL): ?>
-
+                                <?php if ($booking['VehicleID'] != NULL): ?>
 
 
-                                <a href="acceptjob.php?id=<?php echo $booking['BookingID']; ?>" class="btn btn-success btn-sm">
+                                        <a href="acceptjob.php?id=<?php echo $booking['BookingID']; ?>" class="btn btn-success btn-sm">
 
 
-                                    Accept Job
+                                            Accept Job
 
 
-                                </a>
+                                        </a>
 
 
-
-                            <?php else: ?>
-
+                                <?php else: ?>
 
 
-                                <button class="btn btn-secondary btn-sm" disabled>
+                                        <button class="btn btn-secondary btn-sm" disabled>
+
+                                            Vehicle Required
 
 
-                                    Vehicle Required
-
-
-                                </button>
+                                            </button>
 
 
 
-                            <?php endif; ?>
+                                <?php endif; ?>
 
 
+
+
+
+                            </div>
 
 
 
@@ -262,10 +412,6 @@ if (!isset($_SESSION["Role"])) {
 
 
                     </div>
-
-
-
-                </div>
 
 
 
