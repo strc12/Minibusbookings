@@ -1,6 +1,9 @@
 <?php
-
 session_start();
+if($_SESSSION["Role"] !== "Staff" or $_SESSION["Role"] == "Manager") {
+    header("Location: login.php");
+}
+
 include_once("connection.php");
 
 if (!isset($_SESSION["StaffID"])) {

@@ -1,4 +1,8 @@
 <?php
+session_start();
+if($_SESSION["Role"] !== "Manager"){
+    header("Location: index.php");
+}
 
 require_once 'connection.php';
 

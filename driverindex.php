@@ -1,8 +1,9 @@
 <?php
     session_start();
     if(!isset($_SESSION["Role"])){
-        header("Location: loggedoutindex.php");
+        header("Location: login.php");
     }
+
 ?>
 <!-- landing page for the minibus booking system. This will have links to the login page and a description of the system. -->
 
@@ -26,6 +27,10 @@
         session_start();
         //print_r($_SESSION);
     ?>
+
+    <a href="jobs.php" class="btn btn-primary">Find Jobs</a>
+    <a href="myjobs.php" class="btn btn-primary">My Jobs</a>
+    <a href="???.php" class="btn btn-primary">Job History</a>
 
     
 </body>
