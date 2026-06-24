@@ -19,5 +19,5 @@
     $stmt3->bindParam(":Description",$_POST["description"]);
     $stmt3->execute();
     $_SESSION["message"] = "Costcode added successfully";
-    header('location: add_or_find_costcode.php');
+    header('location: addcostcode.php');
 ?>
