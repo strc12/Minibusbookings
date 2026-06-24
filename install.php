@@ -28,14 +28,16 @@ try {
     );
     $stmt1->execute();
     $stmt1->closeCursor();
+    $hashedpassword=password_hash("password",PASSWORD_DEFAULT);
 
     $stmt5 = $conn->prepare("INSERT INTO TblStaff(FirstName,Surname,Role,Password,Email,Phone,Initials,Licencetodrive)VALUES 
-    ('John','Doe','Driver','password','john.doe@example.com','1234567890','JD','Coach'),
-    ('Kristian','Fewster','Manager','password','jane.smith@example.com','0987654321','JS','9 seater'),
-    ('Emily','Johnson','Staff','password','emily.johnson@example.com','5555555555','EJ','Car'),
-    ('David','Williams','Driver','password','david.williams@example.com','1111111111','DW','Coach'),
-    ('Rob','Cunniffe','Staff','password','ric@oundleschool.org.uk','1111111111','MB','17 minibus')
+    ('John','Doe','Driver',:password,'john.doe@example.com','1234567890','JD','Coach'),
+    ('Kristian','Fewster','Manager',:password,'jane.smith@example.com','0987654321','JS','9 seater'),
+    ('Emily','Johnson','Staff',:password,'emily.johnson@example.com','5555555555','EJ','Car'),
+    ('David','Williams','Driver',:password,'david.williams@example.com','1111111111','DW','Coach'),
+    ('Rob','Cunniffe','Staff',:password,'ric@oundleschool.org.uk','1111111111','MB','17 minibus')
     ");
+    $stmt5->bindParam(":password",$hashedpassword);
     $stmt5->execute();
     $stmt5->closeCursor();
     #not working bwelwo here
