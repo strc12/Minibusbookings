@@ -3,9 +3,10 @@
 
 <?php
     session_start();
-    if($_SESSION["role"] != "Manager" or $_SESSION["role"] != "Staff"){
-        header("Location: index.php");
+    if($_SESSION["Role"] != "Manager" or $_SESSION["Role"] != "Staff"){
+        ##header("Location: index.php");
     }
+    
 ?>
 
 <head>

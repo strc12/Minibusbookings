@@ -3,7 +3,7 @@
     if (!isset($_SESSION["Role"])){
         header("Location: login.php");
     }
-    elseif ($_SESSION["Role"] == "Manager"){
+    elseif ($_SESSION["Role"] != "Manager"){
         header("Location: index.php");
     }
 ?>

@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+=======
+<?php
+    session_start();
+    if(!isset($_SESSION["Role"])){
+        header("Location: loggedoutindex.php");
+    }
+?>
+<!-- landing page for the minibus booking system. This will have links to the login page and a description of the system. -->
+
+>>>>>>> a42af0ad3b733c77c18c967105678e3291a2d3f9
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +22,7 @@
     <link href="css/site.css" rel="stylesheet">
 </head>
 <body>
+<<<<<<< HEAD
 
 <?php
     $currentPage = 'home';
@@ -249,5 +261,16 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+=======
+    <?php
+        include_once('includes/navbar.php');
+        
+        include_once('/includes/navbar.php');
+        session_start();
+        //print_r($_SESSION);
+    ?>
+
+    
+>>>>>>> a42af0ad3b733c77c18c967105678e3291a2d3f9
 </body>
 </html>

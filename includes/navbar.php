@@ -28,60 +28,67 @@
 
                 <?php if ($_SESSION["Role"] == "Staff") { ?>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="bookingrequest.php">
-                            Booking Request
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Booking System
                         </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="mybookings.php">
-                            My Bookings
-                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="bookingrequest.php">Make Booking</a></li>
+                            <li><a class="dropdown-item" href="mybookings.php">My Bookings</a></li>
+                            <li><a class="dropdown-item" href="previousbookings.php">Bookings History</a></li>
+                        </ul>
                     </li>
 
                 <?php } ?>
 
                 <?php if ($_SESSION["Role"] == "Driver") { ?>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="jobs.php">
-                            Jobs
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Job System
                         </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="myjobs.php">
-                            My Jobs
-                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="jobs.php">Pending Jobs</a></li>
+                            <li><a class="dropdown-item" href="myjobs.php">My Jobs</a></li>
+                            <li><a class="dropdown-item" href="previousjobs.php">Job History</a></li>
+                        </ul>
                     </li>
 
                 <?php } ?>
 
                 <?php if ($_SESSION["Role"] == "Manager") { ?>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="vehicle.php">
-                            Vehicle Admin
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Booking System
                         </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="bookingrequest.php">Make Booking</a></li>
+                            <li><a class="dropdown-item" href="mybookings.php">My Bookings</a></li>
+                            <li><a class="dropdown-item" href="previousbookings.php">Bookings History</a></li>
+                        </ul>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="jobs.php">
-                            Jobs
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Job System
                         </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="jobs.php">Pending Jobs</a></li>
+                            <li><a class="dropdown-item" href="myjobs.php">My Jobs</a></li>
+                            <li><a class="dropdown-item" href="previousjobs.php">Job History</a></li>
+                        </ul>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="myjobs.php">
-                            My Jobs
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Admin
                         </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="useradmin.php">
-                            User Admin
-                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="vehicle.php">Vehicle Admin</a></li>
+                            <li><a class="dropdown-item" href="useradmin.php">User Admin</a></li>
+                            <li><a class="dropdown-item" href="addcostcode.php">Costcodes</a></li>
+                        </ul>
                     </li>
 
                 <?php } ?>
@@ -111,7 +118,6 @@
                         </a>
 
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="profile.php">Profile</a></li>
                             <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                         </ul>
                     </div>
