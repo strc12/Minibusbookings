@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if($_SESSION["Role"] !== "Manager"){
+    if($_SESSION["Role"] != "Manager"){
         header("Location: index.php");
     }
     header("Location: useradmin.php");
