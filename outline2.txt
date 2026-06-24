@@ -4,3 +4,18 @@ Cost Code ID dropdown -> Complete
 Remove option to not drive self if over staff's possible capacity -> Complete
 Mileage on completion of a job -> Complete
 Management should have access to past jobs
+
+
+current problems
+
+- no driver on my bookings
+- name of driver on job
+- password encrypted on detais page
+- add liscence expiry
+- make cost code edit a dropdown
+- pending cost code
+- booking history, show all for kristian
+- waitlist for jobs, add more than one driver to jobs
+- daily overview on homepage
+- keys done option on list of jobs, key location with dropdown
+- overview per driver
