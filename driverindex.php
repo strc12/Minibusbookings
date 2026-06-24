@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if(!isset($_SESSION["role"])){
+    if(!isset($_SESSION["Role"])){
         header("Location: login.php");
     }
 
@@ -27,9 +27,11 @@
         session_start();
         //print_r($_SESSION);
     ?>
-    <a href="login.php" class="btn btn-primary">Login</a>
-    <a href="vehicle.php" class="btn btn-primary">Vehicle system</a>
-    <a href="bookingrequest.php" class="btn btn-primary">Booking system</a>
+
+    <a href="jobs.php" class="btn btn-primary">Find Jobs</a>
+    <a href="myjobs.php" class="btn btn-primary">My Jobs</a>
+    <a href="???.php" class="btn btn-primary">Job History</a>
+
     
 </body>
 </html>

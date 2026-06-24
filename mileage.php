@@ -1,6 +1,9 @@
 <?php
-
 session_start();
+if(!isset($_SESSION["Role"])){
+    header("Location: login.php");
+}
+
 include_once("connection.php");
 
 $bookingID = $_GET['id'];
@@ -35,7 +38,8 @@ $bookingID = $_GET['id'];
 
                 <div class="card-body">
 
-                    <form action="savemileage.php" method="POST">
+                    <form action="savemileage.php" method="POST"
+                        onsubmit="return confirm('Are you sure you want to end this job?');">
 
                         <input type="hidden"
                                name="bookingid"

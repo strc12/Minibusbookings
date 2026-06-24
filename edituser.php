@@ -1,7 +1,10 @@
 <?php
-session_start();
-print_r($_SESSION);
-    if($_SESSION["role"] != "Manager" ){
+    session_start();
+    if(!isset($_SESSION["Role"])){
+        header("Location: login.php");
+}
+
+    if($_SESSION["Role"] != "Manager" ){
         header("Location: index.php");
     }
 
