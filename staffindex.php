@@ -24,7 +24,9 @@ session_start();
         //print_r($_SESSION);
     ?>
 
-    <a href="bookingrequest.php" class="btn btn-primary">Booking system</a>
+    <a href="bookingrequest.php" class="btn btn-primary">Make Booking</a>
+    <a href="mybookings.php" class="btn btn-primary">My Bookings</a>
+    <a href="???.php" class="btn btn-primary">Booking History</a>
     
 </body>
 </html>
