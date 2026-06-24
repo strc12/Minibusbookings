@@ -1,4 +1,8 @@
 <?php
+    session_start();
+    if($_SESSION["Role"] != "Manager"){
+        header("Location: index.php");
+    }
     header("Location: useradmin.php");
     print_r($_POST);
     include_once("connection.php");

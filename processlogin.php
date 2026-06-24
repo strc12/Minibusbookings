@@ -20,15 +20,20 @@
                 $_SESSION["StaffID"]=$row["StaffID"];
                 $_SESSION["loggedin"] = True;
                 header('location: index.php');
+                print_r($_SESSION);
             }
             else{
                 $_SESSION["error"] = "Invalid password";
                 header('location: login.php');
+                print_r($_SESSION);
+
             }
         }
          else{
              $_SESSION["error"] = "Invalid email";
              header('location: login.php');
+            print_r($_SESSION);
+
          }
     }
 ?>

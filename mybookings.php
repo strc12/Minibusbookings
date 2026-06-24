@@ -1,6 +1,21 @@
 <?php
-
 session_start();
+
+if (!isset($_SESSION["Role"])) {
+    header("Location: login.php");
+    exit();
+}
+
+if ($_SESSION["Role"] == "Driver") {
+    header("Location: index.php");
+    exit();
+}
+
+if ($_SESSION["Role"] != "Staff" && $_SESSION["Role"] != "Manager") {
+    header("Location: login.php");
+    exit();
+}
+
 include_once("connection.php");
 
 if (!isset($_SESSION["StaffID"])) {
@@ -16,6 +31,7 @@ $stmt = $conn->prepare("
     LEFT JOIN TblVehicles v
     ON b.VehicleID = v.VehicleID
     WHERE b.StaffID = :StaffID
+    AND b.Status IN ('Pending','Accepted')
     ORDER BY b.Bookingstartdate, b.StartTime
 ");
 
@@ -33,7 +49,8 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/site.css" rel="stylesheet">
-    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>

@@ -3,7 +3,16 @@
     if(!isset($_SESSION["Role"])){
         header("Location: login.php");
 }
+
+    if($_SESSION["Role"] != "Manager" ){
+        header("Location: index.php");
+    }
+
+  /*   if(!isset($_SESSION["role"])){
+        header("Location: login.php"); */
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
