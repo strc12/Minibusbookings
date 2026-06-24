@@ -40,13 +40,25 @@
                         </a>
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link" href="jobs.php">
+                            Pending Jobs
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="myjobs.php">
+                            My Jobs
+                        </a>
+                    </li>
+
                 <?php } ?>
 
                 <?php if ($_SESSION["Role"] == "Driver") { ?>
 
                     <li class="nav-item">
                         <a class="nav-link" href="jobs.php">
-                            Jobs
+                            Pending Jobs
                         </a>
                     </li>
 
@@ -68,7 +80,7 @@
 
                     <li class="nav-item">
                         <a class="nav-link" href="jobs.php">
-                            Jobs
+                            Pending Jobs
                         </a>
                     </li>
 
