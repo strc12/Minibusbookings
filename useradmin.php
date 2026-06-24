@@ -204,7 +204,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC); */
                             <input type="password" name="Password" value="<?php echo $user['Password']; ?>" class="form-control" required>
                             <i class="bi bi-eye-slash" id="togglePassword"></i>
                         </div> -->
-                        <div class="mb-4">
+                       <!--  <div class="mb-4">
                                 <label for="password" class="form-label">
                                     Password
                                 </label>
@@ -226,7 +226,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC); */
                                     ></i>
 
                                 </div>
-                                </div>
+                                </div> -->
 
                         <div class="mb-3">
                             <label class="form-label">Email</label>
@@ -287,7 +287,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC); */
 
 
 <script>
-const password = document.getElementById('Password');
+/* const password = document.getElementById('Password');
 const toggle = document.getElementById('togglePassword');
 //const icon = toggle.querySelector('i');
 
@@ -299,7 +299,7 @@ if (password.type === "password"){
 }
 toggle.classList.toggle("bi-eye-slash");
 
-toggle.classList.toggle("bi-eye");
+toggle.classList.toggle("bi-eye"); */
 //const isPassword = password.type === 'password';
 
 //password.type = isPassword ? 'text' : 'password';
