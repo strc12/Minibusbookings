@@ -1,5 +1,8 @@
 <?php
 session_start();
+if($_SESSION["Role"] !== "Staff"){
+    header("Location: index.php");
+}
 ?>
 <!-- landing page for the minibus booking system. This will have links to the login page and a description of the system. -->
 
