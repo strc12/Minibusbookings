@@ -8,7 +8,7 @@ include_once("connection.php");
 
 /*
 |--------------------------------------------------------------------------
-| Get jobs
+| Load pending jobs
 |--------------------------------------------------------------------------
 */
 
@@ -59,7 +59,7 @@ if ($_SESSION["Role"] == "Driver") {
 
                 ' ',
 
-                accepted.StartTime
+                SUBTIME(accepted.StartTime,'02:00:00')
 
             )
 
@@ -71,7 +71,7 @@ if ($_SESSION["Role"] == "Driver") {
 
                 ' ',
 
-                b.EndTime
+                ADDTIME(b.EndTime,'02:00:00')
 
             )
 
@@ -83,7 +83,7 @@ if ($_SESSION["Role"] == "Driver") {
 
                 ' ',
 
-                accepted.EndTime
+                ADDTIME(accepted.EndTime,'02:00:00')
 
             )
 
@@ -95,7 +95,7 @@ if ($_SESSION["Role"] == "Driver") {
 
                 ' ',
 
-                b.StartTime
+                SUBTIME(b.StartTime,'02:00:00')
 
             )
 
@@ -120,7 +120,7 @@ if ($_SESSION["Role"] == "Driver") {
 } else {
 
 
-    // Managers see all pending jobs
+    // Managers see everything
 
 
     $stmt = $conn->prepare("
@@ -189,7 +189,7 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 
-    <?php include_once("includes/navbar.php"); ?>
+        <?php include_once("includes/navbar.php"); ?>
 
 
 
@@ -212,7 +212,7 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 
-            <?php foreach ($bookings as $booking): ?>
+                <?php foreach ($bookings as $booking): ?>
 
 
 
@@ -227,7 +227,7 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <div class="card-header card-header-custom">
 
 
-                            <?php echo htmlspecialchars($booking['Destination']); ?>
+                                <?php echo htmlspecialchars($booking['Destination']); ?>
 
 
                         </div>
@@ -244,7 +244,7 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                                 <strong>Start Date:</strong>
 
-                                <?php echo htmlspecialchars($booking['Bookingstartdate']); ?>
+                                    <?php echo htmlspecialchars($booking['Bookingstartdate']); ?>
 
 
                             </p>
@@ -256,7 +256,7 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                                 <strong>End Date:</strong>
 
-                                <?php echo htmlspecialchars($booking['Bookingenddate']); ?>
+                                    <?php echo htmlspecialchars($booking['Bookingenddate']); ?>
 
 
                             </p>
@@ -268,11 +268,11 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                                 <strong>Time:</strong>
 
-                                <?php echo htmlspecialchars($booking['StartTime']); ?>
+                                    <?php echo htmlspecialchars($booking['StartTime']); ?>
 
                                 -
 
-                                <?php echo htmlspecialchars($booking['EndTime']); ?>
+                                    <?php echo htmlspecialchars($booking['EndTime']); ?>
 
 
                             </p>
@@ -284,7 +284,7 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                                 <strong>Capacity Required:</strong>
 
-                                <?php echo htmlspecialchars($booking['Capacityrequired']); ?>
+                                    <?php echo htmlspecialchars($booking['Capacityrequired']); ?>
 
 
                             </p>
@@ -297,71 +297,65 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <strong>Vehicle:</strong>
 
 
-                                <?php
+                                    <?php
 
 
-                                if ($booking['VehicleID'] == NULL) {
+                                    if ($booking['VehicleID'] == NULL) {
 
 
-                                    echo "Not allocated";
+                                        echo "Not allocated";
 
 
-                                } else {
+                                    } else {
 
 
-                                    echo htmlspecialchars(
+                                        echo htmlspecialchars(
 
-                                        $booking['Make'] . " " . $booking['Model']
+                                            $booking['Make'] . " " . $booking['Model']
 
-                                    );
-
-
-                                }
+                                        );
 
 
-                                ?>
+                                    }
 
 
-                            </p>
+                                    ?>
 
-
-
-
-                            <p>
-
-                                <strong>Status:</strong>
-
-
-                                <span class="badge bg-warning text-dark">
-
-                                    <?php echo htmlspecialchars($booking['Status']); ?>
-
-                                </span>
-
-
-                            </p>
+                                </p>
 
 
 
-                        </div>
+
+                                <p>
+                                    <strong>Status:</strong>
+
+
+                                    <span class="badge bg-warning text-dark">
+
+                                        <?php echo htmlspecialchars($booking['Status']); ?>
+
+                                    </span>
+
+                         </p>
+
+
+                            </div>
 
 
 
 
 
-
-
-                        <div class="card-footer text-end">
+                            <div class="card-footer text-end">
 
 
 
 
 
-                            <?php if ($_SESSION["Role"] == "Manager") { ?>
+                                <?php if ($_SESSION["Role"] == "Manager") { ?>
 
 
 
-                                <a href="allocatevehicle.php?id=<?php echo $booking['BookingID']; ?>"
+                                        <a href="allocatevehicle.php?id=<?php echo $booking['BookingID']; ?>"
                                     class="btn btn-primary btn-sm">
 
 
@@ -372,45 +366,44 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 
-                            <?php } ?>
+                                <?php } ?>
 
 
 
 
 
 
-
-                            <?php if ($booking['VehicleID'] != NULL): ?>
-
+                                <?php if ($booking['VehicleID'] != NULL): ?>
 
 
-                                <a href="acceptjob.php?id=<?php echo $booking['BookingID']; ?>" class="btn btn-success btn-sm">
+                                        <a href="acceptjob.php?id=<?php echo $booking['BookingID']; ?>" class="btn btn-success btn-sm">
 
 
-                                    Accept Job
+                                            Accept Job
 
 
-                                </a>
+                                        </a>
 
 
-
-                            <?php else: ?>
-
+                                <?php else: ?>
 
 
-                                <button class="btn btn-secondary btn-sm" disabled>
+                                        <button class="btn btn-secondary btn-sm" disabled>
+
+                                            Vehicle Required
 
 
-                                    Vehicle Required
-
-
-                                </button>
+                                            </button>
 
 
 
-                            <?php endif; ?>
+                                <?php endif; ?>
 
 
+
+
+
+                            </div>
 
 
 
@@ -419,10 +412,6 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
                     </div>
-
-
-
-                </div>
 
 
 
