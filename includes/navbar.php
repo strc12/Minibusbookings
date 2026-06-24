@@ -2,7 +2,7 @@
     <div class="container">
 
         <!-- Logo -->
-        <a class="navbar-brand d-flex align-items-center" href="dashboard.php">
+        <a class="navbar-brand d-flex align-items-center" href="index.php">
             <img src="images/logo.png"
             alt="Logo"
             class="navbar-logo me-2">
@@ -62,7 +62,7 @@
 
                     <li class="nav-item">
                         <a class="nav-link" href="vehicle.php">
-                            Vehicles
+                            Vehicle Admin
                         </a>
                     </li>
 
@@ -80,7 +80,7 @@
 
                     <li class="nav-item">
                         <a class="nav-link" href="useradmin.php">
-                            Admin
+                            User Admin
                         </a>
                     </li>
 

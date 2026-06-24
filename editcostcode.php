@@ -1,5 +1,8 @@
 <?php
     session_start();
+    if($_SESSION["role"] != "Manager"){
+        header("Location: index.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

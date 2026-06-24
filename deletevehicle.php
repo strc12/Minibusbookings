@@ -1,5 +1,8 @@
 <?php
-
+session_start();
+if($_SESSION["role"] != "Manager"){
+    header("Location: index.php");
+}
 require_once 'connection.php';
 
 if (isset($_GET['id'])) {

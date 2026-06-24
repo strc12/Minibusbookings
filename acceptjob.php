@@ -1,6 +1,8 @@
 <?php
-
 session_start();
+if (!isset($_SESSION["Licensetodrive"])){
+    header("Location: login.php");
+}
 include_once("connection.php");
 
 if (isset($_GET['id']) && isset($_SESSION["StaffID"])) {
@@ -21,7 +23,7 @@ if (isset($_GET['id']) && isset($_SESSION["StaffID"])) {
     $stmt->execute();
 }
 
-header("Location: drivers.php");
+header("Location: myjobs.php");
 exit();
 
 ?>
