@@ -10,8 +10,8 @@ current problems
 
 - no driver on my bookings
 - name of driver on job
-- password encrypted on detais page
-- add liscence expiry
+- password encrypted on details page
+- add licence expiry
 - make cost code edit a dropdown
 - pending cost code
 - booking history, show all for kristian
@@ -19,3 +19,5 @@ current problems
 - daily overview on homepage
 - keys done option on list of jobs, key location with dropdown
 - overview per driver
+
+
