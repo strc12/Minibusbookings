@@ -46,13 +46,25 @@
                         </a>
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link" href="jobs.php">
+                            Pending Jobs
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="myjobs.php">
+                            My Jobs
+                        </a>
+                    </li>
+
                 <?php } ?>
 
                 <?php if ($_SESSION["Role"] == "Driver") { ?>
 
                     <li class="nav-item">
                         <a class="nav-link" href="jobs.php">
-                            Jobs
+                            Pending Jobs
                         </a>
                     </li>
 
@@ -79,20 +91,20 @@
                     </li>
 
                     <li class="nav-item">
+                        <a class="nav-link" href="useradmin.php">
+                            User Admin
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
                         <a class="nav-link" href="jobs.php">
-                            Jobs
+                            Pending Jobs
                         </a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link" href="myjobs.php">
                             My Jobs
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="useradmin.php">
-                            User Admin
                         </a>
                     </li>
     
@@ -129,7 +141,6 @@
                         </a>
 
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="profile.php">Profile</a></li>
                             <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                         </ul>
                     </div>

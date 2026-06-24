@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if($_SESSION["role"] != "Manager"){
+    if($_SESSION["Role"] != "Manager"){
         header("Location: index.php");
     }
 ?>
@@ -83,7 +83,7 @@
                                 Update Cost Code
                             </button>
 
-                            <a href="add_or_find_costcode.php" class="btn btn-outline-primary">
+                            <a href="addcostcode.php" class="btn btn-outline-primary">
                                 Back to Add Cost Codes
                             </a>
 
