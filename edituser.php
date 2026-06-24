@@ -1,3 +1,15 @@
+<?php
+session_start();
+print_r($_SESSION);
+    if($_SESSION["role"] != "Manager" ){
+        header("Location: index.php");
+    }
+
+  /*   if(!isset($_SESSION["role"])){
+        header("Location: login.php"); */
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
