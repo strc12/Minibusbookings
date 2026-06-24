@@ -6,6 +6,7 @@
     if($_SESSION["Role"] != "Manager" or $_SESSION["Role"] != "Staff"){
         header("Location: index.php");
     }
+    #
 ?>
 
 <head>
