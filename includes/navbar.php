@@ -29,14 +29,20 @@
                 <?php if ($_SESSION["Role"] == "Staff") { ?>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="bookingrequest.php">
-                            Booking Request
+                        <a class="nav-link" href="mybookings.php">
+                            My Bookings
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="mybookings.php">
-                            My Bookings
+                        <a class="nav-link" href="bookingrequest.php">
+                            Make Booking
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="???.php">
+                            Booking History
                         </a>
                     </li>
 
@@ -59,6 +65,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="jobs.php">
                             Pending Jobs
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="jobs.php">
+                            Job History
                         </a>
                     </li>
 
@@ -93,6 +105,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="useradmin.php">
                             User Admin
+                        </a>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a class="nav-link" href="???.php">
+                            Jobs History
                         </a>
                     </li>
 
