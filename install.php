@@ -2,7 +2,7 @@
 // note this does not use connection.php as connection made at the time of creation
 $servername = 'localhost';
 $username = 'root';
-$password = 'password';
+$password = 'root';
 //note no Database mentioned here!!
 
 try {
@@ -27,9 +27,9 @@ try {
     )"
     );
     $stmt1->execute();
-    $hashedpassword = password_hash("Password",PASSWORD_DEFAULT);
+    $hashedpassword = password_hash("Password", PASSWORD_DEFAULT);
     $stmt1->closeCursor();
-   
+
     $stmt5 = $conn->prepare("INSERT INTO TblStaff(FirstName,Surname,Role,Password,Email,Phone,Initials,Licencetodrive)VALUES
     ('John','Doe','Driver',:Password,'john.doe@example.com','1234567890','JD','Coach'),
     ('Kristian','Fewster','Manager',:Password,'jane.smith@example.com','0987654321','JS','9 seater'),
@@ -37,7 +37,7 @@ try {
     ('David','Williams','Driver',:Password,'david.williams@example.com','1111111111','DW','Coach'),
     ('Rob','Cunniffe','Staff',:Password,'ric@oundleschool.org.uk','1111111111','MB','17 minibus')
     ");
-    $stmt5->bindParam(":Password",$hashedpassword);
+    $stmt5->bindParam(":Password", $hashedpassword);
     $stmt5->execute();
     $stmt5->closeCursor();
 
