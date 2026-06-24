@@ -8,7 +8,6 @@
 ?>
 <!-- landing page for the minibus booking system. This will have links to the login page and a description of the system. -->
 
->>>>>>> a42af0ad3b733c77c18c967105678e3291a2d3f9
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -270,7 +269,5 @@
         //print_r($_SESSION);
     ?>
 
-    
->>>>>>> a42af0ad3b733c77c18c967105678e3291a2d3f9
 </body>
 </html>
