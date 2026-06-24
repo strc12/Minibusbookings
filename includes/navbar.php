@@ -39,6 +39,8 @@
                         </ul>
                     </li>
 
+                    
+
                 <?php } ?>
 
                 <?php if ($_SESSION["Role"] == "Driver") { ?>
@@ -128,7 +130,21 @@
                         </a>
 
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+
+                            <li>
+                                <a class="dropdown-item" href="useradmin.php">
+                                    Edit Profile
+                                </a>
+                            </li>
+
+                            <li><hr class="dropdown-divider"></li>
+
+                            <li>
+                                <a class="dropdown-item text-danger" href="logout.php">
+                                    Logout
+                                </a>
+                            </li>
+
                         </ul>
                     </div>
                 <?php
