@@ -1,8 +1,12 @@
 <?php
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 session_start();
 if (!isset($_SESSION["Role"])) {
     header("Location: login.php");
+    exit;
 }
 
 include_once("connection.php");
@@ -94,6 +98,13 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 } else {
                                     echo htmlspecialchars($job["Make"] . " " . $job["Model"] . " - " . $job["Registration"]);
                                 }
+                                ?>
+                            </p>
+
+                            <p>
+                                <strong>Driver:</strong>
+                                <?php
+                                echo htmlspecialchars($job["FirstName"] . " " . $job["Surname"]);
                                 ?>
                             </p>
 
