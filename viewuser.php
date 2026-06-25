@@ -102,6 +102,11 @@ include 'includes/navbar.php';
                                     <td><?= htmlspecialchars($staff['Licencetodrive'] ?? '') ?></td>
                                 </tr>
 
+                                <tr>
+                                    <th>Licence Expiry Date</th>
+                                    <td><?= htmlspecialchars($staff['LicenceExpires'] ?? '') ?></td>
+                                </tr>
+
                             </tbody>
 
                         </table>
