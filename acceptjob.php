@@ -85,7 +85,8 @@ if (isset($_GET['id']) && isset($_SESSION["StaffID"])) {
     */
 
 
-print_r($_SESSION);
+print_r($driverID);
+echo($bookingID);
     $stmt = $conn->prepare("
         
         INSERT INTO tbldriverjobs (BookingID, DriverID, AllocatedDriver)VALUES(:BookingID,:DriverID,NULL)
@@ -109,6 +110,7 @@ print_r($_SESSION);
 }
 
 
+print_r($_SESSION);
 
 header("Location: myjobs.php");
 
