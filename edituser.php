@@ -122,6 +122,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
                         </div>
 
+
                         <div class="mb-4">
                             <label class="form-label">Licence to drive</label>
                             <select id="Licencetodrive" name="Licencetodrive">
@@ -131,6 +132,12 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                                 <option value="Car">Car</option>
                                 <option value="None">None</option>
                             </select>                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Licence expiry date</label>
+                            <input type="date" name="LicenceExpires" value="<?php echo $user['LicenceExpires']; ?>" class="form-control" required>
+
+                        </div>
 
                         <div class="text-end">
                             <a href="useradmin.php" class="btn btn-secondary">

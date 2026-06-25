@@ -25,9 +25,9 @@
     } */
 
     $stmt1= $conn->prepare("INSERT INTO TblStaff
-    (StaffID, FirstName, Surname, Role, Password, Email, Phone, Initials, Licencetodrive)
+    (StaffID, FirstName, Surname, Role, Password, Email, Phone, Initials, Licencetodrive, LicenceExpires)
     VALUES
-    (NULL,:FirstName, :Surname, :Role, :Password, :Email, :Phone, :Initials, :Licencetodrive)
+    (NULL,:FirstName, :Surname, :Role, :Password, :Email, :Phone, :Initials, :Licencetodrive, :LicenceExpires)
     ");
     $stmt1->bindParam(":FirstName",$_POST["FirstName"]);
     $stmt1->bindParam(":Surname",$_POST["Surname"]);
@@ -37,5 +37,6 @@
     $stmt1->bindParam(":Phone",$_POST["Phone"]);
     $stmt1->bindParam(":Initials",$_POST["Initials"]);
     $stmt1->bindParam(":Licencetodrive",$_POST["Licencetodrive"]);
+    $stmt1->bindParam(":LicenceExpires",$_POST["LicenceExpires"]);
     $stmt1->execute();
 ?>

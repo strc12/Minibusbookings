@@ -126,7 +126,7 @@ session_start();
                             </button>
 
                             <button type="submit" formaction="deleteuser.php" class="btn btn-danger"
-                            onclick="return confirm('Are you sure you want to delete this vehicle?');">
+                            onclick="return confirm('Are you sure you want to delete this user?');">
                                 Delete
                             </button>
 
@@ -303,7 +303,7 @@ toggle.classList.toggle("bi-eye"); */
 
 //icon.classList.toggle('bi-eye');
 //icon.classList.toggle('bi-eye-slash');
-});
+//});
 </script>
 
 
