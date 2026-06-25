@@ -23,11 +23,13 @@ if (
             VehicleID = :VehicleID,
             Keylocation = :Keylocation
         WHERE BookingID = :BookingID
+
     ");
 
     $stmt->bindParam(":VehicleID", $vehicleID);
     $stmt->bindParam(":Keylocation", $keylocation);
     $stmt->bindParam(":BookingID", $bookingID);
+    $stmt->bindParam(":Keylocation", $keylocation );
 
     $stmt->execute();
 }
