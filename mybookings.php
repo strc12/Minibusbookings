@@ -50,6 +50,7 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/site.css" rel="stylesheet">
 
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
@@ -98,6 +99,17 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             }
                             ?>
                         </p>
+                        
+                        <p>
+                            <strong>Driver:</strong>
+                            <?php 
+                            $stmt = $conn->prepare("SELECT * FROM tblstaff WHERE StaffID = :StaffID");
+                            $stmt->bindParam(":StaffID", $booking['StaffID']);
+                            $stmt->execute();
+                            $FirstName = $stmt->fetch(PDO::FETCH_ASSOC);
+                            echo htmlspecialchars($FirstName['FirstName'] . " " . $FirstName['Surname']);
+                            ?>
+                        </p>
 
                     </div>
 
@@ -120,5 +132,4 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </div>
 
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </html>
