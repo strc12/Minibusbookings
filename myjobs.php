@@ -4,8 +4,12 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 session_start();
+<<<<<<< HEAD
 
 if (!isset($_SESSION["Role"]) || !isset($_SESSION["StaffID"])) {
+=======
+if (!isset($_SESSION["Role"])) {
+>>>>>>> af1eb7269af74e04bdc6714d6851084958ad24ee
     header("Location: login.php");
     exit;
 }
@@ -14,6 +18,7 @@ include_once("connection.php");
 
 $driverID = $_SESSION["StaffID"];
 
+<<<<<<< HEAD
     $stmt = $conn->prepare("
         SELECT
             b.*,
@@ -34,10 +39,36 @@ $driverID = $_SESSION["StaffID"];
 
     $stmt->bindParam(":DriverID", $driverID);
     $stmt->execute();
+=======
+$stmt = $conn->prepare("
+    SELECT 
+        b.*, 
+        v.Make, 
+        v.Model, 
+        v.Registration
+    FROM TblDriverJobs dj
+
+    INNER JOIN TblBookings b
+        ON dj.BookingID = b.BookingID
+
+    LEFT JOIN TblVehicles v
+        ON b.VehicleID = v.VehicleID
+
+    WHERE dj.DriverID = :DriverID
+
+    ORDER BY b.Bookingstartdate, b.StartTime
+");
+>>>>>>> af1eb7269af74e04bdc6714d6851084958ad24ee
 
 $stmt->bindParam(":DriverID", $driverID);
 $stmt->execute();
 
+<<<<<<< HEAD
+=======
+$bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$stmt->bindParam(":DriverID", $driverID);
+$stmt->execute();
+>>>>>>> af1eb7269af74e04bdc6714d6851084958ad24ee
 $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
