@@ -68,10 +68,6 @@
     
 
     //  echo "</pre>";
-    
-    // Note: Able to book before current time
-    
-
 
 
     // GET VEHICLE CAPACITY
