@@ -17,5 +17,11 @@
 ?>
 <script type="text/javascript">
     alert("Password changed successfully");
+    <?php
+    session_start();
+    session_destroy();
+    header("Location: index.php");  
+    exit();
+    ?>
     location="login.php";
 </script>

@@ -253,7 +253,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC); */
                             </select>                        </div>
 
                         <div class="text-end">
-                            <a href="useradmin.php" class="btn btn-secondary">
+                            <a href="index.php" class="btn btn-secondary">
                                 Cancel
                             </a>
 
