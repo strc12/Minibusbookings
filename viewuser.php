@@ -15,6 +15,11 @@ try {
         $stmt->execute();
 
         $staff = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // check if staff record was found
+        /* echo "<pre>";
+        print_r($staff);
+        echo "</pre>"; */
     }
 
 } catch (PDOException $e) {
