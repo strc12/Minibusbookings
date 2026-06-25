@@ -21,6 +21,7 @@ SELECT
     b.*, 
     v.Make, 
     v.Model,
+    v.Keylocation,
 
     dj.DriverID AS AppliedDriverID,
     dj.AllocatedDriver,
@@ -269,6 +270,12 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                                     ?>
 
+                                </p>
+
+                                <p>
+                                    <strong>Key location:</strong>
+
+                                    <?php echo htmlspecialchars($booking['Keylocation']);?>
                                 </p>
 
 
