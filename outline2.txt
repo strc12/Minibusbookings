@@ -24,3 +24,4 @@ current problems
 - if someone makes a booking and chooses to drive themself, kristian cannot assign a vehicle
 - acceptjob.php page does not work (came from job.php) -evan (fixed)
 - bookingrequest.php allows you to book at a time before current time -evan (fixed)
+- update savevehicleallocation for the new tbl

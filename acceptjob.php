@@ -7,11 +7,8 @@ if (!isset($_SESSION["Licensetodrive"])) {
 
 }
 include_once("connection.php");
-<<<<<<< HEAD
-=======
 
 
->>>>>>> cfec4074535430f7add5beb3ba3318102d432ff8
 if (isset($_GET['id']) && isset($_SESSION["StaffID"])) {
 
 
@@ -55,15 +52,11 @@ if (isset($_GET['id']) && isset($_SESSION["StaffID"])) {
     | Accept job
     |--------------------------------------------------------------------------
     */
-<<<<<<< HEAD
-    $stmt = $conn->prepare("        
-=======
 
 
-print_r($_SESSION);
+    print_r($_SESSION);
     $stmt = $conn->prepare("
         
->>>>>>> cfec4074535430f7add5beb3ba3318102d432ff8
         INSERT INTO tbldriverjobs (BookingID, DriverID, AllocatedDriver)VALUES(:BookingID,:DriverID,NULL)
     ");
     $stmt->execute([
