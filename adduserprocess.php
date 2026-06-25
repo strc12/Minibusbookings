@@ -29,6 +29,7 @@
     VALUES
     (NULL,:FirstName, :Surname, :Role, :Password, :Email, :Phone, :Initials, :Licencetodrive, :LicenceExpires)
     ");
+
     $stmt1->bindParam(":FirstName",$_POST["FirstName"]);
     $stmt1->bindParam(":Surname",$_POST["Surname"]);
     $stmt1->bindParam(":Role",$_POST["Role"]);

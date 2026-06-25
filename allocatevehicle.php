@@ -404,7 +404,26 @@ $vehicles = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
 
 
+                                <div class="mb-3">
 
+                                    <label class="form-label">
+                                        Key Location
+                                    </label>
+
+                                <select name="keylocation" class="form-select" required>
+
+                                    <option value="">
+                                        -- Select Key Location --
+                                    </option>
+
+                                    <option value="Staff Pigeon Hole">Staff Pigeon Hole</option>
+                                    <option value="Porter Pigeon Hole">Porter Pigeon Hole</option>
+                                    <option value="Armoury">Armoury</option>
+                                    <option value="TBD">TBD</option>
+
+    </select>
+
+</div>
 
 
                                 <div class="text-end">
