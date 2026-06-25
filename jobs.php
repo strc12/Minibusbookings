@@ -4,6 +4,7 @@ session_start();
 
 include_once("connection.php");
 #print_r($_SESSION);
+#echo "<br>";
 
 
 /*
@@ -16,41 +17,61 @@ include_once("connection.php");
 if ($_SESSION["Role"] == "Driver") {
     $driverID = $_SESSION["StaffID"];
     $stmt = $conn->prepare("
-        SELECT 
+SELECT 
     b.*, 
     v.Make, 
-    v.Model
+    v.Model,
+
+    dj.DriverID AS AppliedDriverID,
+    dj.AllocatedDriver,
+
+    CASE 
+        WHEN dj.DriverID IS NOT NULL THEN 1 
+        ELSE 0 
+    END AS IsApplied
+
 FROM TblBookings b
+
 LEFT JOIN TblVehicles v
     ON b.VehicleID = v.VehicleID
+
+LEFT JOIN tbldriverjobs dj
+    ON dj.BookingID = b.BookingID
+    AND dj.DriverID = :DriverID
+
 WHERE b.Status = 'Pending'
+
+-- keep: exclude jobs that would clash with already accepted allocated work
 AND NOT EXISTS (
     SELECT 1
-    FROM tbldriverjobs dj
+    FROM tbldriverjobs dj2
     INNER JOIN TblBookings accepted
-        ON accepted.BookingID = dj.BookingID
-    WHERE dj.DriverID = :DriverID
-        AND dj.AllocatedDriver = 1
+        ON accepted.BookingID = dj2.BookingID
+    WHERE dj2.DriverID = :DriverID
+        AND dj2.AllocatedDriver = 1
         AND accepted.Status = 'Accepted'
         AND CONCAT(
             accepted.Bookingstartdate,
             ' ',
-            SUBTIME(accepted.StartTime, '02:00:00')
-        ) < CONCAT(
+            SUBTIME(accepted.StartTime,'02:00:00')
+        ) <
+        CONCAT(
             b.Bookingenddate,
             ' ',
-            ADDTIME(b.EndTime, '02:00:00')
+            ADDTIME(b.EndTime,'02:00:00')
         )
         AND CONCAT(
             accepted.Bookingenddate,
             ' ',
-            ADDTIME(accepted.EndTime, '02:00:00')
-        ) > CONCAT(
+            ADDTIME(accepted.EndTime,'02:00:00')
+        ) >
+        CONCAT(
             b.Bookingstartdate,
             ' ',
-            SUBTIME(b.StartTime, '02:00:00')
+            SUBTIME(b.StartTime,'02:00:00')
         )
 )
+
 ORDER BY b.Bookingstartdate, b.StartTime
     ");
 
@@ -115,7 +136,8 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 
-        <?php include_once("includes/navbar.php"); ?>
+        <?php include_once("includes/navbar.php"); 
+        #print_r($bookings);?>
 
 
 
@@ -302,10 +324,17 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <?php if ($booking['VehicleID'] != NULL): ?>
 
 
-                                        <a href="acceptjob.php?id=<?php echo $booking['BookingID']; ?>" class="btn btn-success btn-sm">
+                                        
 
 
-                                            Apply for Job
+                                           
+                                            <?php if ($booking['IsApplied'] == 1){ ?>
+                                            <a class="btn btn-danger btn-sm">
+                                                Already Applied   
+                                            <?php }else{?>
+                                            <a href="acceptjob.php?id=<?php echo $booking['BookingID']; ?>" class="btn btn-success btn-sm">
+                                                Apply Now 
+                                            <?php } ?>
 
 
                                         </a>
