@@ -19,5 +19,6 @@ current problems
 - daily overview on homepage
 - keys done option on list of jobs, key location with dropdown
 - overview per driver
+- Kristian front page with "what is happening today/tomorrow" + anything else appropriate
 
 
