@@ -11,6 +11,7 @@ if (!isset($_SESSION["Licensetodrive"])) {
 }
 
 
+
 include_once("connection.php");
 
 
@@ -23,7 +24,7 @@ if (isset($_GET['id']) && isset($_SESSION["StaffID"])) {
     $driverID = $_SESSION["StaffID"];
 
 
-
+    
     /*
     |--------------------------------------------------------------------------
     | Check vehicle has been allocated

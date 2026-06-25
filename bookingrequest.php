@@ -9,6 +9,8 @@
     
 ?>
 
+ 
+
 <head>
 
     <title>Booking Request</title>
@@ -51,7 +53,7 @@
 
 
 
-    // DEBUG CHECK
+    // DEBUG CHECK 
     
     // echo "<pre>";
     
@@ -66,10 +68,6 @@
     
 
     //  echo "</pre>";
-    
-
-
-
 
 
     // GET VEHICLE CAPACITY
@@ -177,8 +175,12 @@
                                 </label>
 
 
-                                <input type="date" name="bookingstartdate" class="form-control" required>
+                                <input type="date"  id="datestart" name="bookingstartdate" class="form-control" required>
 
+                                    <script>
+                                    const today = new Date().toISOString().split('T')[0];
+                                    
+                                    </script>
 
                             </div>
 
@@ -193,8 +195,8 @@
                                 </label>
 
 
-                                <input type="date" name="bookingenddate" class="form-control" required>
-
+                                <input type="date"  id="dateend" name="bookingenddate" class="form-control" required>
+                                
 
                             </div>
 
@@ -242,7 +244,7 @@
 
 
                                 <input type="number" name="capacityrequired" id="capacityrequired" class="form-control"
-                                    min="1" required>
+                                    min="1" max="17"required>
 
 
                             </div>
@@ -276,28 +278,20 @@
 
 
 
-                                <select name="costcodeid" class="form-select" required>
+                                <?php
+                                    $defaultCostcode = "TBD"; // value from DB
+                                    ?>
 
-
-
-                                    <?php foreach ($rows as $row): ?>
-
-
-                                        <option value="<?php echo $row['Costcode']; ?>">
-
-
-                                            <?php echo $row['Description'] . " - " . $row['Costcode']; ?>
-
-
-                                        </option>
-
-
-
-                                    <?php endforeach; ?>
-
-
-
-                                </select>
+                                    <select name="costcode" class="form-select" required>
+                                        <?php foreach ($rows as $row): ?>
+                                            <option
+                                                value="<?php echo $row['Costcode']; ?>"
+                                                <?php echo ($row['Costcode'] == $defaultCostcode) ? 'selected' : ''; ?>
+                                            >
+                                                <?php echo $row['Description'] . ' - ' . $row['Costcode']; ?>
+                                            </option>
+                                        <?php endforeach; ?>
+                                    </select>
 
 
                             </div>
@@ -411,6 +405,13 @@
 
 
     </div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('datestart').setAttribute('min', today);
+        document.getElementById('dateend').setAttribute('min', today);
+    });
+                                    </script>
 
 </body>
 

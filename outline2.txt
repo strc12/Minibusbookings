@@ -10,16 +10,17 @@ current problems
 
 - no driver on my  - Jack
 - name of driver on job - Jack - Isaac - Multiple drivers
-- password encrypted on details page - Lila done  Alex Change password
+- password encrypted on details page - Lila done  Alex Change password - completed
 - add licence expiry Add to user part... - Liam Gabs
-- make cost code edit a dropdown - Isaac -> Complete
-- pending cost code- Liam Gabs
+- make cost code edit a dropdown - Isaac
+- pending cost code- Liam Gabs - Mr C - Completed
 - booking history, show all for kristian - Jonny
-- waitlist for jobs, add more than one driver to jobs
+- waitlist for jobs, add more than one driver to  - Isaac
 - daily overview on homepage
 - keys done option on list of jobs, key location with dropdown
-- overview  Front page per driver - Lila Alex
+- overview  Front page per driver - Lila Alex - Completed
 - Kristian front page with "what is happening today/tomorrow" + anything else appropriate - Jonny
 -reports for Kristian - Driver and costcode - Jonny - Isaac
 - if someone makes a booking and chooses to drive themself, kristian cannot assign a vehicle
-
+- acceptjob.php page does not work (came from job.php) -evan (fixed)
+- bookingrequest.php allows you to book at a time before current time -evan (fixed)
