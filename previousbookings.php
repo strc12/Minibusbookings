@@ -38,7 +38,7 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <div class="container mt-5">
 
-    <h2 class="section-title mb-4">Previous Bookings</h2>
+    <h2 class="section-title mb-4">My Previous Bookings</h2>
 
     <div class="row">
 

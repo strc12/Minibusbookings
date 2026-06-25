@@ -67,7 +67,7 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="bookingrequest.php">Make Booking</a></li>
                             <li><a class="dropdown-item" href="mybookings.php">My Bookings</a></li>
-                            <li><a class="dropdown-item" href="previousbookings.php">Bookings History</a></li>
+                            <li><a class="dropdown-item" href="previousbookings.php">My Bookings History</a></li>
                         </ul>
                     </li>
 
@@ -78,7 +78,7 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="jobs.php">Pending Jobs</a></li>
                             <li><a class="dropdown-item" href="myjobs.php">My Jobs</a></li>
-                            <li><a class="dropdown-item" href="previousjobs.php">Job History</a></li>
+                            <li><a class="dropdown-item" href="previousjobs.php">My Job History</a></li>
                         </ul>
                     </li>
 
