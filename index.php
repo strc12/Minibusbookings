@@ -24,6 +24,10 @@
     include 'includes/navbar.php';
     include_once("connection.php");
 
+    if(!isset($_SESSION["Role"])){
+            header("Location: loggedoutindex.php");
+    }
+
 ?>
 
 <!-- Hero Section -->

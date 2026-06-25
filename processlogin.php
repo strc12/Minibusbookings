@@ -14,25 +14,24 @@
              echo("valid email");
             if (password_verify($attempt, $hashed)) {
                 echo("valid password");
+                $_SESSION["Email"] = $_POST["email"];
                 $_SESSION["Role"]=$row["Role"];
                 $_SESSION["Licensetodrive"]=$row["Licencetodrive"];
                 $_SESSION["firstname"]=$row["FirstName"];
                 $_SESSION["StaffID"]=$row["StaffID"];
                 $_SESSION["loggedin"] = True;
                 header('location: index.php');
-                print_r($_SESSION);
             }
             else{
+                print_r($_POST["password"]);
                 $_SESSION["error"] = "Invalid password";
                 header('location: login.php');
-                print_r($_SESSION);
 
             }
         }
          else{
              $_SESSION["error"] = "Invalid email";
              header('location: login.php');
-            print_r($_SESSION);
 
          }
     }

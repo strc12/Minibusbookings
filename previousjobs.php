@@ -46,7 +46,7 @@ $jobs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <div class="container mt-5">
 
-    <h2 class="section-title mb-4">Previous Jobs</h2>
+    <h2 class="section-title mb-4">My Previous Jobs</h2>
 
     <div class="row">
 
