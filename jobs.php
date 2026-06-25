@@ -21,7 +21,6 @@ SELECT
     b.*, 
     v.Make, 
     v.Model,
-    v.Keylocation,
 
     dj.DriverID AS AppliedDriverID,
     dj.AllocatedDriver,
@@ -72,19 +71,11 @@ AND NOT EXISTS (
             SUBTIME(b.StartTime,'02:00:00')
         )
 )
-
-ORDER BY b.Bookingstartdate, b.StartTime
+ORDER BY b.Bookingstartdate, b.StartTime;
     ");
-
-
-
     $stmt->execute([
-
         ":DriverID" => $driverID
-
     ]);
-
-
 
 } else {
 
