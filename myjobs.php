@@ -18,17 +18,24 @@ SELECT
     b.*, 
     v.Make, 
     v.Model, 
-    .Registration, 
+    v.Registration, 
     s.FirstName, 
-    s.LastName 
+    s.Surname 
 FROM TblBookings b 
+
+INNER JOIN tbldriverjobs dj
+    ON b.BookingID = dj.BookingID
+
 LEFT JOIN TblVehicles v 
     ON b.VehicleID = v.VehicleID 
+
 LEFT JOIN TblStaff s 
-    ON b.DriverID = s.StaffID 
-WHERE b.DriverID = :DriverID 
-AND b.Status = 'Accepted' 
-ORDER BY b.Bookingstartdate, b.StartTime ");
+    ON dj.DriverID = s.StaffID 
+
+WHERE dj.DriverID = :DriverID
+
+ORDER BY b.Bookingstartdate, b.StartTime
+");
 
 $stmt->bindParam(":DriverID", $driverID);
 $stmt->execute();
