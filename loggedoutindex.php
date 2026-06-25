@@ -25,10 +25,11 @@ session_start();
 <section class="hero-section text-center">
     <div class="container">
 
-        <h1>Oundle School minibus</h1>
+        <h1>Oundle School Transport Service
+        </h1>
 
         <p class="lead">
-            Placeholder
+            For Both Bookings and Job Application
         </p>
 
     </div>
@@ -60,33 +61,31 @@ session_start();
 
         <div class="carousel-inner rounded-4 shadow-lg overflow-hidden">
 
-            <div class="carousel-item active">
+        <div class="carousel-item">
                 <img src="images/AIMinibus.png"
-                     class="d-block w-100"
-                     alt="AI Minibus"
-                     style="max-height: 550px; object-fit: cover;">
-
-                <div class="carousel-caption d-none d-md-block">
-                    <div class="bg-dark bg-opacity-50 rounded p-2">
-                        <p>Placeholder</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="carousel-item">
-                <img src="images/AIMinibus2.png"
                      class="d-block w-100"
                      alt="AI Minibus 2"
                      style="max-height: 550px; object-fit: cover;">
 
                 <div class="carousel-caption d-none d-md-block">
                     <div class="bg-dark bg-opacity-50 rounded p-2">
-                        <p>Placeholder</p>
+                        <p>Make Bookings</p>
                     </div>
                 </div>
             </div>
+        
+        <div class="carousel-item active">
+                <img src="images/AIMinibus2.png"
+                     class="d-block w-100"
+                     alt="AI Minibus"
+                     style="max-height: 550px; object-fit: cover;">
 
-
+                <div class="carousel-caption d-none d-md-block">
+                    <div class="bg-dark bg-opacity-50 rounded p-2">
+                        <p>Take Jobs</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <button class="carousel-control-prev"
@@ -122,7 +121,7 @@ session_start();
 
             <div class="card-body">
                 <p class="mb-0">
-                    Placeholder
+                    This website has been created by the lower sixth form of Oundle School for their Enrichment Project.  It is intended to simplify and streamling the process of booking and taking jobs, keeping both convenience and transparency in mind.
                 </p>
             </div>
         </div>
@@ -138,12 +137,12 @@ session_start();
 
         <div class="row g-4">
 
-            <div class="col-md-4">
+            <div class="col-md-9 mx-auto">
                 <div class="card shadow-sm h-100 text-center">
                     <div class="card-body">
-                        <h5 class="card-title">Name</h5>
+                        <h5 class="card-title">Rob Cuniffe</h5>
                         <p class="text-muted mb-0">
-                            Role
+                            Project Manager and Lead Designer
                         </p>
                     </div>
                 </div>
@@ -218,6 +217,17 @@ session_start();
             <div class="col-md-4">
                 <div class="card shadow-sm h-100 text-center">
                     <div class="card-body">
+                        <h5 class="card-title">Evan Gao</h5>
+                        <p class="text-muted mb-0">
+                            Lead Chess Player
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100 text-center">
+                    <div class="card-body">
                         <h5 class="card-title">Name</h5>
                         <p class="text-muted mb-0">
                             Role
@@ -228,6 +238,17 @@ session_start();
 
             <div class="col-md-4">
                 <div class="card shadow-sm h-100 text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Name</h5>
+                        <p class="text-muted mb-0">
+                            Role
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mx-auto">
+                <div class="card shadow-sm h-100 text-center justify-content-center">
                     <div class="card-body">
                         <h5 class="card-title">Name</h5>
                         <p class="text-muted mb-0">
