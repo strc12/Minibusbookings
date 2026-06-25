@@ -4,168 +4,73 @@ session_start();
 if ($_SESSION["Role"] != "Manager") {
     header("Location: index.php");
 }
-
-
 include_once("connection.php");
-
-
-
 if (!isset($_GET['id'])) {
-
     header("Location: jobs.php");
     exit();
-
 }
-
-
-
 $bookingID = $_GET['id'];
-
-
-
 /*
 |--------------------------------------------------------------------------
 | Get booking details
 |--------------------------------------------------------------------------
 */
-
-
 $stmt = $conn->prepare("
-
     SELECT *
-
     FROM TblBookings
-
     WHERE BookingID = :BookingID
-
 ");
-
-
-
 $stmt->execute([
-
     ":BookingID" => $bookingID
-
 ]);
-
-
-
 $booking = $stmt->fetch(PDO::FETCH_ASSOC);
-
-
-
 if (!$booking) {
-
     header("Location: jobs.php");
     exit();
-
 }
-
-
-
 /*
 |--------------------------------------------------------------------------
 | Find available vehicles
 |--------------------------------------------------------------------------
 */
-
-
 $stmt2 = $conn->prepare("
-
     SELECT *
-
     FROM TblVehicles v
-
-
-
     WHERE v.Status = 'Available'
-
-
     AND v.Capacity >= :CapacityRequired
-
-
-
     AND v.VehicleID NOT IN (
-
-
         SELECT b.VehicleID
-
         FROM TblBookings b
-
-
-
         WHERE b.VehicleID IS NOT NULL
-
-
-
         AND b.BookingID <> :BookingID
-
-
-
         AND b.Status IN ('Pending','Accepted')
-
-
-
         AND CONCAT(
-
             b.Bookingstartdate,
-
             ' ',
-
             b.StartTime
-
         )
-
         <
-
         CONCAT(
-
             :BookingEndDate,
-
             ' ',
-
             ADDTIME(:EndTime,'02:00:00')
-
         )
-
-
-
         AND CONCAT(
-
             b.Bookingenddate,
-
             ' ',
-
-            b.EndTime
-
+         b.EndTime
         )
-
         >
-
         CONCAT(
-
             :BookingStartDate,
-
             ' ',
-
             SUBTIME(:StartTime,'02:00:00')
-
         )
-
-
     )
-
-
-
     ORDER BY v.Capacity ASC
-
 ");
 
-
-
 $stmt2->execute([
-
-
     ":CapacityRequired" => $booking['Capacityrequired'],
 
     ":BookingID" => $booking['BookingID'],
@@ -178,48 +83,26 @@ $stmt2->execute([
 
     ":EndTime" => $booking['EndTime']
 
-
 ]);
-
-
 
 $vehicles = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
-
-
 ?>
-
 
 
 <!DOCTYPE html>
 
 <html lang="en">
 
-
 <head>
-
-
     <title>Allocate Vehicle</title>
-
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <link href="css/site.css" rel="stylesheet">
-
-
 </head>
 
-
-
 <body>
-
-
-
     <?php include_once("includes/navbar.php"); ?>
-
-
-
-
     <div class="container mt-5">
 
 
@@ -424,7 +307,6 @@ $vehicles = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
 </div>
 
-
                                 <div class="text-end">
 
 
@@ -478,9 +360,6 @@ $vehicles = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
     </div>
 
-
-
 </body>
-
 
 </html>
