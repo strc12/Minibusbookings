@@ -206,20 +206,20 @@ try {
     $stmt1->closeCursor();
 
     $stmt5 = $conn->prepare("INSERT INTO Tbldriverjobs(BookingID,DriverID,AllocatedDriver)VALUES 
-    (1,1,1),
+    (1,1,0),
     (2,4,1),
-    (4,1,1)
+    (4,1,1),
+    (1,4,0),
+    (3,2,1)
     "); 
     $stmt5->execute();
     $stmt5->closeCursor();
 
-/* } catch (PDOException $e) {
+ } catch (PDOException $e) {
 
     echo $sql . "<br>" . $e->getMessage();
 
-} */
+} 
 
 $conn = Null;
 
-
-}
