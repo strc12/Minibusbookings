@@ -90,3 +90,70 @@ body {
 .carousel-item.active img {
     transform: scale(1.05);
 }
+
+
+
+
+
+
+
+.job-card {
+    border: none;
+    border-radius: 12px;
+}
+
+.job-table {
+    width: 100%;
+    font-size: 1rem;
+}
+
+.job-table thead {
+    background-color: var(--primary-navy);
+    color: white;
+}
+
+.job-table th {
+    padding: 16px;
+    font-weight: 600;
+    border: none;
+}
+
+.job-table td {
+    padding: 16px;
+    vertical-align: middle;
+}
+
+.job-table tbody tr {
+    transition: 0.2s;
+}
+
+.job-table tbody tr:hover {
+    background-color: #f3f7fc;
+}
+
+.status-badge {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.status-Pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.status-Accepted {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-Completed {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.status-Cancelled {
+    background: #f8d7da;
+    color: #721c24;
+}
