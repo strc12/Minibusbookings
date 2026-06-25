@@ -10,7 +10,7 @@ if (!isset($_SESSION["Licensetodrive"])) {
 
 }
 
-//page does not work (came from job.php)
+
 
 include_once("connection.php");
 
