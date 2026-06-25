@@ -49,6 +49,10 @@ include 'includes/navbar.php';
                         }
                         ?>
 
+                        <a href="index.php" class="btn btn-secondary">
+                                Cancel
+                            </a>
+
                         <button type="submit" class="btn btn-primary">
                             Submit
                         </button>
