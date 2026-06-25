@@ -44,7 +44,9 @@ try {
 
     Initials VARCHAR(5) NOT NULL,
 
-    Licencetodrive  Enum('Coach','17 minibus','9 seater','Car','None') NOT NULL DEFAULT 'None'
+    Licencetodrive  Enum('Coach','17 minibus','9 seater','Car','None') NOT NULL DEFAULT 'None',
+
+    Licenceexpiration DATE NOT NULL
 
     )"
 
@@ -54,12 +56,12 @@ try {
     $hashedpassword = password_hash("Password", PASSWORD_DEFAULT);
     $stmt1->closeCursor();
 
-    $stmt5 = $conn->prepare("INSERT INTO TblStaff(FirstName,Surname,Role,Password,Email,Phone,Initials,Licencetodrive)VALUES
-    ('John','Doe','Driver',:Password,'john.doe@example.com','1234567890','JD','Coach'),
-    ('Kristian','Fewster','Manager',:Password,'jane.smith@example.com','0987654321','JS','9 seater'),
-    ('Emily','Johnson','Staff',:Password,'emily.johnson@example.com','5555555555','EJ','Car'),
-    ('David','Williams','Driver',:Password,'david.williams@example.com','1111111111','DW','Coach'),
-    ('Rob','Cunniffe','Staff',:Password,'ric@oundleschool.org.uk','1111111111','MB','17 minibus')
+    $stmt5 = $conn->prepare("INSERT INTO TblStaff(FirstName,Surname,Role,Password,Email,Phone,Initials,Licencetodrive, Licenceexpiration)VALUES
+    ('John','Doe','Driver',:Password,'john.doe@example.com','1234567890','JD','Coach', '2030-12-31'),
+    ('Kristian','Fewster','Manager',:Password,'jane.smith@example.com','0987654321','JS','9 seater','2030-12-31'),
+    ('Emily','Johnson','Staff',:Password,'emily.johnson@example.com','5555555555','EJ','Car','2030-12-31'),
+    ('David','Williams','Driver',:Password,'david.williams@example.com','1111111111','DW','Coach','2030-12-31'),
+    ('Rob','Cunniffe','Staff',:Password,'ric@oundleschool.org.uk','1111111111','MB','17 minibus','2030-12-31')
     ");
     $stmt5->bindParam(":Password", $hashedpassword);
     $stmt5->execute();
