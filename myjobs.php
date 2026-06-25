@@ -4,12 +4,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 session_start();
-<<<<<<< HEAD
-
-if (!isset($_SESSION["Role"]) || !isset($_SESSION["StaffID"])) {
-=======
 if (!isset($_SESSION["Role"])) {
->>>>>>> af1eb7269af74e04bdc6714d6851084958ad24ee
     header("Location: login.php");
     exit;
 }
@@ -18,28 +13,6 @@ include_once("connection.php");
 
 $driverID = $_SESSION["StaffID"];
 
-<<<<<<< HEAD
-    $stmt = $conn->prepare("
-        SELECT
-            b.*,
-            v.Make,
-            v.Model,
-            v.Registration,
-            s.FirstName,
-            s.Surname
-        FROM TblBookings b
-        LEFT JOIN TblVehicles v
-            ON b.VehicleID = v.VehicleID
-        LEFT JOIN TblStaff s
-            ON b.DriverID = s.StaffID
-        WHERE b.DriverID = :DriverID
-        AND b.Status = 'Accepted'
-        ORDER BY b.Bookingstartdate, b.StartTime
-    ");
-
-    $stmt->bindParam(":DriverID", $driverID);
-    $stmt->execute();
-=======
 $stmt = $conn->prepare("
     SELECT 
         b.*, 
@@ -58,17 +31,13 @@ $stmt = $conn->prepare("
 
     ORDER BY b.Bookingstartdate, b.StartTime
 ");
->>>>>>> af1eb7269af74e04bdc6714d6851084958ad24ee
 
 $stmt->bindParam(":DriverID", $driverID);
 $stmt->execute();
 
-<<<<<<< HEAD
-=======
 $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $stmt->bindParam(":DriverID", $driverID);
 $stmt->execute();
->>>>>>> af1eb7269af74e04bdc6714d6851084958ad24ee
 $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
@@ -134,9 +103,9 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                             <p>
                                 <strong>Driver:</strong>
-                                    <?php
-                                    echo htmlspecialchars($job["FirstName"] . " " . $job["Surname"]);
-                                    ?>
+                                <?php
+                                echo htmlspecialchars($job["FirstName"] . " " . $job["Surname"]);
+                                ?>
                             </p>
 
                             <p>
