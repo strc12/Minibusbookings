@@ -122,6 +122,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
                         </div>
 
+
                         <div class="mb-4">
                             <label class="form-label">Licence to drive</label>
                             <select id="Licencetodrive" name="Licencetodrive">

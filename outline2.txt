@@ -11,7 +11,7 @@ current problems
 - no driver on my  - Jack
 - name of driver on job - Jack - Isaac - Multiple drivers
 - password encrypted on details page - Lila done  Alex Change password - completed
-- add licence expiry Add to user part... - Liam Gabs
+- add licence expiry Add to user part... - Liam Gabs - Complete
 - make cost code edit a dropdown - Isaac
 - pending cost code- Liam Gabs - Mr C - Completed
 - booking history, show all for kristian - Jonny
