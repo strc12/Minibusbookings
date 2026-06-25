@@ -219,7 +219,7 @@ session_start();
                     <div class="card-body">
                         <h5 class="card-title">Evan Gao</h5>
                         <p class="text-muted mb-0">
-                            
+                            Lead chess player
                         </p>
                     </div>
                 </div>
