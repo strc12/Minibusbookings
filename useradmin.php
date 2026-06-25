@@ -1,8 +1,6 @@
 <?php
 session_start();
-if($_SESSION["Role"] !== "Manager"){
-    header("Location: index.php");
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,10 +63,15 @@ if($_SESSION["Role"] !== "Manager"){
             </button>
         </div>
     </section>
+
+    
     <?php } ?>
     <main class="container my-5">
 
-        <!-- Optional Summary Cards -->
+        <!-- User Management Section -->
+        <?php if ($_SESSION["Role"] == "Manager") { ?>
+
+            <!-- Optional Summary Cards -->
         <div class="row mb-5">
 
             <div class="col-md-12">
@@ -85,12 +88,6 @@ if($_SESSION["Role"] !== "Manager"){
 
         </div>
 
-        
-        
-        
-        
-        <!-- User Management Section -->
-        <?php if ($_SESSION["Role"] == "Manager") { ?>
         <section>
 
             <h2 class="section-title">
@@ -318,4 +315,4 @@ toggle.classList.toggle("bi-eye"); */
 </form>
 
 </body>
-</html>
+</html/>
