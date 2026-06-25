@@ -18,6 +18,8 @@ try {
 
     $conn->exec($sql);
 
+
+
     //next 3 lines optional only needed really if you want to go on an do more SQL here!
 
     $sql = "USE Minibus";
@@ -198,10 +200,21 @@ try {
     PRIMARY KEY (DriverID, BookingID))");
     $stmt1->execute();
     $stmt1->closeCursor();
-} catch (PDOException $e) {
+
+    $stmt5 = $conn->prepare("INSERT INTO Tbldriverjobs(BookingID,DriverID,AllocatedDriver)VALUES 
+    (1,1,1),
+    (2,4,1),
+    (4,1,1)
+    "); 
+    $stmt5->execute();
+    $stmt5->closeCursor();
+
+/* } catch (PDOException $e) {
 
     echo $sql . "<br>" . $e->getMessage();
 
-}
+} */
 
 $conn = Null;
+
+
