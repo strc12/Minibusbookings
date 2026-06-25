@@ -13,24 +13,22 @@ include_once("connection.php");
 
 $driverID = $_SESSION["StaffID"];
 
-$stmt = $conn->prepare("
-    SELECT 
-        b.*, 
-        v.Make, 
-        v.Model, 
-        v.Registration
-    FROM TblDriverJobs dj
-
-    INNER JOIN TblBookings b
-        ON dj.BookingID = b.BookingID
-
-    LEFT JOIN TblVehicles v
-        ON b.VehicleID = v.VehicleID
-
-    WHERE dj.DriverID = :DriverID
-
-    ORDER BY b.Bookingstartdate, b.StartTime
-");
+$stmt = $conn->prepare(" 
+SELECT 
+    b.*, 
+    v.Make, 
+    v.Model, 
+    .Registration, 
+    s.FirstName, 
+    s.LastName 
+FROM TblBookings b 
+LEFT JOIN TblVehicles v 
+    ON b.VehicleID = v.VehicleID 
+LEFT JOIN TblStaff s 
+    ON b.DriverID = s.StaffID 
+WHERE b.DriverID = :DriverID 
+AND b.Status = 'Accepted' 
+ORDER BY b.Bookingstartdate, b.StartTime ");
 
 $stmt->bindParam(":DriverID", $driverID);
 $stmt->execute();
