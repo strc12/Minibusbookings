@@ -137,7 +137,18 @@ session_start();
 
         <div class="row g-4">
 
-            <div class="col-md-9 mx-auto">
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100 text-center opacity-0">
+                    <div class="card-body">
+                        <h5 class="card-title">Name</h5>
+                        <p class="text-muted mb-0">
+                            Role
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mx-auto">
                 <div class="card shadow-sm h-100 text-center">
                     <div class="card-body">
                         <h5 class="card-title">Rob Cuniffe</h5>
@@ -149,7 +160,7 @@ session_start();
             </div>
 
             <div class="col-md-4">
-                <div class="card shadow-sm h-100 text-center">
+                <div class="card shadow-sm h-100 text-center opacity-0">
                     <div class="card-body">
                         <h5 class="card-title">Name</h5>
                         <p class="text-muted mb-0">
@@ -247,8 +258,8 @@ session_start();
                 </div>
             </div>
 
-            <div class="col-md-4 mx-auto">
-                <div class="card shadow-sm h-100 text-center justify-content-center">
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100 text-center">
                     <div class="card-body">
                         <h5 class="card-title">Name</h5>
                         <p class="text-muted mb-0">
@@ -257,7 +268,6 @@ session_start();
                     </div>
                 </div>
             </div>
-
         </div>
 
     </section>
