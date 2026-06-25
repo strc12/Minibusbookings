@@ -12,7 +12,10 @@
 
     
     
-</head>
+</head>  
+
+    <!-- Make loggedoutindex the default page -->
+
 <body>
 
 <?php
@@ -85,7 +88,7 @@
 
     </div>
 
-    <!-- Data Entry Section -->
+    <!-- Data Entry Section --> 
     <section class="mb-5">
 
         <h2 class="section-title">

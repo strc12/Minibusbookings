@@ -9,6 +9,8 @@
     
 ?>
 
+ 
+
 <head>
 
     <title>Booking Request</title>
@@ -51,7 +53,7 @@
 
 
 
-    // DEBUG CHECK
+    // DEBUG CHECK 
     
     // echo "<pre>";
     
@@ -67,8 +69,8 @@
 
     //  echo "</pre>";
     
-
-
+    // Note: Able to book before current time
+    
 
 
 
