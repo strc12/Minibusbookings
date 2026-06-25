@@ -162,8 +162,6 @@ try {
 
     EndTime TIME NOT NULL,
 
-    DriverID INT(4),
-
     Capacityrequired INT(2) NOT NULL,
 
     Status Enum('Pending','Accepted','Completed','Cancelled') NOT NULL DEFAULT 'Pending',
@@ -179,20 +177,27 @@ try {
     $stmt1->execute();
 
     $stmt1->closeCursor();
-    $stmt5 = $conn->prepare("INSERT INTO TblBookings(BookingID,StaffID,VehicleID,Bookingstartdate,Bookingenddate,StartTime,EndTime,DriverID,Capacityrequired,Status,Destination,MilesTravelled,CostcodeID)VALUES 
-    (NULL,3,NULL,'2024-10-01','2024-10-01','09:00:00','17:00:00',NULL,5,'Pending','Local sports event',0,'S002'),
-    (NULL,3,NULL,'2024-10-15','2024-10-15','08:00:00','18:00:00',NULL,17,'Pending','DofE expedition',0,'S003'),
-    (NULL,3,NULL,'2024-11-01','2024-11-01','10:00:00','16:00:00',NULL,9,'Pending','Rugby match',0,'S004'),
-    (NULL,2,NULL,'2024-11-01','2024-11-01','10:00:00','16:00:00',NULL,9,'Pending','Football match',0,'S004'),
-    (NULL,1,NULL,'2024-11-01','2024-11-01','10:00:00','16:00:00',NULL,9,'Pending','Badminton match',0,'S004'),
-    (NULL,3,NULL,'2024-11-01','2024-11-01','10:00:00','16:00:00',NULL,9,'Pending','Netball match',0,'S004'),
-    (NULL,3,NULL,'2024-12-01','2024-12-01','07:00:00','19:00:00',NULL,52,'Pending','Silicon Valley trip',0,'X005')
+    $stmt5 = $conn->prepare("INSERT INTO TblBookings(BookingID,StaffID,VehicleID,Bookingstartdate,Bookingenddate,StartTime,EndTime,Capacityrequired,Status,Destination,MilesTravelled,CostcodeID)VALUES 
+    (NULL,3,NULL,'2024-10-01','2024-10-01','09:00:00','17:00:00',5,'Pending','Local sports event',0,'S002'),
+    (NULL,3,NULL,'2024-10-15','2024-10-15','08:00:00','18:00:00',17,'Pending','DofE expedition',0,'S003'),
+    (NULL,3,NULL,'2024-11-01','2024-11-01','10:00:00','16:00:00',9,'Pending','Rugby match',0,'S004'),
+    (NULL,2,NULL,'2024-11-01','2024-11-01','10:00:00','16:00:00',9,'Pending','Football match',0,'S004'),
+    (NULL,1,NULL,'2024-11-01','2024-11-01','10:00:00','16:00:00',9,'Pending','Badminton match',0,'S004'),
+    (NULL,3,NULL,'2024-11-01','2024-11-01','10:00:00','16:00:00',9,'Pending','Netball match',0,'S004'),
+    (NULL,3,NULL,'2024-12-01','2024-12-01','07:00:00','19:00:00',52,'Pending','Silicon Valley trip',0,'X005')
     ");
 
     $stmt5->execute();
 
     $stmt5->closeCursor();
 
+    $stmt1 = $conn->prepare("DROP TABLE IF EXISTS tbldriverjobs;
+    CREATE TABLE tbldriverjobs(BookingID INT(4) NOT NULL,
+    DriverID INT(4) NOT NULL,
+    AllocatedDriver INT(1) DEFAULT 0,
+    PRIMARY KEY (DriverID, BookingID))");
+    $stmt1->execute();
+    $stmt1->closeCursor();
 } catch (PDOException $e) {
 
     echo $sql . "<br>" . $e->getMessage();

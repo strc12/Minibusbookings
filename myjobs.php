@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-if(!isset($_SESSION["Role"])){
+if (!isset($_SESSION["Role"])) {
     header("Location: login.php");
 }
 
@@ -10,15 +10,28 @@ include_once("connection.php");
 $driverID = $_SESSION["StaffID"];
 
 $stmt = $conn->prepare("
-    SELECT b.*, v.Make, v.Model, v.Registration
-    FROM TblBookings b
+    SELECT 
+        b.*, 
+        v.Make, 
+        v.Model, 
+        v.Registration
+    FROM TblDriverJobs dj
+
+    INNER JOIN TblBookings b
+        ON dj.BookingID = b.BookingID
+
     LEFT JOIN TblVehicles v
-    ON b.VehicleID = v.VehicleID
-    WHERE b.DriverID = :DriverID
-    AND b.Status = 'Accepted'
+        ON b.VehicleID = v.VehicleID
+
+    WHERE dj.DriverID = :DriverID
+
     ORDER BY b.Bookingstartdate, b.StartTime
 ");
 
+$stmt->bindParam(":DriverID", $driverID);
+$stmt->execute();
+
+$bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $stmt->bindParam(":DriverID", $driverID);
 $stmt->execute();
 $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
