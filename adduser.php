@@ -87,6 +87,10 @@
                             </select>
                         </div>
 
+                        <div class="mb-4">
+                            <label class="form-label">Licence Expiry Date</label>
+                            <input type="" name="Initials" class="form-control">
+                        </div>
 
                         <div class="text-end">
                             <a href="useradmin.php" class="btn btn-secondary">
