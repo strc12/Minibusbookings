@@ -6,10 +6,18 @@ include_once("connection.php");
 $driverID = $_SESSION["StaffID"];
 
 $stmt = $conn->prepare("
-    SELECT b.*, v.Make, v.Model, v.Registration
+    SELECT
+        b.*,
+        v.Make,
+        v.Model,
+        v.Registration,
+        s.FirstName,
+        s.Surname
     FROM TblBookings b
     LEFT JOIN TblVehicles v
-    ON b.VehicleID = v.VehicleID
+        ON b.VehicleID = v.VehicleID
+    LEFT JOIN TblStaff s
+        ON b.DriverID = s.StaffID
     WHERE b.DriverID = :DriverID
     AND b.Status = 'Completed'
     ORDER BY b.Bookingenddate DESC, b.EndTime DESC
@@ -69,6 +77,11 @@ $jobs = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 echo htmlspecialchars($job["Make"] . " " . $job["Model"] . " - " . $job["Registration"]);
                             }
                             ?>
+                        </p>
+
+                        <p>
+                            <strong>Driver:</strong> 
+                            <?php echo htmlspecialchars($job["FirstName"] . " " . $job["Surname"]); ?>
                         </p>
 
                         <p>
