@@ -21,5 +21,5 @@ current problems
 - overview  Front page per driver - Lila Alex
 - Kristian front page with "what is happening today/tomorrow" + anything else appropriate - Jonny
 -reports for Kristian - Driver and costcode - Jonny - Isaac
-
+- if someone makes a booking and chooses to drive themself, kristian cannot assign a vehicle
 
