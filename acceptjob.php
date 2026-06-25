@@ -10,6 +10,7 @@ if (!isset($_SESSION["Licensetodrive"])) {
 
 }
 
+//page does not work (came from job.php)
 
 include_once("connection.php");
 
@@ -23,7 +24,7 @@ if (isset($_GET['id']) && isset($_SESSION["StaffID"])) {
     $driverID = $_SESSION["StaffID"];
 
 
-
+    
     /*
     |--------------------------------------------------------------------------
     | Check vehicle has been allocated

@@ -1,32 +1,34 @@
 <?php
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 session_start();
 if (!isset($_SESSION["Role"])) {
     header("Location: login.php");
+    exit;
 }
 
 include_once("connection.php");
 
 $driverID = $_SESSION["StaffID"];
 
-$stmt = $conn->prepare("
-    SELECT 
-        b.*, 
-        v.Make, 
-        v.Model, 
-        v.Registration
-    FROM TblDriverJobs dj
-
-    INNER JOIN TblBookings b
-        ON dj.BookingID = b.BookingID
-
-    LEFT JOIN TblVehicles v
-        ON b.VehicleID = v.VehicleID
-
-    WHERE dj.DriverID = :DriverID
-
-    ORDER BY b.Bookingstartdate, b.StartTime
-");
+$stmt = $conn->prepare(" 
+SELECT 
+    b.*, 
+    v.Make, 
+    v.Model, 
+    .Registration, 
+    s.FirstName, 
+    s.LastName 
+FROM TblBookings b 
+LEFT JOIN TblVehicles v 
+    ON b.VehicleID = v.VehicleID 
+LEFT JOIN TblStaff s 
+    ON b.DriverID = s.StaffID 
+WHERE b.DriverID = :DriverID 
+AND b.Status = 'Accepted' 
+ORDER BY b.Bookingstartdate, b.StartTime ");
 
 $stmt->bindParam(":DriverID", $driverID);
 $stmt->execute();
@@ -94,6 +96,13 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 } else {
                                     echo htmlspecialchars($job["Make"] . " " . $job["Model"] . " - " . $job["Registration"]);
                                 }
+                                ?>
+                            </p>
+
+                            <p>
+                                <strong>Driver:</strong>
+                                <?php
+                                echo htmlspecialchars($job["FirstName"] . " " . $job["Surname"]);
                                 ?>
                             </p>
 

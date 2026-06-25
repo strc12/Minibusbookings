@@ -12,7 +12,10 @@
 
     
     
-</head>
+</head>  
+
+    <!-- Make loggedoutindex the default page -->
+
 <body>
 
 <?php
@@ -20,6 +23,10 @@
     $currentPage = 'dashboard';
     include 'includes/navbar.php';
     include_once("connection.php");
+
+    if(!isset($_SESSION["Role"])){
+            header("Location: loggedoutindex.php");
+    }
 
 ?>
 
@@ -85,7 +92,7 @@
 
     </div>
 
-    <!-- Data Entry Section -->
+    <!-- Data Entry Section --> 
     <section class="mb-5">
 
         <h2 class="section-title">

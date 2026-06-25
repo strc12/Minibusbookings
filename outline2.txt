@@ -3,7 +3,7 @@ make bookings not be able to end before they start -> Complete
 Cost Code ID dropdown -> Complete
 Remove option to not drive self if over staff's possible capacity -> Complete
 Mileage on completion of a job -> Complete
-Management should have access to past jobs- complete
+Management should have access to past jobs- Complete
 
 
 current problems
@@ -21,5 +21,5 @@ current problems
 - overview  Front page per driver - Lila Alex
 - Kristian front page with "what is happening today/tomorrow" + anything else appropriate - Jonny
 -reports for Kristian - Driver and costcode - Jonny - Isaac
-
+- if someone makes a booking and chooses to drive themself, kristian cannot assign a vehicle
 
