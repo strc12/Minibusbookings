@@ -89,7 +89,7 @@
 
                         <div class="mb-4">
                             <label class="form-label">Licence Expiry Date</label>
-                            <input type="" name="Initials" class="form-control">
+                            <input type="date" name="LicenceExpires" class="form-control">
                         </div>
 
                         <div class="text-end">

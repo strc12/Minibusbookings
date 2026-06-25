@@ -132,6 +132,12 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                                 <option value="None">None</option>
                             </select>                        </div>
 
+                        <div class="mb-4">
+                            <label class="form-label">Licence Expiry Date</label>
+                            <input type="date" name="LicenceExpires" value="<?php echo $user['LicenceExpires']; ?>" class="form-control" required>
+
+                        </div>
+
                         <div class="text-end">
                             <a href="useradmin.php" class="btn btn-secondary">
                                 Cancel
@@ -183,7 +189,7 @@ toggle.classList.toggle("bi-eye"); */
 
 //icon.classList.toggle('bi-eye');
 //icon.classList.toggle('bi-eye-slash');
-});
+//});
 </script>
 
 
