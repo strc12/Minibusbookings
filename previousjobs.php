@@ -1,6 +1,12 @@
 <?php
 
 session_start();
+
+if (!isset($_SESSION["StaffID"])) {
+    header("Location: login.php");
+    exit;
+}
+
 include_once("connection.php");
 
 $driverID = $_SESSION["StaffID"];
@@ -17,16 +23,16 @@ $stmt = $conn->prepare("
     LEFT JOIN TblVehicles v
         ON b.VehicleID = v.VehicleID
     LEFT JOIN TblStaff s
-        ON b.DriverID = s.StaffID
-    WHERE b.DriverID = :DriverID
+        ON b.StaffID = s.StaffID
+    WHERE b.StaffID = :DriverID
     AND b.Status = 'Completed'
     ORDER BY b.Bookingenddate DESC, b.EndTime DESC
 ");
 
 $stmt->bindParam(":DriverID", $driverID);
 $stmt->execute();
-$jobs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+$jobs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
