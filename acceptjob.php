@@ -86,16 +86,8 @@ if (isset($_GET['id']) && isset($_SESSION["StaffID"])) {
 
 
     $stmt = $conn->prepare("
-
-        UPDATE TblBookings
-
-        SET DriverID = :DriverID,
-
-            Status = 'Accepted'
-
-
-        WHERE BookingID = :BookingID
-
+        
+        INSERT INTO tbldriverjobs (BookingID, DriverID, AllocatedDriver)VALUES(:BookingID,:DriverID,NULL)
     ");
 
 
