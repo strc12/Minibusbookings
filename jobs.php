@@ -3,7 +3,7 @@
 session_start();
 
 include_once("connection.php");
-
+#print_r($_SESSION);
 
 
 /*
@@ -14,97 +14,44 @@ include_once("connection.php");
 
 
 if ($_SESSION["Role"] == "Driver") {
-
-
     $driverID = $_SESSION["StaffID"];
-
-
-
     $stmt = $conn->prepare("
-
-        SELECT b.*, v.Make, v.Model
-
-        FROM TblBookings b
-
-
-        LEFT JOIN TblVehicles v
-
-        ON b.VehicleID = v.VehicleID
-
-
-
-        WHERE b.Status = 'Pending'
-
-
-
-        AND NOT EXISTS (
-
-
-            SELECT 1
-
-            FROM TblBookings accepted
-
-
-
-            WHERE accepted.DriverID = :DriverID
-
-
-            AND accepted.Status = 'Accepted'
-
-
-
-            AND CONCAT(
-
-                accepted.Bookingstartdate,
-
-                ' ',
-
-                SUBTIME(accepted.StartTime,'02:00:00')
-
-            )
-
-            <
-
-            CONCAT(
-
-                b.Bookingenddate,
-
-                ' ',
-
-                ADDTIME(b.EndTime,'02:00:00')
-
-            )
-
-
-
-            AND CONCAT(
-
-                accepted.Bookingenddate,
-
-                ' ',
-
-                ADDTIME(accepted.EndTime,'02:00:00')
-
-            )
-
-            >
-
-            CONCAT(
-
-                b.Bookingstartdate,
-
-                ' ',
-
-                SUBTIME(b.StartTime,'02:00:00')
-
-            )
-
+        SELECT 
+    b.*, 
+    v.Make, 
+    v.Model
+FROM TblBookings b
+LEFT JOIN TblVehicles v
+    ON b.VehicleID = v.VehicleID
+WHERE b.Status = 'Pending'
+AND NOT EXISTS (
+    SELECT 1
+    FROM tbldriverjobs dj
+    INNER JOIN TblBookings accepted
+        ON accepted.BookingID = dj.BookingID
+    WHERE dj.DriverID = :DriverID
+        AND dj.AllocatedDriver = 1
+        AND accepted.Status = 'Accepted'
+        AND CONCAT(
+            accepted.Bookingstartdate,
+            ' ',
+            SUBTIME(accepted.StartTime, '02:00:00')
+        ) < CONCAT(
+            b.Bookingenddate,
+            ' ',
+            ADDTIME(b.EndTime, '02:00:00')
         )
-
-
-
-        ORDER BY b.Bookingstartdate, b.StartTime
-
+        AND CONCAT(
+            accepted.Bookingenddate,
+            ' ',
+            ADDTIME(accepted.EndTime, '02:00:00')
+        ) > CONCAT(
+            b.Bookingstartdate,
+            ' ',
+            SUBTIME(b.StartTime, '02:00:00')
+        )
+)
+ORDER BY b.Bookingstartdate, b.StartTime
     ");
 
 
@@ -122,39 +69,18 @@ if ($_SESSION["Role"] == "Driver") {
 
     // Managers see everything
 
-
     $stmt = $conn->prepare("
-
         SELECT b.*, v.Make, v.Model
-
         FROM TblBookings b
-
-
         LEFT JOIN TblVehicles v
-
         ON b.VehicleID = v.VehicleID
-
-
-
         WHERE b.Status = 'Pending'
-
-
-
         ORDER BY b.Bookingstartdate, b.StartTime
-
     ");
-
-
-
     $stmt->execute();
-
-
 }
-
-
-
 $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+#print_r($bookings);
 
 
 ?>
@@ -379,7 +305,7 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                         <a href="acceptjob.php?id=<?php echo $booking['BookingID']; ?>" class="btn btn-success btn-sm">
 
 
-                                            Accept Job
+                                            Apply for Job
 
 
                                         </a>

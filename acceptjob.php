@@ -15,7 +15,6 @@ if (!isset($_SESSION["Licensetodrive"])) {
 include_once("connection.php");
 
 
-
 if (isset($_GET['id']) && isset($_SESSION["StaffID"])) {
 
 
@@ -86,6 +85,7 @@ if (isset($_GET['id']) && isset($_SESSION["StaffID"])) {
     */
 
 
+print_r($_SESSION);
     $stmt = $conn->prepare("
         
         INSERT INTO tbldriverjobs (BookingID, DriverID, AllocatedDriver)VALUES(:BookingID,:DriverID,NULL)

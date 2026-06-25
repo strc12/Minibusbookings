@@ -49,7 +49,6 @@ try {
     Licencetodrive  Enum('Coach','17 minibus','9 seater','Car','None') NOT NULL DEFAULT 'None',
 
     LicenceExpires DATE NOT NULL
-    LicenceExpires DATE NOT NULL
 
     )"
 
