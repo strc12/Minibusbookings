@@ -329,7 +329,7 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                                            
                                             <?php if ($booking['IsApplied'] == 1){ ?>
-                                            <a href="acceptjob.php?id=<?php echo $booking['BookingID']; ?>" class="btn btn-danger btn-sm">
+                                            <a class="btn btn-danger btn-sm">
                                                 Already Applied   
                                             <?php }else{?>
                                             <a href="acceptjob.php?id=<?php echo $booking['BookingID']; ?>" class="btn btn-success btn-sm">
