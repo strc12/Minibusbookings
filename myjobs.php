@@ -121,8 +121,11 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <p>
                                 <strong>Driver:</strong>
                                 <?php
-                                echo htmlspecialchars($job["FirstName"] . " " . $job["Surname"]);
-                                ?>
+                                if ($job['IsApplied'] == 1 && $job['IsAllocated'] == 0) {
+                                    echo '<span class="badge bg-success">Applied for</span>';
+                                } else if ($job['IsAllocated'] == 1) {
+                                 echo htmlspecialchars($job["FirstName"] . " " . $job["Surname"]);
+                                }?>
                             </p>
 
                             <p>
@@ -148,9 +151,7 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                         <div class="card-footer text-end">
                             <?php
-                                if ($job['IsApplied'] == 1 && $job['IsAllocated'] == 0) {
-                                    echo '<span class="badge bg-success">Applied for</span>';
-                                } else if ($job['IsAllocated'] == 1) {
+                                if ($job['IsAllocated'] == 1) {
                                 ?>
                                     <a href="mileage.php?id=<?php echo $job['BookingID']; ?>" class="btn btn-sm btn-success">
                                         Enter Mileage
