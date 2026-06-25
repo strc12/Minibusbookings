@@ -44,7 +44,9 @@ try {
 
     Initials VARCHAR(5) NOT NULL,
 
-    Licencetodrive  Enum('Coach','17 minibus','9 seater','Car','None') NOT NULL DEFAULT 'None'
+    Licencetodrive  Enum('Coach','17 minibus','9 seater','Car','None') NOT NULL DEFAULT 'None',
+
+    LicenceExpires DATE NOT NULL
 
     )"
 
@@ -54,12 +56,12 @@ try {
     $hashedpassword = password_hash("Password", PASSWORD_DEFAULT);
     $stmt1->closeCursor();
 
-    $stmt5 = $conn->prepare("INSERT INTO TblStaff(FirstName,Surname,Role,Password,Email,Phone,Initials,Licencetodrive)VALUES
-    ('John','Doe','Driver',:Password,'john.doe@example.com','1234567890','JD','Coach'),
-    ('Kristian','Fewster','Manager',:Password,'jane.smith@example.com','0987654321','JS','9 seater'),
-    ('Emily','Johnson','Staff',:Password,'emily.johnson@example.com','5555555555','EJ','Car'),
-    ('David','Williams','Driver',:Password,'david.williams@example.com','1111111111','DW','Coach'),
-    ('Rob','Cunniffe','Staff',:Password,'ric@oundleschool.org.uk','1111111111','MB','17 minibus')
+    $stmt5 = $conn->prepare("INSERT INTO TblStaff(FirstName,Surname,Role,Password,Email,Phone,Initials,Licencetodrive,LicenceExpires)VALUES
+    ('John','Doe','Driver',:Password,'john.doe@example.com','1234567890','JD','Coach','2030-12-31'),
+    ('Kristian','Fewster','Manager',:Password,'jane.smith@example.com','0987654321','JS','9 seater','2030-12-31'),
+    ('Emily','Johnson','Staff',:Password,'emily.johnson@example.com','5555555555','EJ','Car','2030-12-31'),
+    ('David','Williams','Driver',:Password,'david.williams@example.com','1111111111','DW','Coach','2030-12-31'),
+    ('Rob','Cunniffe','Staff',:Password,'ric@oundleschool.org.uk','1111111111','MB','17 minibus','2030-12-31')
     ");
     $stmt5->bindParam(":Password", $hashedpassword);
     $stmt5->execute();
@@ -136,7 +138,9 @@ try {
 
     (NULL,'S004','Rugby'),
 
-    (NULL,'X005','Silicon Valley trip')
+    (NULL,'X005','Silicon Valley trip'),
+
+    (NULL,'TBD','Cost Code TBD')
 
     ");
 
@@ -168,21 +172,23 @@ try {
 
     MilesTravelled INT(5),
 
-    CostcodeID VARCHAR(10) NOT NULL)"
+    CostcodeID VARCHAR(10) NOT NULL,
+    
+    Keylocation Enum('Staff Pigeon Hole','Porter Pigeon Hole','Armoury','TBD') NOT NULL DEFAULT 'TBD')"
 
     );
 
     $stmt1->execute();
 
     $stmt1->closeCursor();
-    $stmt5 = $conn->prepare("INSERT INTO TblBookings(BookingID,StaffID,VehicleID,Bookingstartdate,Bookingenddate,StartTime,EndTime,Capacityrequired,Status,Destination,MilesTravelled,CostcodeID)VALUES 
-    (NULL,3,NULL,'2024-10-01','2024-10-01','09:00:00','17:00:00',5,'Pending','Local sports event',0,'S002'),
-    (NULL,3,NULL,'2024-10-15','2024-10-15','08:00:00','18:00:00',17,'Pending','DofE expedition',0,'S003'),
-    (NULL,3,NULL,'2024-11-01','2024-11-01','10:00:00','16:00:00',9,'Pending','Rugby match',0,'S004'),
-    (NULL,2,NULL,'2024-11-01','2024-11-01','10:00:00','16:00:00',9,'Pending','Football match',0,'S004'),
-    (NULL,1,NULL,'2024-11-01','2024-11-01','10:00:00','16:00:00',9,'Pending','Badminton match',0,'S004'),
-    (NULL,3,NULL,'2024-11-01','2024-11-01','10:00:00','16:00:00',9,'Pending','Netball match',0,'S004'),
-    (NULL,3,NULL,'2024-12-01','2024-12-01','07:00:00','19:00:00',52,'Pending','Silicon Valley trip',0,'X005')
+    $stmt5 = $conn->prepare("INSERT INTO TblBookings(BookingID,StaffID,VehicleID,Bookingstartdate,Bookingenddate,StartTime,EndTime,Capacityrequired,Status,Destination,MilesTravelled,CostcodeID,Keylocation)VALUES 
+    (NULL,3,NULL,'2024-10-01','2024-10-01','09:00:00','17:00:00',5,'Pending','Local sports event',0,'S002','TBD'),
+    (NULL,3,NULL,'2024-10-15','2024-10-15','08:00:00','18:00:00',17,'Pending','DofE expedition',0,'S003','TBD'),
+    (NULL,3,NULL,'2024-11-01','2024-11-01','10:00:00','16:00:00',9,'Pending','Rugby match',0,'S004','TBD'),
+    (NULL,2,NULL,'2024-11-01','2024-11-01','10:00:00','16:00:00',9,'Pending','Football match',0,'S004','TBD'),
+    (NULL,1,NULL,'2024-11-01','2024-11-01','10:00:00','16:00:00',9,'Pending','Badminton match',0,'S004','TBD'),
+    (NULL,3,NULL,'2024-11-01','2024-11-01','10:00:00','16:00:00',9,'Pending','Netball match',0,'S004','TBD'),
+    (NULL,3,NULL,'2024-12-01','2024-12-01','07:00:00','19:00:00',52,'Pending','Silicon Valley trip',0,'X005','TBD')
     ");
 
     $stmt5->execute();
