@@ -20,7 +20,18 @@ SELECT
     v.Model, 
     v.Registration, 
     s.FirstName, 
-    s.Surname 
+    s.Surname,
+    dj.DriverID,
+    dj.allocatedDriver,
+
+    -- always applied here because INNER JOIN guarantees it
+    1 AS IsApplied,
+
+    CASE 
+        WHEN dj.allocatedDriver = 1 THEN 1 
+        ELSE 0 
+    END AS IsAllocated
+
 FROM TblBookings b 
 
 INNER JOIN tbldriverjobs dj
@@ -34,16 +45,17 @@ LEFT JOIN TblStaff s
 
 WHERE dj.DriverID = :DriverID
 
-ORDER BY b.Bookingstartdate, b.StartTime
+ORDER BY IsAllocated DESC, b.Bookingstartdate, b.StartTime;
 ");
 
 $stmt->bindParam(":DriverID", $driverID);
 $stmt->execute();
 
 $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$stmt->bindParam(":DriverID", $driverID);
-$stmt->execute();
-$bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
+#$stmt->bindParam(":DriverID", $driverID);
+#$stmt->execute();
+#$bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
+#print_r($bookings);
 ?>
 
 <!DOCTYPE html>
@@ -135,16 +147,22 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </div>
 
                         <div class="card-footer text-end">
+                            <?php
+                                if ($job['IsApplied'] == 1 && $job['IsAllocated'] == 0) {
+                                    echo '<span class="badge bg-success">Applied for</span>';
+                                } else if ($job['IsAllocated'] == 1) {
+                                ?>
+                                    <a href="mileage.php?id=<?php echo $job['BookingID']; ?>" class="btn btn-sm btn-success">
+                                        Enter Mileage
+                                    </a>
 
-                            <a href="mileage.php?id=<?php echo $job['BookingID']; ?>" class="btn btn-sm btn-success">
-                                Enter Mileage
-                            </a>
-
-                            <a href="canceljob.php?id=<?php echo $job['BookingID']; ?>" class="btn btn-sm btn-danger"
-                                onclick="return confirm('Are you sure you want to release this job?');">
-                                Release Job
-                            </a>
-
+                                    <a href="canceljob.php?id=<?php echo $job['BookingID']; ?>" class="btn btn-sm btn-danger"
+                                    onclick="return confirm('Are you sure you want to release this job?');">
+                                        Release Job
+                                    </a>
+                                <?php
+                                }
+                            ?>
                         </div>
 
                     </div>
