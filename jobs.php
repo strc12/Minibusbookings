@@ -3,8 +3,8 @@
 session_start();
 
 include_once("connection.php");
-print_r($_SESSION);
-echo "<br>";
+#print_r($_SESSION);
+#echo "<br>";
 
 
 /*
@@ -137,7 +137,7 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
         <?php include_once("includes/navbar.php"); 
-        print_r($bookings);?>
+        #print_r($bookings);?>
 
 
 
